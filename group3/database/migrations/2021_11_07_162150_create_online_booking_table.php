@@ -16,7 +16,6 @@ class CreateOnlineBookingTable extends Migration
         Schema::create('online_bookings', function (Blueprint $table) {
             $table->id();
             $table->foreignId('room_id')->references('id')->on('rooms');
-            $table->foreignId('user_id')->references('id')->on('users');
             $table->char('customer_name',255);
             $table->char('email',50);
             $table->char('phone',20);
