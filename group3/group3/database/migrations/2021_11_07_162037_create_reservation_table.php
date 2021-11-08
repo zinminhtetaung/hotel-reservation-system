@@ -17,7 +17,7 @@ class CreateReservationTable extends Migration
             $table->id();
             $table->foreignId('room_id')->references('id')->on('rooms');
             $table->char('customer_name',255);
-            $table->integer('phone');
+            $table->char('phone',255);
             $table->char('hotel_name',255);
             $table->char('room_number',255);
             $table->integer('number_of_guest');
