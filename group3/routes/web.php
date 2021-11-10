@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Hotel\HotelController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,5 +15,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect()->route('hotelList');
 });
+Route::get('/hotels/list', [HotelController::class, 'showHotelList'])->name('hotelList');
+
+Route::get('/hotel/download', [HotelController::class, 'downloadHotelCSV'])->name('downloadHotelCSV');
+
+Route::delete('/hotels/list/{id}', [HotelController::class, 'deleteHotelById']);
