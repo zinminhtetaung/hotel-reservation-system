@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Reservation;
 
+use App\Contracts\Services\ConfirmMail\MailServiceInterface;
 use App\Contracts\Services\Reservation\ReservationServiceInterface;
 use App\Contracts\Services\Room\RoomServiceInterface;
 use App\Contracts\Services\OnlineBooking\OnlineBookingServiceInterface;
@@ -29,15 +30,21 @@ class ReservationController extends Controller
     private $OnlineBookingInterface;
 
     /**
+     * Mail interface
+     */
+    private $MailInterface;
+
+    /**
      * Create a new controller instance.
      *
      * @return void
      */
-    public function __construct(ReservationServiceInterface $ReservationServiceInterface, RoomServiceInterface $RoomServiceInterface ,OnlineBookingServiceInterface $OnlineBookingServiceInterface)
+    public function __construct(ReservationServiceInterface $ReservationServiceInterface, RoomServiceInterface $RoomServiceInterface ,OnlineBookingServiceInterface $OnlineBookingServiceInterface,MailServiceInterface $MailServiceInterface)
     {
         $this->ReservationInterface = $ReservationServiceInterface;
         $this->RoomInterface = $RoomServiceInterface;
         $this->OnlineBookingInterface=$OnlineBookingServiceInterface;
+        $this->MailInterface=$MailServiceInterface;
     }
     
 
@@ -72,6 +79,7 @@ class ReservationController extends Controller
      * @return View Online Booking
      */
     public function addBooking(Request $request) {
+        $this->MailInterface->sendMail($request);
         $Reservation = $this->ReservationInterface->addBooking($request);
         $OnlineBooking = $this->OnlineBookingInterface->removeOnlineBooking($request);
         $OnlineBookingList = $this->OnlineBookingInterface->getOnlineBooking();
