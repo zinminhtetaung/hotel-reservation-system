@@ -1,68 +1,56 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
   <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- CSRF Token -->
+  <meta name="csrf-token" content="{{ csrf_token() }}">
 
   <title>Hotel Reservation System</title>
 
   <!-- Fonts -->
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css">
-  <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700" rel='stylesheet' type='text/css'>
+  <link rel="dns-prefetch" href="//fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
   <!-- Styles -->
-  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-  {{-- <link href="{{ elixir('css/app.css') }}" rel="stylesheet"> --}}
+  <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
-  <style>
-    body {
-      font-family: 'Lato';
-    }
-
-    .fa-btn {
-      margin-right: 6px;
-    }
-  </style>
+  <!-- Script -->
+  <script src="{{ asset('js/app.js') }}"></script>
 </head>
 
-<body id="app-layout">
-  <nav class="navbar navbar-default">
-    <div class="container">
-      <div class="navbar-header">
-
-        <!-- Branding Image -->
+<body>
+  <div id="app">
+    <nav class="navbar sticky-top navbar-expand-md navbar-light bg-white shadow-sm">
+      <div class="container">
         <a class="navbar-brand" href="{{ url('/') }}">
-          Reservation
+          <img src="{{asset('/storage/images/processed.jpeg')}}" height="50px">
         </a>
-        <a class="navbar-brand" href="{{ url('/onlineBooking') }}">
-          Online Booking
-        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
-              <a class="nav-link" href="/hotels/list">Hotel</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/rooms/list">Room</a>
-            </li>
-          </ul>
+          <!-- Left Side Of Navbar -->
+          <a class="navbar-brand" href="{{ url('/') }}">
+            Reservation
+          </a>
+          <a class="navbar-brand" href="{{ url('/onlineBooking') }}">
+            Online Booking
+          </a>
+          <a class="navbar-brand" href="/hotels/list">Hotel</a>
+
+          <a class="navbar-brand" href="/rooms/list">Room</a>
         </div>
       </div>
+    </nav>
 
-    </div>
-  </nav>
-
-  @include('common.errors')
-
-  @yield('content')
-
-  <!-- JavaScripts -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-  <script src="{{asset('js/script.js')}}"></script>
+    <main class="py-4">
+      @yield('content')
+    </main>
+  </div>
 </body>
 
 </html>

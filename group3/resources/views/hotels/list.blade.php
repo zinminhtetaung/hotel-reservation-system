@@ -3,7 +3,6 @@
 @section('content')
 <!-- Styles -->
 <link href="{{ asset('css/lib/jquery.dataTables.min.css') }}" rel="stylesheet">
-<link href="{{ asset('css/hotel-list.css') }}" rel="stylesheet">
 
 <!-- Script -->
 <script src="{{ asset('js/lib/moment.min.js') }}"></script>
@@ -18,17 +17,6 @@
         <div class="card-body">
           <div class="row search-bar">
             <a class="btn btn-primary header-btn" href="/hotel/download">{{ __('Download') }}</a>
-            <!-- <form class="row search-bar" type="get" action="{{url('/s/search')}}">
-              <div class="row m-0">
-                <label class="p-2 search-lbl">From :</label>
-                <input class="search-input mb-2 form-control" id="dateStart" name="start" type="date" />
-              </div>
-              <div class="row m-0">
-                <label class="p-2 search-lbl">To :</label>
-                <input class="search-input mb-2 form-control" id="dateEnd" name="end" type="date" />
-              </div>
-              <button class="btn btn-primary mb-2 search-btn" id="search-click">Search</button>
-            </form> -->
               
           
           <table class="table table-hover table-responsive" id="hotel-list">
@@ -39,7 +27,7 @@
                 <th class="header-cell" scope="col">Description</th>
                 <th class="header-cell" scope="col">Phone Number</th>
                 <th class="header-cell" scope="col">Location</th>
-                <th class="header-cell" scope="col">Action</th>
+                <!-- <th class="header-cell" scope="col">Action</th> -->
               </tr>
             </thead>
             <tbody>
@@ -51,9 +39,9 @@
                 <td>{{$hotel->description}}</td>
                 <td>{{$hotel->phone}}</td>
                 <td>{{$hotel->location}}</td>
-                <td>
+                <!-- <td>
                   <button type="button" class="btn btn-danger" onclick="showDeleteConfirm({{json_encode($hotel)}})" data-toggle="modal" data-target="#delete-confirm">Delete</button>
-                </td>
+                </td> -->
               </tr>
               <div class="modal fade" id="delete-confirm" tabindex="-1" role="dialog">
                 <div class="modal-dialog" role="document">

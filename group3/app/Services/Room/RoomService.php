@@ -54,7 +54,7 @@ class RoomService implements RoomServiceInterface
      */
     public function getRoomById($id)
     {
-        return $this->roomDao->getRoomById($id);
+        return $this->RoomDao->getRoomById($id);
     }
 
     /**
@@ -63,7 +63,7 @@ class RoomService implements RoomServiceInterface
      */
     public function getRoomList()
     {
-        return $this->roomDao->getRoomList();
+        return $this->RoomDao->getRoomList();
     }
 
 
@@ -74,7 +74,7 @@ class RoomService implements RoomServiceInterface
      */
     public function updateRoom(Request $request, $id)
     {
-        return $this->roomDao->updateRoomByID($request, $id);
+        return $this->RoomDao->updateRoomByID($request, $id);
     }
     
     /**
@@ -84,7 +84,7 @@ class RoomService implements RoomServiceInterface
      */
     public function deleteRoomById($id)
     {
-      return $this->roomDao->deleteRoomById($id);
+      return $this->RoomDao->deleteRoomById($id);
     }
 
     /**
@@ -94,7 +94,7 @@ class RoomService implements RoomServiceInterface
      */
     public function saveRoom($validated)
     {
-      $room = $this->roomDao->saveRoom($validated);
+      $room = $this->RoomDao->saveRoom($validated);
       return $room;
     }
 }

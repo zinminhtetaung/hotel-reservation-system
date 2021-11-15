@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Dao\Room;
+namespace App\Dao\Rooms;
 
 use App\Models\Room;
 use App\Contracts\Dao\Room\RoomDaoInterface;
@@ -26,7 +26,11 @@ class RoomDao implements RoomDaoInterface
         return $room;
     }
 
-
+    /**
+     * To Change room status
+     * @param Request $request
+     * @return 
+     */
     public function setStatus($request) {
         $room = Room::FindorFail($request->room_id);
         $room->status = "not available";
@@ -59,14 +63,6 @@ class RoomDao implements RoomDaoInterface
         $room->price = $request->price;
         $room->status = $request->status;
         $room->image = $request->image->getClientOriginalName();
-        // $room->hotel_id = $request['hotel_id']-> id;  
-        // $room->room_number = $request['room_number'];   
-        // $room->room_type = $request['room_type'];
-        // $room->service = $request['service'];
-        // $room->price = $request['price'];
-        // $room->status = $request['status'];
-        // $room->image = $request['image']->getClientOriginalName();
-        // $room->user_id = Auth::user()->id ?? 1;
         $room->user_id = 1;
         $room->save();
         return $room;
@@ -109,14 +105,6 @@ class RoomDao implements RoomDaoInterface
         $room->price = $request->price;
         $room->status = $request->status;
         $room->image = $request->image;
-        // $room->hotel_id = $request['hotel_id'];
-        // $room->room_number = $request['room_number'];   
-        // $room->room_type = $request['room_type'];
-        // $room->service = $request['service'];
-        // $room->price = $request['price'];
-        // $room->status = $request['status'];
-        // $room->image = $request['image'];
-        // $room->user_id = Auth::user()->id ?? 1;
         $room->user_id = 1;
         $room->save();
         return $room;
