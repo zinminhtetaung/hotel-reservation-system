@@ -270,57 +270,6 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- <div class="modal fade" id="delete-confirm" tabindex="-1" role="dialog">
-            <div class="modal-dialog" role="document">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title">Delete Confirm</h5>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-                <div class="modal-body" id="room-delete">
-                  <h4 class="delete-confirm-header">Are you sure to delete room?</h4>
-                  <div class="col-md-12">
-                    <div class="row">
-                      <label class="col-md-3 text-md-left">{{ __('ID') }}</label>
-                      <label class="col-md-9 text-md-left">
-                        <i class="profile-text" id="room-id"></i>
-                      </label>
-                    </div>
-                    <div class="row">
-                      <label class="col-md-3 text-md-left">{{ __('Name') }}</label>
-                      <label class="col-md-9 text-md-left">
-                        <i class="profile-text" id="room-name"></i>
-                      </label>
-                    </div>
-                    <div class="row">
-                      <label class="col-md-3 text-md-left">{{ __('Roll_Number') }}</label>
-                      <label class="col-md-9 text-md-left">
-                        <i class="profile-text" id="room-roll-Number"></i>
-                      </label>
-                    </div>
-                    <div class="row">
-                      <label class="col-md-3 text-md-left">{{ __('Class') }}</label>
-                      <label class="col-md-9 text-md-left">
-                        <i class="profile-text" id="room-class"></i>
-                      </label>
-                    </div>
-                    <div class="row">
-                      <label class="col-md-3 text-md-left">{{ __('DOB') }}</label>
-                      <label class="col-md-9 text-md-left">
-                        <i class="profile-text" id="room-dob"></i>
-                      </label>
-                    </div>
-                  </div>
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                  <button onclick="deleteHotelById({{json_encode(csrf_token())}})" type="button" class="btn btn-danger">Delete</button>
-                </div>
-              </div>
-            </div>
-          </div> -->
                     </div>
                 </div>
             </div>
