@@ -46,4 +46,55 @@ class RoomService implements RoomServiceInterface
     public function unsetStatus($room_id) {
         return $this->RoomDao->unsetStatus($room_id);
     }
+
+    /**
+     * To get room by id
+     * @param string $id room id
+     * @return Object $room room object
+     */
+    public function getRoomById($id)
+    {
+        return $this->roomDao->getRoomById($id);
+    }
+
+    /**
+     * To get room list
+     * @return array $roomList list of rooms
+     */
+    public function getRoomList()
+    {
+        return $this->roomDao->getRoomList();
+    }
+
+
+    /**
+     * To Update Room with values from request
+     * @param Request $request request including inputs
+     * @return Object updated room object
+     */
+    public function updateRoom(Request $request, $id)
+    {
+        return $this->roomDao->updateRoomByID($request, $id);
+    }
+    
+    /**
+     * To delete room by id
+     * @param string $id room id
+     * @return string $message message for success or not
+     */
+    public function deleteRoomById($id)
+    {
+      return $this->roomDao->deleteRoomById($id);
+    }
+
+    /**
+     * To save room that from api request
+     * @param array $validated Validated values form request
+     * @return Object created room object
+     */
+    public function saveRoom($validated)
+    {
+      $room = $this->roomDao->saveRoom($validated);
+      return $room;
+    }
 }

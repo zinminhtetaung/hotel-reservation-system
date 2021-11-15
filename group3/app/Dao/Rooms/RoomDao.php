@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Dao\Rooms;
+namespace App\Dao\Room;
 
 use App\Models\Room;
 use App\Contracts\Dao\Room\RoomDaoInterface;
@@ -41,5 +41,94 @@ class RoomDao implements RoomDaoInterface
         $room = Room::FindorFail($room_id);
         $room->status = "available";
         $room->save();    
+    }
+
+    /**
+     * To save room 
+     * @param array $request Validated values form request
+     * @return Object created room object
+     */
+    public function saveRoom($request)
+    {
+        // $image = time() . '.' . $request['image']->extension();
+        $room = new Room();
+        $room->hotel_id = $request->hotel_id;  
+        $room->room_number = $request->room_number;   
+        $room->room_type = $request->room_type;
+        $room->service = $request->service;
+        $room->price = $request->price;
+        $room->status = $request->status;
+        $room->image = $request->image->getClientOriginalName();
+        // $room->hotel_id = $request['hotel_id']-> id;  
+        // $room->room_number = $request['room_number'];   
+        // $room->room_type = $request['room_type'];
+        // $room->service = $request['service'];
+        // $room->price = $request['price'];
+        // $room->status = $request['status'];
+        // $room->image = $request['image']->getClientOriginalName();
+        // $room->user_id = Auth::user()->id ?? 1;
+        $room->user_id = 1;
+        $room->save();
+        return $room;
+    }
+
+    /**
+     * To get room by id
+     * @param string $id room id
+     * @return Object $room room object
+     */
+    public function getRoomById($id)
+    {
+        $room = Room::find($id);
+        return $room;
+    }
+
+    /**
+     * To get room list
+     * @return array $roomList list of rooms
+     */
+    public function getRoomList()
+    {
+        $roomList = Room::orderBy('created_at', 'asc')->get();
+        return $roomList;
+    }
+
+    /**
+     * To Update Room with values from request
+     * @param Request $request request including inputs
+     * @return Object updated room object
+     */
+    public function updateRoomByID(Request $request, $id)
+    {
+        // $room = Room::find(Auth::room()->id);
+        $room = Room::find($id);
+        $room->hotel_id = $request->hotel_id;  
+        $room->room_number = $request->room_number;   
+        $room->room_type = $request->room_type;
+        $room->service = $request->service;
+        $room->price = $request->price;
+        $room->status = $request->status;
+        $room->image = $request->image;
+        // $room->hotel_id = $request['hotel_id'];
+        // $room->room_number = $request['room_number'];   
+        // $room->room_type = $request['room_type'];
+        // $room->service = $request['service'];
+        // $room->price = $request['price'];
+        // $room->status = $request['status'];
+        // $room->image = $request['image'];
+        // $room->user_id = Auth::user()->id ?? 1;
+        $room->user_id = 1;
+        $room->save();
+        return $room;
+    }
+
+    /**
+     * To delete room by id
+     * @param string $id room id
+     * @return string $message message for success or not
+     */
+    public function deleteRoomById($id)
+    {
+        Room::findOrFail($id)->delete();
     }
 }

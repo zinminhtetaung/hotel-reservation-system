@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Reservation\ReservationController;
 use App\Http\Controllers\Room\RoomController;
 use App\Http\Controllers\OnlineBooking\OnlineBookingController;
-
+use App\Http\Controllers\Hotel\HotelController;
 
 /*
 |--------------------------------------------------------------------------
@@ -68,6 +68,20 @@ Route::post('/confirm-booking', [ReservationController::class, 'addBooking']);
 Route::delete('/delete-booking/{id}/{room_id}', [OnlineBookingController::class, 'deleteOnlineBooking']);
 
 
+Route::get('/hotels/list', [HotelController::class, 'showHotelList'])->name('hotelList');
 
+Route::get('/hotel/download', [HotelController::class, 'downloadHotelCSV'])->name('downloadHotelCSV');
+
+Route::delete('/hotels/list/{id}', [HotelController::class, 'deleteHotelById']);
+
+Route::get('/rooms/list', [RoomController::class, 'showRoomList'])->name('showroomList');
+
+Route::post('/rooms/create',  [RoomController::class, 'saveRoom'])->name('create.room');
+
+Route::delete('/rooms/delete/{id}', [RoomController::class, 'deleteRoomById']);
+
+Route::post('rooms/update/{id}', [RoomController::class, 'update']);
+
+Route::post('/updateRoom/{id}', [RoomController::class, 'updateRoom']);
 
 
