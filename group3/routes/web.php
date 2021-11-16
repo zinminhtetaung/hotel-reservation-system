@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Hotel\HotelController;
+use App\Http\Controllers\User\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +15,34 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
 Route::get('/', function () {
-    return view('welcome');
+    return view('user');
 });
+
+Route::post('/addUser', [UserController::class, 'addUser']);
+
+Route::post('/update/{id}', [UserController::class, 'update']);
+
+Route::post('/updateUser/{id}', [UserController::class, 'updateUser']);
+
+Route::delete('/user/{id}', [UserController::class, 'deleteUser']);
+
+Route::get('/', [UserController::class, 'getUser']);
+
+// Route::get('/login', function () {
+//     return view('login');
+// });  
+
+// Route::post('/login', function () {
+//     return redirect()->route('hotelList');
+// });  
+
+// Route::get('/', function () {
+//     return redirect()->route('hotelList');
+// });
+// Route::get('/hotels/list', [HotelController::class, 'showHotelList'])->name('hotelList');
+
