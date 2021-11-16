@@ -84,4 +84,7 @@ Route::post('rooms/update/{id}', [RoomController::class, 'update']);
 
 Route::post('/updateRoom/{id}', [RoomController::class, 'updateRoom']);
 
+Route::get('user/hotel/hotellist',[HotelController::class,'showHotelListUser'])->name('hotelview');
+
+
 
