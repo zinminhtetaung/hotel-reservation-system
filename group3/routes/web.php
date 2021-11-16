@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Hotel\HotelController;
+
 use App\Http\Controllers\User\UserController;
 
 /*
@@ -19,8 +19,8 @@ use App\Http\Controllers\User\UserController;
 //     return view('welcome');
 // });
 
-Route::get('/', function () {
-    return view('user');
+Route::get('/user', function () {
+    return view('users');
 });
 
 Route::post('/addUser', [UserController::class, 'addUser']);
@@ -31,7 +31,7 @@ Route::post('/updateUser/{id}', [UserController::class, 'updateUser']);
 
 Route::delete('/user/{id}', [UserController::class, 'deleteUser']);
 
-Route::get('/', [UserController::class, 'getUser']);
+Route::get('/users', [UserController::class, 'getUser']);
 
 // Route::get('/login', function () {
 //     return view('login');

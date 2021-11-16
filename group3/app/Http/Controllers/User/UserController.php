@@ -76,7 +76,7 @@ class UserController extends Controller
     public function updateUser(Request $request,$id) {
         // $validated = $request->validated();
         $User = $this->UserInterface->updateUser($request,$id);
-        return redirect('/');
+        return redirect('/users');
     }
 
     /**
