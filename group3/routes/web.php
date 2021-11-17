@@ -68,6 +68,7 @@ Route::post('/confirm-booking', [ReservationController::class, 'addBooking']);
 Route::delete('/delete-booking/{id}/{room_id}', [OnlineBookingController::class, 'deleteOnlineBooking']);
 
 
+
 Route::get('/hotels/list', [HotelController::class, 'showHotelList'])->name('hotelList');
 
 Route::get('/hotel/download', [HotelController::class, 'downloadHotelCSV'])->name('downloadHotelCSV');
