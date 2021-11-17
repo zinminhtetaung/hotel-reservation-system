@@ -5,6 +5,7 @@
   <div class="col-lg-12 margin-tb">
     <div class="text-center">
       <h2>Update User</h2>
+      <h2>Update Reservation</h2>
     </div>
   </div>
 </div>
@@ -20,41 +21,53 @@
 </div>
 @endif
 
-<form action="/updateUser/{{ $User->id }}" method="POST" onSubmit="return confirm('Do you want to update this user?')" class="form-horizontal">
+
+<form action="/updateReservation/{{ $reservation->id }}" method="POST" onSubmit="return confirm('Do you want to update this reservation?')" class="form-horizontal">
   {{ csrf_field() }}
 
   <div class="form-group">
-    <label for="user" class="col-sm-3 control-label">User Name</label>
+    <label for="reservation" class="col-sm-3 control-label">Room ID</label>
     <div class="col-sm-6">
-      <input type="text" min=0 name="user_name" value="{{ $User->user_name }}" class="form-control">
+      <input type="text" name="room_id" value="{{ $reservation->room_id }}" class="form-control"disabled>
     </div>
   </div>
   <div class="form-group">
-    <label for="email" class="col-sm-3 control-label">Email</label>
-    <div class="col-sm-6">
-      <input type="text" min=0 name="email" value="{{ $User->email }}" class="form-control">
+      <label for="customer_name" class="col-sm-3 control-label">Customer Name</label>
+      <div class="col-sm-6">
+        <input type="text" name="customer_name" value="{{ $reservation->customer_name }}" class="form-control"required>
+      </div>
     </div>
-  </div>
-  <div class="form-group">
-    <label for="password" class="col-sm-3 control-label">Password</label>
-    <div class="col-sm-6">
-      <input type="text" min=0 name="password" value="{{ $User->password }}" class="form-control">
+    <div class="form-group">
+      <label for="phone" class="col-sm-3 control-label">Phone</label>
+      <div class="col-sm-6">
+        <input type="text" name="phone" value="{{ $reservation->phone}}" class="form-control" required>
+      </div>
     </div>
-  </div>
-
-  
-  <div class="form-group">
-    <label for="role" class="col-sm-3 control-label">Role</label>
-    <div class="col-sm-6">
-      <input type="text" min=0 name="role" value="{{ $User->role }}" class="form-control">
+    <div class="form-group">
+      <label for="number_of_guest" class="col-sm-3 control-label">Number of guests</label>
+      <div class="col-sm-6">
+        <input type="number" min=0 name="number_of_guest" value="{{ $reservation->number_of_guest }}" class="form-control" required>
+      </div>
     </div>
-  </div>
-  <div class="col-sm-12  text-left">
-    <button type="submit" class="btn btn-primary">Update</button>
-  </div>
-  <div class="col-sm-12  text-left">
-    <button type="submit" class="btn btn-primary" onclick="return confirm('Are you sure to exit')">Cancel</button>
-  </div>
-
+    <div class="form-group">
+      <label for="check_in" class="col-sm-3 control-label">Check In</label>
+      <div class="col-sm-6">
+        <input type="date" name="check_in" value="{{ $reservation->check_in }}" class="form-control"required>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="check_out" class="col-sm-3 control-label">Check Out</label>
+      <div class="col-sm-6">
+        <input type="date" name="check_out" value="{{ $reservation->check_out }}" class="form-control" required>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-sm-offset-3 col-sm-6">
+        <button type="submit" class="btn btn-warning">
+          <i class="fa fa-btn fa-pencil-alt"></i> Edit reservation
+        </button>
+      </div>
+    </div>
 </form>
+
 @endsection

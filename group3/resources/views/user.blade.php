@@ -80,7 +80,7 @@
                   <td>{{ $User->created_at }}</td>
                   <td>{{ $User->updated_at }}</td>
                   <td>
-                  <form action="/update/{{ $User->id }}" method="POST" >
+                  <form action="/users/update/{{ $User->id }}" method="POST" >
                     {{ csrf_field() }}
                     <button type="submit" class="btn btn-warning">
                       <i class="fa fa-btn fa-pencil-alt"></i>Update

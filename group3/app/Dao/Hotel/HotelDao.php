@@ -13,6 +13,22 @@
     class HotelDao implements HotelDaoInterface
     {
         /**
+         * To save hotel
+         * @param Request $request request with inputs
+         * @return Object $hotel saved hotel
+         */
+        public function saveHotel(Request $request)
+        {
+            $hotel = new Hotels();
+            $hotel->hotel_name = $request['hotel_name'];
+            $hotel->description = $request['description'];
+            $hotel->phone = $request['phone'];
+            $hotel->location = $request['location'];
+            $hotel->save();
+            return $hotel;
+        }
+
+        /**
          * To get hotel list
          * @return array $hotelList Hotel list
          */
@@ -27,20 +43,20 @@
             return $hotelList;
         }
 
-        // /**
-        //  * To delete hotel by id
-        //  * @param string $id hotel id
-        //  * @param string $deletedUserId deleted user id
-        //  * @return string $message message success or not
-        //  */
-        // public function deleteHotelById($id)
-        // {
-        //     $hotel = Hotels::find($id);
-        //     if ($hotel) {
-        //     $hotel->delete();
-        //     return 'Deleted Successfully!';
-        //     }
-        //     return 'Hotel Not Found!';
-        // }
+        /**
+         * To delete hotel by id
+         * @param string $id hotel id
+         * @param string $deletedUserId deleted user id
+         * @return string $message message success or not
+         */
+        public function deleteHotelById($id)
+        {
+            $hotel = Hotels::find($id);
+            if ($hotel) {
+            $hotel->delete();
+            return 'Deleted Successfully!';
+            }
+            return 'Hotel Not Found!';
+        }
     }
 ?>

@@ -6,8 +6,7 @@ use App\Contracts\Services\User\UserServiceInterface;
 use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
-
-
+use SebastianBergmann\Environment\Console;
 
 /**
  * This is User controller.
@@ -53,7 +52,7 @@ class UserController extends Controller
     public function addUser(Request $request) {
 
         $User = $this->UserInterface->addUser($request);
-        return redirect('/');
+        return redirect('/users');
     }
 
         /**
@@ -63,9 +62,10 @@ class UserController extends Controller
      */
     public function update($id) {
         $User = $this->UserInterface->getUserById($id);
-        return view('update',[
+        return view('userUpdate',[
             'User'=> $User
         ]);
+        //return redirect('/');
     }
 
     /**
@@ -86,7 +86,7 @@ class UserController extends Controller
      */
     public function deleteUser($id) {
         $this->UserInterface->deleteUser($id);
-        return redirect('/');
+        return redirect('/users');
     }
 
 }

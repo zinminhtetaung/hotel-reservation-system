@@ -13,7 +13,7 @@ class CreateHotelTable extends Migration
      * @return void
      */
     public function up()
-    {
+    {      
         Schema::create('hotels', function (Blueprint $table) {
             $table->id();
             $table->char('hotel_name',255);
