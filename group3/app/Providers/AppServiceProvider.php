@@ -1,17 +1,29 @@
 <?php
 
-namespace App\Providers;
-use Illuminate\Support\ServiceProvider;
+    namespace App\Providers;
 
-class AppServiceProvider extends ServiceProvider
-{
-    /**
-     * Register any application services.
-     *
-     * @return void
-     */
-    public function register()
+    use App\Contracts\Dao\Hotel\HotelDaoInterface;
+    use App\Contracts\Services\Hotel\HotelServiceInterface;
+    use App\Contracts\Dao\User\UserDaoInterface;
+    use App\Contracts\Services\User\UserServiceInterface;
+    use App\Dao\Hotel\HotelDao;
+    use App\Dao\User\UserDao;
+    use App\Services\Hotel\HotelService;
+    use App\Services\User\UserService;
+    use Illuminate\Support\ServiceProvider;
+
+    class AppServiceProvider extends ServiceProvider
     {
+        /**
+         * Register any application services.
+         *
+         * @return void
+         */
+        public function register()
+        {
+            //Dao Registration
+            $this->app->bind(HotelDaoInterface::class, HotelDao::class);
+            $this->app->bind(UserDaoInterface::class, UserDao::class);
         // Dao Registration
         $this->app->bind('App\Contracts\Dao\Hotel\HotelDaoInterface', 'App\Dao\Hotel\HotelDao');
         $this->app->bind('App\Contracts\Dao\Reservation\ReservationDaoInterface', 'App\Dao\Reservations\ReservationDao');
@@ -23,15 +35,22 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind('App\Contracts\Services\Room\RoomServiceInterface', 'App\Services\Room\RoomService');
         $this->app->bind('App\Contracts\Services\OnlineBooking\OnlineBookingServiceInterface', 'App\Services\OnlineBooking\OnlineBookingService');
         $this->app->bind('App\Contracts\Services\ConfirmMail\MailServiceInterface', 'App\Services\ConfirmMail\ConfirmMailService');
-    }
+    
 
-    /**
-     * Bootstrap any application services.
-     *
-     * @return void
-     */
-    public function boot()
-    {
-      //
+            //Service Registration
+            $this->app->bind(HotelServiceInterface::class, HotelService::class);
+
+            $this->app->bind(UserServiceInterface::class, UserService::class);
+        }
+
+        /**
+         * Bootstrap any application services.
+         *
+         * @return void
+         */
+        public function boot()
+        {
+            //
+        }
     }
-}
+?>

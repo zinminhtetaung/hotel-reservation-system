@@ -53,5 +53,18 @@
         {
             return $this->hotelInterface->downloadHotelCSV();
         }
+
+        /**
+         * To show user hotel list
+         *
+         * @return View Hotel list
+         */
+        public function showHotelListUser()
+        {
+            $hotelList = $this->hotelInterface->getHotelList();
+            return view('user.hotelview', compact('hotelList'));
+        }
+
+
     }
 ?>
