@@ -17,8 +17,8 @@
     /*========== Font and typography ==========*/
     --body-font: "Poppins", sans-serif;
     --normal-font-size: 1.938rem;
-    --small-font-size: 1.85rem;
-    --smaller-font-size: 1.75rem;
+    --small-font-size: 0.83rem;
+    --smaller-font-size: 0.75rem;
 
     /*========== Font weight ==========*/
     --font-medium: 500;
@@ -31,8 +31,8 @@
 @media screen and (min-width: 1024px) {
     :root {
         --normal-font-size: 1.2rem;
-        --small-font-size: 1rem;
-        --smaller-font-size: 1rem;
+        --small-font-size: 0.7rem;
+        --smaller-font-size: 0.65rem;
     }
 }
 
@@ -47,7 +47,7 @@ body {
     margin: var(--header-height) 0 0 0;
     padding: 1rem 1rem 0;
     font-family: var(--body-font);
-    font-size: var(--normal-font-size);
+    font-size: var(--small-font-size);
     background-color: var(--body-color);
     color: var(--text-color);
 }
