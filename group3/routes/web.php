@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ChartJsController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Reservation\ReservationController;
 use App\Http\Controllers\Room\RoomController;
@@ -96,7 +97,10 @@ Route::post('/confirm-booking', [ReservationController::class, 'addBooking']);
  * Delete An Online Booking
  */
 Route::delete('/delete-booking/{id}/{room_id}', [OnlineBookingController::class, 'deleteOnlineBooking']);
-
+/**
+ * Show Graph
+ */
+Route::get('Graph/graph', [ChartJsController::class, 'index'])->name('chartjs.index');
 
 Route::get('/hotels/list', [HotelController::class, 'showHotelList'])->name('hotelList');
 
