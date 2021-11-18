@@ -61,4 +61,10 @@ interface RoomServiceInterface
      */
     public function deleteRoomById($id);
 
+     /**
+     * To get room list
+     * @return array $roomList list of rooms
+     */
+    public function getRoomListUserView();
+
 }

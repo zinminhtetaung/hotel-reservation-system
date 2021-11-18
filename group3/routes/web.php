@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Reservation\ReservationController;
 use App\Http\Controllers\Room\RoomController;
@@ -84,7 +85,15 @@ Route::post('rooms/update/{id}', [RoomController::class, 'update']);
 
 Route::post('/updateRoom/{id}', [RoomController::class, 'updateRoom']);
 
+
 Route::get('user/hotel/hotellist',[HotelController::class,'showHotelListUser'])->name('hotelview');
 
+Route::get('user/roomuserview',[RoomController::class,'showRoomUserview'])->name('roomuserview');
 
+Route::get('/rooms/list', [RoomController::class, 'showRoomListUserView'])->name('showroomListuserview');
 
+Route::get('user/booking/{id}',[OnlineBookingController::class,'createBooking'])->name('createbooking');
+
+Route::post('user/storeBooking',[OnlineBookingController::class,'storeBooking'])->name('storebooking');
+
+Route::get('user/home',[HomeController::class,'index']);                                            

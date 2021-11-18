@@ -2,11 +2,11 @@
 @section ('content')
 
 <div class="header">
-    <div class="container">
+    
      <div class="header-in clearfix">
            <h1 class="logo"> <a href=""><img src="{{ asset('image/logo.jpeg') }}" alt="logo"></a></h1> 
            <ul class="nav">
-               <li><a href="{{url('/')}}">Home</a></li>
+               <li><a href="{{url('user/home')}}">Home</a></li>
              <li><a href="{{route('hotelview')}}" >Hotel</a></li>
               <li> <a href="{{route('roomuserview')}}" class="active">Room</a></li>
                <li><a href="">Login</a></li>
@@ -15,18 +15,14 @@
     </div>
 </div>
 <div class="viewcontent">
+     <img class="view-img" src="{{ asset('image/room-image.png') }}" alt="hotel-img">
        <div class="container clearfix">
-       <div class="roomcnt1-img clearfix">
-       <img class="larrow-img" src="{{ asset('image/Left arrow.png') }}" alt="arrow-img">
-       <img class="view-img" src="{{ asset('image/Novotel_double.jpg') }}" alt="room-img">
-       <img class="rarrow-img" src="{{ asset('image/Right arrow.png') }}" alt="arrow-img">
-       </div> 
        <div class=" view ">
-       <a class="view-btn" href="#">View Room</a>
+       <a class="view-btn" href="{{route('hotelview')}}">View Hotel</a>
        </div>
 </div>
 </div>
-<div class="content1">
+<div class="room-content1">
     <div class="container clearfix">
         <div class="room-title">
             <h2 class="roominfo-ttl">Room Information</h2>
@@ -63,14 +59,12 @@
            <tr>
                <td colspan="2"><a href="{{route('createbooking',$room->id)}}">
                    <button type="submit" class="booking-btn">Booking</button>
-                </a></tr></td>
+                </a>
+            </td>
+            </tr>
        </table>
-       
         </div>
       @endforeach 
-        
+      {{$roomList->links()}}
 </div>
-
-
-
 @endsection

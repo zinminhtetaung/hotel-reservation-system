@@ -59,5 +59,14 @@ class OnlineBookingService implements OnlineBookingServiceInterface
     public function getBookingById($id) {
         return $this->OnlineBookingDao->getBookingById($id);
     }
+
+    /**
+     * To add OnlineBooking
+     * @param string $request
+     * @return
+     */
+    public function storeBooking($request){
+        return $this->OnlineBookingDao->storeBooking($request);
+    }
     
 }
