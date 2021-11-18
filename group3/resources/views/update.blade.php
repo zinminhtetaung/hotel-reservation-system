@@ -4,10 +4,22 @@
 <div class="row">
   <div class="col-lg-12 margin-tb">
     <div class="text-center">
+      <h2>Update User</h2>
       <h2>Update Reservation</h2>
     </div>
   </div>
 </div>
+
+@if ($errors->any())
+<div class="alert alert-danger">
+  <strong>Whoops!</strong> There were some problems with your input.<br><br>
+  <ul>
+    @foreach ($errors->all() as $error)
+    <li>{{ $error }}</li>
+    @endforeach
+  </ul>
+</div>
+@endif
 
 
 <form action="/updateReservation/{{ $reservation->id }}" method="POST" onSubmit="return confirm('Do you want to update this reservation?')" class="form-horizontal">
@@ -57,4 +69,5 @@
       </div>
     </div>
 </form>
+
 @endsection
