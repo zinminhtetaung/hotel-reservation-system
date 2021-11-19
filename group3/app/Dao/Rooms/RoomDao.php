@@ -119,4 +119,15 @@ class RoomDao implements RoomDaoInterface
     {
         Room::findOrFail($id)->delete();
     }
+
+
+    /**
+     * To get room list
+     * @return array $roomList list of rooms
+     */
+    public function getRoomListUserView()
+    {
+        $roomList = Room::orderBy('created_at', 'asc')->paginate(5);
+        return $roomList;
+    }
 }

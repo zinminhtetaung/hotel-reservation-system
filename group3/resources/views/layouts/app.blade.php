@@ -4,6 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  
 
   <!-- CSRF Token -->
   <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -14,12 +15,15 @@
   <link rel="dns-prefetch" href="//fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
-  <!-- Styles -->
-  <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+  <!--========== BOX ICONS ==========-->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
 
-  <!-- Script -->
-  <script src="{{ asset('js/app.js') }}"></script>
- 
+  <!-- Styles -->
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+  
+  <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+  {{-- <link href="{{ elixir('css/app.css') }}" rel="stylesheet"> --}}
+
 </head>
 
 <body>
@@ -79,11 +83,25 @@
         </div>
       </div>
     </nav>
+  @include('common.errors')
+  @include('sidebar.sidebar')
 
-    <main class="py-4">
-      @yield('content')
-    </main>
-  </div>
+  @yield('content')
+
+  <!-- JavaScripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  <script src="{{asset('js/script.js')}}"></script>
+  <script src="{{asset('js/graph.js')}}"></script>
+  <script src="{{asset('js/app.js')}}"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+  
+ 
+ 
+</head>
+
+<body>
+  
   <script src="{{ asset('js/script.js') }}"></script>
 </body>
 

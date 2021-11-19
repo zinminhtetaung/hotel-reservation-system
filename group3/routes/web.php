@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ChartJsController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Reservation\ReservationController;
 use App\Http\Controllers\Room\RoomController;
@@ -103,7 +105,10 @@ Route::post('/confirm-booking', [ReservationController::class, 'addBooking']);
  * Delete An Online Booking
  */
 Route::delete('/delete-booking/{id}/{room_id}', [OnlineBookingController::class, 'deleteOnlineBooking']);
-
+/**
+ * Show Graph
+ */
+Route::get('Graph/graph', [ChartJsController::class, 'index'])->name('chartjs.index');
 
 Route::get('/hotels/list', [HotelController::class, 'showHotelList'])->name('hotelList');
 
@@ -121,7 +126,15 @@ Route::post('rooms/update/{id}', [RoomController::class, 'update']);
 
 Route::post('/updateRoom/{id}', [RoomController::class, 'updateRoom']);
 
+
 Route::get('user/hotel/hotellist',[HotelController::class,'showHotelListUser'])->name('hotelview');
 
+Route::get('user/roomuserview',[RoomController::class,'showRoomUserview'])->name('roomuserview');
 
+Route::get('/rooms/list', [RoomController::class, 'showRoomListUserView'])->name('showroomListuserview');
 
+Route::get('user/booking/{id}',[OnlineBookingController::class,'createBooking'])->name('createbooking');
+
+Route::post('user/storeBooking',[OnlineBookingController::class,'storeBooking'])->name('storebooking');
+
+Route::get('user/home',[HomeController::class,'index']);                                            

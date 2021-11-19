@@ -60,7 +60,6 @@ class ReservationController extends Controller
             'reservations' => $ReservationList
         ]);
     }
-
     /**
      * To add Reservation
      * @param ReservationRequest $request

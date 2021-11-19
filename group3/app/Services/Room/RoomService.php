@@ -97,4 +97,15 @@ class RoomService implements RoomServiceInterface
       $room = $this->RoomDao->saveRoom($validated);
       return $room;
     }
+
+    /**
+     * To get room list
+     * @return array $roomList list of rooms
+     */
+    public function getRoomListUserView()
+    {
+        return $this->RoomDao->getRoomListUserView();
+    }
+
+
 }
