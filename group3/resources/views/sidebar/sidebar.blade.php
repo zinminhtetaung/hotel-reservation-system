@@ -57,7 +57,7 @@
 
             </div>
 
-            <a href="/Graph/graph" class="nav__link">
+            <a href="/graph" class="nav__link">
               <i class='bx bx-compass nav__icon'></i>
               <span class="nav__name">Graph</span>
             </a>

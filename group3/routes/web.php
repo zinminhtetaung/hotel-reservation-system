@@ -104,7 +104,7 @@ Route::delete('/delete-booking/{id}/{room_id}', [OnlineBookingController::class,
 /**
  * Show Graph
  */
-Route::get('Graph/graph', [ChartJsController::class, 'index'])->name('chartjs.index');
+Route::get('/graph', [ChartJsController::class, 'index'])->name('chartjs.index');
 
 Route::get('/hotels/list', [HotelController::class, 'showHotelList'])->name('hotelList');
 
