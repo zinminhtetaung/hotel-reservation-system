@@ -8,7 +8,7 @@
                 <li><a href="{{url('user/home')}}" class="active">Home</a></li>
                 <li><a href="{{route('hotelview')}}">Hotel</a></li>
                 <li> <a href="{{route('roomuserview')}}">Room</a></li>
-                <li><a href="">Login</a></li>
+                <li><a href="{{url('/loginuser')}}">Login</a></li>
             </ul>
         </div>
 </div>
