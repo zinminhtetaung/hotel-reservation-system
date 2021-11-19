@@ -122,4 +122,13 @@ class RoomController extends Controller
       $this->roomServiceInterface->deleteRoomById($id);
       return redirect()->route('showroomList');
     }
+
+    public function showRoomUserview(){
+        $roomList = $this->roomServiceInterface->getRoomListUserView();
+        $hotels = $this->hotelServiceInterface->getHotelList();
+        return view('user.roomuserview', [
+            'roomList' => $roomList,
+            'hotels' => $hotels,
+        ]);
+    }
 }

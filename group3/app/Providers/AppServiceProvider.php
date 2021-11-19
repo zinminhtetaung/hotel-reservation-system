@@ -1,16 +1,19 @@
 <?php
 
-    namespace App\Providers;
+namespace App\Providers;
 
-    use App\Contracts\Dao\Hotel\HotelDaoInterface;
-    use App\Contracts\Services\Hotel\HotelServiceInterface;
-    use App\Contracts\Dao\User\UserDaoInterface;
-    use App\Contracts\Services\User\UserServiceInterface;
-    use App\Dao\Hotel\HotelDao;
-    use App\Dao\User\UserDao;
-    use App\Services\Hotel\HotelService;
-    use App\Services\User\UserService;
-    use Illuminate\Support\ServiceProvider;
+use Illuminate\Pagination\Paginator;
+use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\Validator;
+use App\Contracts\Dao\Hotel\HotelDaoInterface;
+use App\Contracts\Services\Hotel\HotelServiceInterface;
+use App\Contracts\Dao\User\UserDaoInterface;
+use App\Contracts\Services\User\UserServiceInterface;
+use App\Dao\Hotel\HotelDao;
+use App\Dao\User\UserDao;
+use App\Services\Hotel\HotelService;
+use App\Services\User\UserService;
+
 
     class AppServiceProvider extends ServiceProvider
     {
@@ -35,22 +38,17 @@
         $this->app->bind('App\Contracts\Services\Room\RoomServiceInterface', 'App\Services\Room\RoomService');
         $this->app->bind('App\Contracts\Services\OnlineBooking\OnlineBookingServiceInterface', 'App\Services\OnlineBooking\OnlineBookingService');
         $this->app->bind('App\Contracts\Services\ConfirmMail\MailServiceInterface', 'App\Services\ConfirmMail\ConfirmMailService');
+        }
     
-
-            //Service Registration
-            $this->app->bind(HotelServiceInterface::class, HotelService::class);
-
-            $this->app->bind(UserServiceInterface::class, UserService::class);
-        }
-
-        /**
-         * Bootstrap any application services.
-         *
-         * @return void
-         */
-        public function boot()
-        {
-            //
-        }
+    /**
+     * Bootstrap any application services.
+     *
+     * @return void
+     */
+    public function boot()
+    {
+       Paginator::useBootstrap();
+       
     }
+}
 ?>

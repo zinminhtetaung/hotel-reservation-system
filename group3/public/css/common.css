@@ -36,12 +36,15 @@ body{
 }
 .logo{
         float: left;
+        margin-left: 50px;
 }
 .logo img{
-    width:150px;
+    width: 150px;
+    border-radius: 50%;
     }
 .nav{
     float: right;
+    padding-right: 40px;
         
 }
 .nav li{
@@ -69,19 +72,27 @@ a:hover{
 background-color: #364e68; 
     
 }
-
+.address{
+    padding-bottom: 30px;
+}
 .office{
    float: left;
-   margin: 20px 0 20px 70px;
+   margin: 20px 0 0 60px;
+   width: 30%;
+  
 }
 .partner{
     float: left;
-    margin: 20px 0  20px  220px;
+    width: 28%;
+    margin: 20px 0 0 70px  ;
+   
     
 }
 .contact{
     float: right;
-    margin: 20px 120px 0 0;
+    width: 27%;
+    margin: 20px 0 0 30px;
+  
    
 }
 .office-title,.partner-title,.contact-title{

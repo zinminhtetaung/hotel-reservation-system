@@ -2,33 +2,29 @@
 @section ('content')
 
 <div class="header">
-    <div class="container">
+    
      <div class="header-in clearfix">
            <h1 class="logo"> <a href=""><img src="{{ asset('image/logo.jpeg') }}" alt="logo"></a></h1> 
            <ul class="nav">
-               <li><a href="{{url('/')}}">Home</a></li>
+               <li><a href="{{url('user/home')}}">Home</a></li>
              <li><a href="{{route('hotelview')}}" class="active">Hotel</a></li>
-              <li> <a href="">Room</a></li>
-               <li><a href="">Login</a></li>
+              <li> <a href="{{route('roomuserview')}}">Room</a></li>
+               <li><a href="{{url('/loginuser')}}">Login</a></li>
            </ul>
      </div>
-    </div>
+    
 </div>
 <div class="viewcontent">
+      <img class="view-img" src="{{ asset('image/view-image.jpg') }}" alt="hotel-img">
        <div class="container">
-       <div class="cnt1-img clearfix">
-       <img class="larrow-img" src="{{ asset('image/Left arrow.png') }}" alt="arrow-img">
-        <img class="view-img" src="{{ asset('image/Sedona.jpg') }}" alt="hotel-img">
-       <img class="rarrow-img" src="{{ asset('image/Right arrow.png') }}" alt="arrow-img">
-       </div> 
        <div class=" view ">
-       <a class="view-btn" href="#">View Room</a>
+       <a class="view-btn" href="{{route('roomuserview')}}">View Room</a>
        </div>
        </div>
 </div>
-<div>
 
-<div class="content2">
+
+<div class="hotel-content2">
     <div class="container clearfix">
     
 <div class="hotel clearfix">
