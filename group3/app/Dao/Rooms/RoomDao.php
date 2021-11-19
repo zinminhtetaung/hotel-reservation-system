@@ -54,7 +54,6 @@ class RoomDao implements RoomDaoInterface
      */
     public function saveRoom($request)
     {
-        // $image = time() . '.' . $request['image']->extension();
         $room = new Room();
         $room->hotel_id = $request->hotel_id;  
         $room->room_number = $request->room_number;   
@@ -119,7 +118,6 @@ class RoomDao implements RoomDaoInterface
     {
         Room::findOrFail($id)->delete();
     }
-
 
     /**
      * To get room list

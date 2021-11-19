@@ -29,7 +29,7 @@ use Illuminate\Support\Facades\Hash;
                 'hotel_name' => 'Lotte Hotel',
                 'location' => 'No.82, Sin Phyu Shin Avenue, Pyay Road, 61/2 Mile, Ward 11, Hlaing Township, 11051 Yangon',
                 'description' => '5-star',
-                'phone' => '+95 01 935 1000',
+                'phone' => '+95 019351000',
                 ] 
                 
             );

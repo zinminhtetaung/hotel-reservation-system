@@ -33,6 +33,7 @@ use App\Services\User\UserService;
         $this->app->bind('App\Contracts\Dao\Room\RoomDaoInterface', 'App\Dao\Rooms\RoomDao');
         $this->app->bind('App\Contracts\Dao\OnlineBooking\OnlineBookingDaoInterface', 'App\Dao\OnlineBookings\OnlineBookingDao');
         // Business logic registration
+            $this->app->bind(UserServiceInterface::class, UserService::class);
         $this->app->bind('App\Contracts\Services\Hotel\HotelServiceInterface', 'App\Services\Hotel\HotelService');
         $this->app->bind('App\Contracts\Services\Reservation\ReservationServiceInterface', 'App\Services\Reservation\ReservationService');
         $this->app->bind('App\Contracts\Services\Room\RoomServiceInterface', 'App\Services\Room\RoomService');

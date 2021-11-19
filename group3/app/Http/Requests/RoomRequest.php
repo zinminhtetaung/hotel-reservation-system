@@ -24,7 +24,7 @@
         public function rules()
         {
             return [
-                'hotel_id' => ['required'],
+                'hotel_name' => ['required'],
                 'room_number' => ['required'],
                 'room_type' => ['required'],
                 'service' => ['required'],

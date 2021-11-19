@@ -39,7 +39,7 @@ class UserController extends Controller
     {
         $UserList = $this->UserInterface->getUser();
 
-        return view('User', [
+        return view('user', [
             'User' => $UserList
         ]);
     }

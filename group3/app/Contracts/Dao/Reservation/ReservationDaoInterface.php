@@ -50,4 +50,43 @@ interface ReservationDaoInterface
      */
     public function deleteReservation($id);
 
+    /**
+     * To To search reservation 
+     * @return reservation
+     */
+    public function searchReservationbyRID($request);
+
+        /**
+     * To To search reservation by customer name
+     * @return reservation
+     */
+    public function searchByCustomer($customer);
+    /**
+     * To To search reservation by phone number
+     * @return reservation
+     */
+    public function searchByPhNo($phone);
+    /**
+     * To To search reservation by number of guest
+     * @return reservation
+     */
+    public function searchByGuestNo($guest_no);
+    /**
+     * To To search reservation by check_in time
+     * @return reservation
+     */
+    public function searchByCheckIn($checkin);
+    /**
+     * To To search reservation by check_out time
+     * @return reservation
+     */
+    public function searchByCheckOut($checkout);
+    /**
+     * To search reservation by created time
+     * @param date $start Input from user
+     * @param date $end Input from user
+     * @return reservation
+     */
+    public function searchByStartEnd($start, $end);
+
 }
