@@ -1,5 +1,8 @@
+/*========== GOOGLE FONTS ==========*/
 
 @charset "UTF-8";
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
+
 .tooltip {
     position: relative;
     display: inline-block;
@@ -156,12 +159,10 @@
 .view-img{
  width: 100%;
  height:500px;
-
 }
 .view{
-    width:180px;
+    width: 200px;
     margin: 0 auto 0;
-
 }
 .view-btn{
     position: absolute;
