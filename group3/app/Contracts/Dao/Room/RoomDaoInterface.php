@@ -48,4 +48,10 @@ interface RoomDaoInterface
      * @return string $message message for success or not
      */
     public function deleteRoomById($id);
+
+     /**
+     * To get room list
+     * @return array $roomList list of rooms
+     */
+    public function getRoomListUserView();
 }

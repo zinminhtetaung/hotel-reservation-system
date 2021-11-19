@@ -7,3 +7,111 @@
 .navbar-nav {
     float: right;
 }
+
+body{
+    margin: 0;
+}
+
+/* user view */
+*{
+    color: #132238;
+}
+.container{
+    width: 1280px;
+    margin: 0 auto;
+}
+.clearfix::after{
+    content: "";
+    display: block;
+    visibility: hidden;
+    font-size: 0;
+    clear: both;
+    }
+.header{
+    background-color: #98ccd3;
+    padding-top:30px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #132238;
+        
+}
+.logo{
+        float: left;
+        margin-left: 50px;
+}
+.logo img{
+    width: 150px;
+    border-radius: 50%;
+    }
+.nav{
+    float: right;
+    padding-right: 40px;
+        
+}
+.nav li{
+    display: inline-block;
+    padding: 40px 10px;
+   
+}
+ .nav a{
+    text-decoration: none;
+    padding: 2px 15px;
+    font-size: 20px;
+}
+         
+.active{
+    background-color:#364e68 ;
+    border-radius: 5px;
+    color: #ebf0f6;
+    
+}
+a:hover{
+    color: #ebf0f6;
+}
+
+.footer{
+background-color: #364e68; 
+    
+}
+.address{
+    padding-bottom: 30px;
+}
+.office{
+   float: left;
+   margin: 20px 0 0 60px;
+   width: 30%;
+  
+}
+.partner{
+    float: left;
+    width: 28%;
+    margin: 20px 0 0 70px  ;
+   
+    
+}
+.contact{
+    float: right;
+    width: 27%;
+    margin: 20px 0 0 30px;
+  
+   
+}
+.office-title,.partner-title,.contact-title{
+    font-size: 25px;
+    padding-bottom: 20px;
+    color: #98ccd3;
+}
+.office li,.partner li,.contact li{
+    padding-top: 15px;
+    font-size: 18px;
+    color: #ebf0f6;
+}
+.copyright{
+    border-top: 1px solid #132238;
+    padding-bottom: 20px;
+    padding-top: 10px;
+}
+.copyright p{
+    text-align: center;
+    color: #ebf0f6;
+}
+

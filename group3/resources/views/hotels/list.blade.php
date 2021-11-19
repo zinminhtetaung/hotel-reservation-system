@@ -3,6 +3,7 @@
 @section('content')
 <!-- Styles -->
 <link href="{{ asset('css/lib/jquery.dataTables.min.css') }}" rel="stylesheet">
+<link href="{{ asset('css/hotel-list.css') }}" rel="stylesheet">
 
 <!-- Script -->
 <script src="{{ asset('js/lib/jquery.dataTables.min.js') }}"></script>

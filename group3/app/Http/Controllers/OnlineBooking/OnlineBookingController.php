@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers\OnlineBooking;
 
-use App\Contracts\Services\OnlineBooking\OnlineBookingServiceInterface;
-use App\Contracts\Services\Room\RoomServiceInterface;
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-
+use App\Contracts\Services\Room\RoomServiceInterface;
+use App\Contracts\Services\OnlineBooking\OnlineBookingServiceInterface;
+use App\Http\Requests\BookingRequest;
 
 /**
  * This is OnlineBooking controller.
@@ -66,5 +67,31 @@ class OnlineBookingController extends Controller
         $Room = $this->RoomInterface->unsetStatus($room_id);
         return redirect("onlineBooking");
     }
+
+    public function createBooking($id){
+        $roomid =$this->RoomInterface->getRoomById($id);
+        return view('user.booking',['rooms'=> $roomid]);
+    }
+    /**
+     * To add Booking
+     * @param  $request
+     * @return View Reservation list
+     */
+    public function storeBooking(BookingRequest $request){
+        $validate=$request->validated();
+        if($request->status == 'Available'){
+
+            $this->OnlineBookingInterface->storeBooking($request);  
+            $this->RoomInterface->setStatus($request);
+            return redirect('user/roomuserview'); 
+        }
+      
+       else{
+           return back()->with(['status available' =>'Status must be available']);
+       }
+
+         
+    }
+
 
 }

@@ -36,4 +36,10 @@ interface OnlineBookingDaoInterface
      * @return 
      */
     public function removeOnlineBooking($request);
+    /**
+     * To add OnlineBooking
+     * @param string $request
+     * @return
+     */
+    public function storeBooking($request);
 }

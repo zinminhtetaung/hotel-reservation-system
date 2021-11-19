@@ -1,10 +1,16 @@
 <?php
 
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ChartJsController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Reservation\ReservationController;
 use App\Http\Controllers\Room\RoomController;
 use App\Http\Controllers\OnlineBooking\OnlineBookingController;
 use App\Http\Controllers\Hotel\HotelController;
+
+use App\Http\Controllers\User\UserController;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,6 +23,35 @@ use App\Http\Controllers\Hotel\HotelController;
 |
 */
 
+
+
+Route::post('/addUser', [UserController::class, 'addUser']);
+
+Route::post('/users/update/{id}', [UserController::class, 'update']);
+
+Route::post('/updateUser/{id}', [UserController::class, 'updateUser']);
+
+Route::delete('/user/{id}', [UserController::class, 'deleteUser']);
+
+Route::get('/users', [UserController::class, 'getUser']);
+
+Route::get('/login', function () {
+    return view('login');
+});  
+
+Route::get('/loginuser', [LoginController::class, 'create']);
+Route::post('/loginuser', [LoginController::class, 'store']);
+
+Route::get('/logout', [LoginController::class, 'destroy'])->name('logout');
+
+// Route::post('/login', function () {
+//     return redirect()->route('hotelList');
+// });  
+
+// Route::get('/', function () {
+//     return redirect()->route('hotelList');
+// });
+// Route::get('/hotels/list', [HotelController::class, 'showHotelList'])->name('hotelList');
 
 
 /**
@@ -66,7 +101,10 @@ Route::post('/confirm-booking', [ReservationController::class, 'addBooking']);
  * Delete An Online Booking
  */
 Route::delete('/delete-booking/{id}/{room_id}', [OnlineBookingController::class, 'deleteOnlineBooking']);
-
+/**
+ * Show Graph
+ */
+Route::get('Graph/graph', [ChartJsController::class, 'index'])->name('chartjs.index');
 
 Route::get('/hotels/list', [HotelController::class, 'showHotelList'])->name('hotelList');
 
@@ -105,3 +143,14 @@ Route::post('/searchCheckout', [ReservationController::class, 'searchByCheckOut'
 Route::post('/searchStartend', [ReservationController::class, 'searchByStartEnd']);
 
 Route::delete('/search/{id}/{room_id}', [ReservationController::class, 'deleteReservationSearch']);
+Route::get('user/hotel/hotellist',[HotelController::class,'showHotelListUser'])->name('hotelview');
+
+Route::get('user/roomuserview',[RoomController::class,'showRoomUserview'])->name('roomuserview');
+
+Route::get('user/rooms/list', [RoomController::class, 'showRoomListUserView'])->name('showroomListuserview');
+
+Route::get('user/booking/{id}',[OnlineBookingController::class,'createBooking'])->name('createbooking');
+
+Route::post('user/storeBooking',[OnlineBookingController::class,'storeBooking'])->name('storebooking');
+
+Route::get('user/home',[HomeController::class,'index']);                                            

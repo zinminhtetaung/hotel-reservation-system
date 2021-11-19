@@ -120,49 +120,12 @@ class RoomDao implements RoomDaoInterface
     }
 
     /**
-         * To upload csv file for student
-         * @param array $validated Validated values
-         * @param string $uploadedUserId uploaded user id
-         * @return array $content Message and Status of CSV Uploaded or not
-         */
-        public function uploadRoomCSV($validated)
-        {
-            $path =  $validated['csv_file']->getRealPath();
-            $csv_data = array_map('str_getcsv', file($path));
-            // save student to Database accoding to csv row
-            foreach ($csv_data as $index => $row) {
-            if (count($row) >= 2) {
-                try {
-                $student = new Room();
-                $student->name = $row[0];
-                $student->roll_Number = $row[1];
-                $student->class = $row[2];
-                $student->dob = $row[3];
-                $student->save();
-                } catch (\Illuminate\Database\QueryException $e) {
-                $errorCode = $e->errorInfo[1];
-                //error handling for duplicated student
-                if ($errorCode == '1062') {
-                    $content = array(
-                    'isUploaded' => false,
-                    'message' => 'Row number (' . ($index + 1) . ') is duplicated roll-number.'
-                    );
-                    return $content;
-                }
-                }
-            } else {
-                // error handling for invalid row.
-                $content = array(
-                'isUploaded' => false,
-                'message' => 'Row number (' . ($index + 1) . ') is invalid format.'
-                );
-                return $content;
-            }
-            }
-            $content = array(
-            'isUploaded' => true,
-            'message' => 'Uploaded Successfully!'
-            );
-            return $content;
-        }
+     * To get room list
+     * @return array $roomList list of rooms
+     */
+    public function getRoomListUserView()
+    {
+        $roomList = Room::orderBy('created_at', 'asc')->paginate(5);
+        return $roomList;
+    }
 }

@@ -46,5 +46,21 @@ class OnlineBookingDao implements OnlineBookingDaoInterface
         OnlineBooking::findOrFail($request->id)->delete();
         
     }
-
+    public function storeBooking($request){
+        $addBooking =$this->addData($request);
+        $addOnlineBooking=OnlineBooking::create($addBooking);
+        return $addOnlineBooking;
+         
+    }
+     private function addData($request){
+        return[
+            'room_id' =>$request->input('room_id'),
+            'customer_name' =>$request->customername,
+            'email'=>$request->email,
+            'phone' =>$request->phonenumber,
+            'number_of_guest'=>$request->guestno,
+            'check_in'=>$request->checkin,
+            'check_out'=>$request->checkout,
+        ];
+     }
 }

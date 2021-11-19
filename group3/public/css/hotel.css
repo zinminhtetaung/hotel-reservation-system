@@ -1,7 +1,7 @@
 @charset "utf-8";
 @font-face {
 	font-family: Georgia;
-	src: url("https://fonts.googleapis.com/css?family=Georgia");
+    src: "{{asset('css/lib/font.css') }}";
 	font-weight: normal;
 }
 body {
@@ -209,6 +209,7 @@ body {
 }
 .del-btn {
     background-color: rgb(155, 50, 71);
+    color: #1a2b46;
 }
 .upd-btn {
     background-color: rgb(39, 114, 55);
