@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ChartJsController;
 use Illuminate\Support\Facades\Route;
@@ -9,6 +10,7 @@ use App\Http\Controllers\OnlineBooking\OnlineBookingController;
 use App\Http\Controllers\Hotel\HotelController;
 
 use App\Http\Controllers\User\UserController;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,9 +39,14 @@ Route::delete('/user/{id}', [UserController::class, 'deleteUser']);
 
 Route::get('/users', [UserController::class, 'getUser']);
 
-// Route::get('/login', function () {
-//     return view('login');
-// });  
+Route::get('/login', function () {
+    return view('login');
+});  
+
+Route::get('/loginuser', [LoginController::class, 'create']);
+Route::post('/loginuser', [LoginController::class, 'store']);
+
+Route::get('/logout', [LoginController::class, 'destroy'])->name('logout');
 
 // Route::post('/login', function () {
 //     return redirect()->route('hotelList');
