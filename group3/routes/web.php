@@ -22,7 +22,7 @@ use App\Http\Controllers\Hotel\HotelController;
 /**
  * Display All Reservation
  */
-Route::get('/', [ReservationController::class, 'showReservationList']);
+Route::get('/', [ReservationController::class, 'showReservationList'])->name('reservationList');
 
 /**
  * Add A New Reservation
@@ -84,4 +84,24 @@ Route::post('rooms/update/{id}', [RoomController::class, 'update']);
 
 Route::post('/updateRoom/{id}', [RoomController::class, 'updateRoom']);
 
+// Search form 
+Route::get('/search', [ReservationController::class, 'searchForm']);
 
+/**
+ * Search By --
+ */
+Route::post('/searchRID', [ReservationController::class, 'searchReservationbyRID']);
+
+Route::post('/searchCustomer', [ReservationController::class, 'searchByCustomer']);
+
+Route::post('/searchPhNo', [ReservationController::class, 'searchByPhNo']);
+
+Route::post('/searchGuest', [ReservationController::class, 'searchByGuestNo']);
+
+Route::post('/searchCheckIn', [ReservationController::class, 'searchByCheckIn']);
+
+Route::post('/searchCheckout', [ReservationController::class, 'searchByCheckOut']);
+
+Route::post('/searchStartend', [ReservationController::class, 'searchByStartEnd']);
+
+Route::delete('/search/{id}/{room_id}', [ReservationController::class, 'deleteReservationSearch']);

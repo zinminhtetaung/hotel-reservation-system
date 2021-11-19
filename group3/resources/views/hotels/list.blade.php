@@ -5,24 +5,20 @@
 <link href="{{ asset('css/lib/jquery.dataTables.min.css') }}" rel="stylesheet">
 
 <!-- Script -->
-<script src="{{ asset('js/lib/moment.min.js') }}"></script>
 <script src="{{ asset('js/lib/jquery.dataTables.min.js') }}"></script>
 <script src="{{ asset('js/hotel-list.js') }}"></script>
 
-<div class="container">
-  <div class="row justify-content-center">
-    <div class="col-md-12">
+<div class="body clearfix">
+  <div class="wrap">
+    <div class="content">
       <div class="card">
         <div class="card-header">{{ __('Hotel Information') }}</div>
         <div class="card-body">
-          <div class="row search-bar">
-            <a class="btn btn-primary header-btn" href="/hotel/download">{{ __('Download') }}</a>
-              
-          
-          <table class="table table-hover table-responsive" id="hotel-list">
+          <a class="btn btn-primary header-btn" href="/hotel/download">{{ __('Download') }}</a>
+          <table class="table" id="hotel-list">
             <thead>
               <tr>
-                <th scope="col">ID</th>
+                <th class="header-cell" scope="col">ID</th>
                 <th class="header-cell" scope="col">Hotel Name</th>
                 <th class="header-cell" scope="col">Description</th>
                 <th class="header-cell" scope="col">Phone Number</th>
@@ -30,74 +26,17 @@
                 <!-- <th class="header-cell" scope="col">Action</th> -->
               </tr>
             </thead>
-            <tbody>
+            <tbody class="tbody">
               @foreach ($hotelList as $hotel)
               <tr>
                 <td>{{$hotel->id}}</td>
                 <td>
-                  <a class="hotel-name" onclick="showHotelDetail({{json_encode($hotel)}})" data-toggle="modal" data-target="#hotel-detail-popup">{{$hotel->hotel_name}}</a></td>
+                  <a class="hotel-name" onclick="showHotelDetail({{json_encode($hotel)}})" data-toggle="modal" data-target="#hotel-detail-popup">{{$hotel->hotel_name}}</a>
+                </td>
                 <td>{{$hotel->description}}</td>
                 <td>{{$hotel->phone}}</td>
                 <td>{{$hotel->location}}</td>
-                <!-- <td>
-                  <button type="button" class="btn btn-danger" onclick="showDeleteConfirm({{json_encode($hotel)}})" data-toggle="modal" data-target="#delete-confirm">Delete</button>
-                </td> -->
               </tr>
-              <div class="modal fade" id="delete-confirm" tabindex="-1" role="dialog">
-                <div class="modal-dialog" role="document">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <h5 class="modal-title">Delete Confirm</h5>
-                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                      </button>
-                    </div>
-                    <div class="modal-body" id="hotel-delete">
-                      <h4 class="delete-confirm-header">Are you sure to delete hotel?</h4>
-                      <div class="col-md-12">
-                        <div class="row">
-                          <label class="col-md-3 text-md-left">{{ __('ID') }}</label>
-                          <label class="col-md-9 text-md-left">
-                            <i class="profile-text" id="hotel-id"></i>
-                          </label>
-                        </div>
-                        <div class="row">
-                          <label class="col-md-3 text-md-left">{{ __('Hotel Name') }}</label>
-                          <label class="col-md-9 text-md-left">
-                            <i class="profile-text" id="hotel-name"></i>
-                          </label>
-                        </div>
-                        <div class="row">
-                          <label class="col-md-3 text-md-left">{{ __('Description') }}</label>
-                          <label class="col-md-9 text-md-left">
-                            <i class="profile-text" id="hotel-description"></i>
-                          </label>
-                        </div>
-                        <div class="row">
-                          <label class="col-md-3 text-md-left">{{ __('Phone') }}</label>
-                          <label class="col-md-9 text-md-left">
-                            <i class="profile-text" id="hotel-phone"></i>
-                          </label>
-                        </div>
-                        <div class="row">
-                          <label class="col-md-3 text-md-left">{{ __('Location') }}</label>
-                          <label class="col-md-9 text-md-left">
-                            <i class="profile-text" id="hotel-location"></i>
-                          </label>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="modal-footer">
-                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                      <form method="POST" action="/hotels/list/{{ $hotel->id }}">
-                          {{ csrf_field() }}
-                          {{ method_field('DELETE') }}
-                          <button type="submit" class="btn btn-danger">Delete</button>
-                      </form>
-                    </div>
-                  </div>
-                </div>
-              </div>
               @endforeach
             </tbody>
           </table>
@@ -111,33 +50,29 @@
                   </button>
                 </div>
                 <div class="modal-body" id="hotel-detail">
-                  <div class="row">
-                    <div class="col-lg-8 col-md-12 col-sm-6">
-                      <div class="row">
-                        <label class="col-md-3 text-md-left">{{ __('Hotel Name') }}</label>
-                        <label class="col-md-9 text-md-left">
-                          <i class="profile-text" id="hotel-name"></i>
-                        </label>
-                      </div>
-                      <div class="row">
-                        <label class="col-md-3 text-md-left">{{ __('Description') }}</label>
-                        <label class="col-md-9 text-md-left">
-                          <i class="profile-text" id="hotel-description"></i>
-                        </label>
-                      </div>
-                      <div class="row">
-                        <label class="col-md-3 text-md-left">{{ __('Phone Number') }}</label>
-                        <label class="col-md-9 text-md-left">
-                          <i class="profile-text" id="hotel-phone"></i>
-                        </label>
-                      </div>
-                      <div class="row">
-                        <label class="col-md-3 text-md-left">{{ __('Location') }}</label>
-                        <label class="col-md-9 text-md-left">
-                          <i class="profile-text" id="hotel-location"></i>
-                        </label>
-                      </div>
-                    </div>
+                  <div class="info">
+                    <label class="h-info">{{ __('Hotel Name') }}</label>
+                    <label class="information">
+                      <i class="profile-text" id="hotel-name"></i>
+                    </label>
+                  </div>
+                  <div class="info">
+                    <label class="h-info">{{ __('Description') }}</label>
+                    <label class="information">
+                      <i class="profile-text" id="hotel-description"></i>
+                    </label>
+                  </div>
+                  <div class="info">
+                    <label class="h-info">{{ __('Phone Number') }}</label>
+                    <label class="information">
+                      <i class="profile-text" id="hotel-phone"></i>
+                    </label>
+                  </div>
+                  <div class="info">
+                    <label class="h-info">{{ __('Location') }}</label>
+                    <label class="information">
+                      <i class="profile-text" id="hotel-location"></i>
+                    </label>
                   </div>
                 </div>
                 <div class="modal-footer">
@@ -150,5 +85,5 @@
       </div>
     </div>
   </div>
+  @endsection
 </div>
-@endsection

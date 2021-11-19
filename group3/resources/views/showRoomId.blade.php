@@ -2,36 +2,45 @@
 
 @section('content')
 
-<!-- Bootstrap Boilerplate... -->
+<!-- Styles -->
+<link href="{{ asset('css/lib/jquery.dataTables.min.css') }}" rel="stylesheet">
 
-<div class="panel-body">
-  <!-- Current reservations -->
-  @if ($room)
-  <div class="panel panel-default">
-    <div class="panel-heading">
-      Room Information
-    </div>
+<!-- Script -->
+<script src="{{ asset('js/lib/jquery.dataTables.min.js') }}"></script>
 
-    <div class="panel-body">
-      <table class="table table-bordered mt-5">
-          <tr>
-              <th>ID</th>
-              <th>Room Number</th>
-              <th>Status</th>
-          </tr>
-          
-          <tr>
-              <td> <input type="text" class="js-copytextarea" name="myInput" value="{{ $room->id }}">
-              <button class="js-textareacopybtn" style="vertical-align:top;">Copy ID</button>              
-              </td>   
-              <td>{{ $room->room_number }}</td>   
-              <td>{{ $room->status }}</td>                         
-          </tr>
-        </tbody>
-      </table>
+<div class="body clearfix">
+  <div class="wrap">
+    <div class="content">
+      <div class="card">
+        <!-- Current reservations -->
+        @if ($room)
+        <div class="card-header">Room Information</div>
+        <div class="card-body">
+          <table class="table">
+            <thead>
+              <tr>
+                <th class="t-head">ID</th>
+                <th class="t-head">Room Number</th>
+                <th class="t-head">Status</th>
+              </tr>
+            </thead>
+
+            <tbody class="tbody">
+              <tr>
+                <td> <input type="text" class="js-copytextarea copy-txt" name="myInput" value="{{ $room->id }}">
+                  <button class="js-textareacopybtn copy-btn" style="vertical-align:top;">Copy ID</button>
+                </td>
+                <td>{{ $room->room_number }}</td>
+                <td>{{ $room->status }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        @endif
+        <a href="/" class="btn copy-btn">Create Reservation</a>
+      </div>
     </div>
   </div>
-  @endif
-  <a href="/" class="btn btn-info">Create Reservation</a>
 </div>
 @endsection

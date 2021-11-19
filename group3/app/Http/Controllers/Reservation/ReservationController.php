@@ -70,7 +70,7 @@ class ReservationController extends Controller
         $validated = $request->validated();
         $Reservation = $this->ReservationInterface->addReservation($request);
         $Room = $this->RoomInterface->setStatus($request);
-        return redirect('/');
+        return redirect()->route('reservationList');
     }
 
     /**
@@ -107,7 +107,7 @@ class ReservationController extends Controller
      */
     public function updateReservation(Request $request,$id) {
         $Reservation = $this->ReservationInterface->updateReservation($request,$id);
-        return redirect('/');
+        return redirect()->route('reservationList');
     }
 
     /**
@@ -118,9 +118,91 @@ class ReservationController extends Controller
     public function deleteReservation($id,$room_id) {
         $this->ReservationInterface->deleteReservation($id);
         $Room = $this->RoomInterface->unsetStatus($room_id);
-
-        return redirect('/');
+        return redirect()->route('reservationList');
     }
 
-    
+    /**
+     * To delete Reservation
+     * @param sting $id
+     * @return View Reservation list
+     */
+    public function deleteReservationSearch($id,$room_id) {
+        $this->ReservationInterface->deleteReservation($id);
+        $Room = $this->RoomInterface->unsetStatus($room_id);
+        return redirect('/search');
+    }
+
+    /**
+     * To display search form
+     * @return View Reservation
+     */
+    public function searchForm() {
+        $reservations = $this->ReservationInterface->getReservation();
+        return view('search', ['reservations' => $reservations]);
+    }
+
+    /**
+     * To search Reservation
+     * @return View Reservation
+     */
+    public function searchReservationbyRID(Request $request) {
+        $reservations = $this->ReservationInterface->searchReservationbyRID($request);
+        return view('search', ['reservations' => $reservations]);
+    }
+
+    /**
+     * To To search reservation by customer name
+     * @return view $reservations
+     */
+    public function searchByCustomer(Request $request) {
+        $reservations = $this->ReservationInterface->searchByCustomer($request);
+        return view('search', ['reservations' => $reservations]);
+    }
+
+   /**
+     * To To search reservation by phone number
+     * @return view $reservations
+     */
+    public function searchByPhNo(Request $request) {
+        $reservations = $this->ReservationInterface->searchByPhNo($request);
+        return view('search', ['reservations' => $reservations]);
+    }
+
+    /**
+     * To To search reservation by number of guest
+     * @return view $reservations
+     */
+    public function searchByGuestNo(Request $request) {
+        $reservations = $this->ReservationInterface->searchByGuestNo($request);
+        return view('search', ['reservations' => $reservations]);
+    }
+
+    /**
+     * To To search reservation by check_in time
+     * @return view $reservations
+     */
+    public function searchByCheckIn(Request $request) {
+        $reservations = $this->ReservationInterface->searchByCheckIn($request);
+        return view('search', ['reservations' => $reservations]);
+    }
+
+    /**
+     * To To search reservation by check_out time
+     * @return view $reservations
+     */
+    public function searchByCheckOut(Request $request) {
+        $reservations = $this->ReservationInterface->searchByCheckOut($request);
+        return view('search', ['reservations' => $reservations]);
+    }
+
+    /**
+     * To search reservation by created time
+     * @param date $start Input from user
+     * @param date $end Input from user
+     * @return view $reservations
+     */
+    public function searchByStartEnd(Request $start, Request $end) {
+        $reservations = $this->ReservationInterface->searchByStartEnd($start, $end);
+        return view('search', ['reservations' => $reservations]);
+    }
 }
