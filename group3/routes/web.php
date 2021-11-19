@@ -143,14 +143,14 @@ Route::post('/searchCheckout', [ReservationController::class, 'searchByCheckOut'
 Route::post('/searchStartend', [ReservationController::class, 'searchByStartEnd']);
 
 Route::delete('/search/{id}/{room_id}', [ReservationController::class, 'deleteReservationSearch']);
-Route::get('user/hotel/hotellist',[HotelController::class,'showHotelListUser'])->name('hotelview');
+Route::get('/user/hotel/hotellist',[HotelController::class,'showHotelListUser'])->name('hotelview');
 
-Route::get('user/roomuserview',[RoomController::class,'showRoomUserview'])->name('roomuserview');
+Route::get('/user/roomuserview',[RoomController::class,'showRoomUserview'])->name('roomuserview');
 
-Route::get('user/rooms/list', [RoomController::class, 'showRoomListUserView'])->name('showroomListuserview');
+Route::get('/user/rooms/list', [RoomController::class, 'showRoomListUserView'])->name('showroomListuserview');
 
-Route::get('user/booking/{id}',[OnlineBookingController::class,'createBooking'])->name('createbooking');
+Route::get('/user/booking/{id}',[OnlineBookingController::class,'createBooking'])->name('createbooking');
 
-Route::post('user/storeBooking',[OnlineBookingController::class,'storeBooking'])->name('storebooking');
+Route::post('/user/storeBooking',[OnlineBookingController::class,'storeBooking'])->name('storebooking');
 
-Route::get('user/home',[HomeController::class,'index']);                                            
+Route::get('/user/home',[HomeController::class,'index']);                                            
