@@ -118,7 +118,7 @@ Route::post('/rooms/create',  [RoomController::class, 'saveRoom'])->name('create
 
 Route::delete('/rooms/delete/{id}', [RoomController::class, 'deleteRoomById']);
 
-Route::post('rooms/update/{id}', [RoomController::class, 'update']);
+Route::post('/rooms/update/{id}', [RoomController::class, 'update']);
 
 Route::post('/updateRoom/{id}', [RoomController::class, 'updateRoom']);
 
