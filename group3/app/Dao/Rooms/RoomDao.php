@@ -19,10 +19,13 @@ class RoomDao implements RoomDaoInterface
      */
     public function searchRoom($request) {
 
-        $room = DB::select( DB::raw("SELECT * FROM rooms WHERE 
-                                    room_number = :room_number" ), array(
-                                    'room_number' => $request->room_number
-                ));
+        $room = DB::select( DB::raw("SELECT * FROM rooms WHERE
+                                    deleted_at IS NULL
+                                    AND
+                                    room_number = :room_number"), array(
+                                    'room_number' => $request->room_number                                   
+                                    ));
+                
         return $room;
     }
 
@@ -43,7 +46,7 @@ class RoomDao implements RoomDaoInterface
      */
     public function unsetStatus($room_id) {
         $room = Room::FindorFail($room_id);
-        $room->status = "available";
+        $room->status = "Available";
         $room->save();    
     }
 

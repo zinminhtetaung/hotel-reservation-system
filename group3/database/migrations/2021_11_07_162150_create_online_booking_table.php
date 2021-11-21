@@ -34,6 +34,6 @@ class CreateOnlineBookingTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('online_booking');
+        Schema::dropIfExists('online_bookings');
     }
 }

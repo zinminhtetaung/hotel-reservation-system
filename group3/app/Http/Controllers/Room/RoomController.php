@@ -41,7 +41,7 @@ class RoomController extends Controller
     public function searchRoom(Request $request) {
         $room = $this->roomServiceInterface->searchRoom($request);
         return view('showRoomId', [
-            'room' => $room[0]
+            'room' => $room
         ]);
     }
 
