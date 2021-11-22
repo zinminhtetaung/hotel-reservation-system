@@ -11,12 +11,11 @@
 <div class="body clearfix">
   <div class="wrap">
     <div class="content">
+      <!-- Results -->
       <div class="card">
-        <!-- Current reservations -->
-        @if ($room)
-        <div class="card-header">Room Information</div>
+        <div class="card-header">{{ __('Search results') }}</div>
         <div class="card-body">
-          <table class="table">
+          <table class="table" id="room-list">
             <thead>
               <tr>
                 <th class="t-head">ID</th>
@@ -26,21 +25,24 @@
             </thead>
 
             <tbody class="tbody">
-              <tr>
-                <td> <input type="text" class="js-copytextarea copy-txt" name="myInput" value="{{ $room->id }}">
-                  <button class="js-textareacopybtn copy-btn" style="vertical-align:top;">Copy ID</button>
-                </td>
-                <td>{{ $room->room_number }}</td>
-                <td>{{ $room->status }}</td>
-              </tr>
+            @if ($room)
+              @foreach ($room as $room)
+                <tr>
+                  <td> <input type="text" class="js-copytextarea copy-txt" name="myInput" value="{{ $room->id }}">
+                    <button class="js-textareacopybtn copy-btn" style="vertical-align:top;">Copy ID</button>
+                  </td>
+                  <td>{{ $room->room_number }}</td>
+                  <td>{{ $room->status }}</td>
+                </tr>
+              @endforeach
             </tbody>
           </table>
         </div>
-
         @endif
-        <a href="/" class="btn copy-btn">Create Reservation</a>
       </div>
+
     </div>
+    <a href="/" class="btn copy-btn">Back to Reservation</a>
   </div>
 </div>
 @endsection

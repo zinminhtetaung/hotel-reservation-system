@@ -145,7 +145,8 @@ img {
     justify-content: space-between;
     padding-bottom: 3rem;
     overflow: auto;
-    scrollbar-width: none; /* For mozilla */
+    scrollbar-width: none;
+    /* For mozilla */
 }
 
 /* For Google Chrome and others */
@@ -273,11 +274,14 @@ img {
     .nav {
         left: 0;
         padding: 1.2rem 1.5rem 0;
-        width: 68px; /* Reduced navbar */
+        width: 68px;
+        /* Reduced navbar */
     }
+
     .nav__items {
         row-gap: 1.7rem;
     }
+
     .nav__icon {
         font-size: 1.4rem;
     }
@@ -300,12 +304,15 @@ img {
     .nav:hover .nav__logo-name {
         opacity: 1;
     }
+
     .nav:hover .nav__subtitle {
         opacity: 1;
     }
+
     .nav:hover .nav__name {
         opacity: 1;
     }
+
     .nav:hover .nav__dropdown-icon {
         opacity: 1;
     }

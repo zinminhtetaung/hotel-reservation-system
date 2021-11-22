@@ -14,7 +14,9 @@ class ChartJsController extends Controller
 
         $reservations = [];
         foreach ($months as $key => $value) {
-            $reservations[] = Reservation::where( DB::raw("DATE_FORMAT(check_in, '%m')"),$value)->count();
+            $reservations[] = Reservation::where( DB::raw("DATE_FORMAT(check_in, '%m')"),$value)
+            ->withTrashed()
+            ->count();
         }
 
     	return view('chartjs')->with('months',json_encode($months,JSON_NUMERIC_CHECK))->with('reservations',json_encode($reservations,JSON_NUMERIC_CHECK));
