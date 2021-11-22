@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+<h1 class="head">SEARCH FORM</h1>
 
 <script src="{{ asset('js/room-list.js') }}"></script>
 

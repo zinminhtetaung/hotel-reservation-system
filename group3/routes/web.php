@@ -104,7 +104,7 @@ Route::delete('/delete-booking/{id}/{room_id}', [OnlineBookingController::class,
 /**
  * Show Graph
  */
-Route::get('Graph/graph', [ChartJsController::class, 'index'])->name('chartjs.index');
+Route::get('/graph', [ChartJsController::class, 'index'])->name('chartjs.index');
 
 Route::get('/hotels/list', [HotelController::class, 'showHotelList'])->name('hotelList');
 
@@ -118,7 +118,7 @@ Route::post('/rooms/create',  [RoomController::class, 'saveRoom'])->name('create
 
 Route::delete('/rooms/delete/{id}', [RoomController::class, 'deleteRoomById']);
 
-Route::post('rooms/update/{id}', [RoomController::class, 'update']);
+Route::post('/rooms/update/{id}', [RoomController::class, 'update']);
 
 Route::post('/updateRoom/{id}', [RoomController::class, 'updateRoom']);
 
@@ -143,14 +143,14 @@ Route::post('/searchCheckout', [ReservationController::class, 'searchByCheckOut'
 Route::post('/searchStartend', [ReservationController::class, 'searchByStartEnd']);
 
 Route::delete('/search/{id}/{room_id}', [ReservationController::class, 'deleteReservationSearch']);
-Route::get('user/hotel/hotellist',[HotelController::class,'showHotelListUser'])->name('hotelview');
+Route::get('/user/hotel/hotellist',[HotelController::class,'showHotelListUser'])->name('hotelview');
 
-Route::get('user/roomuserview',[RoomController::class,'showRoomUserview'])->name('roomuserview');
+Route::get('/user/roomuserview',[RoomController::class,'showRoomUserview'])->name('roomuserview');
 
-Route::get('user/rooms/list', [RoomController::class, 'showRoomListUserView'])->name('showroomListuserview');
+Route::get('/user/rooms/list', [RoomController::class, 'showRoomListUserView'])->name('showroomListuserview');
 
-Route::get('user/booking/{id}',[OnlineBookingController::class,'createBooking'])->name('createbooking');
+Route::get('/user/booking/{id}',[OnlineBookingController::class,'createBooking'])->name('createbooking');
 
-Route::post('user/storeBooking',[OnlineBookingController::class,'storeBooking'])->name('storebooking');
+Route::post('/user/storeBooking',[OnlineBookingController::class,'storeBooking'])->name('storebooking');
 
-Route::get('user/home',[HomeController::class,'index']);                                            
+Route::get('/user/home',[HomeController::class,'index']);                                            

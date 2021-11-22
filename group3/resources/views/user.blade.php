@@ -2,7 +2,7 @@
 
 @section('content')
 
-<!-- Bootstrap Boilerplate... -->
+<h1 class="head">USER INFORMATION</h1>
 
 <div class="body clearfix">
   <div class="wrap">

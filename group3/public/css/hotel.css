@@ -1,26 +1,25 @@
 @charset "utf-8";
 @font-face {
-	font-family: Georgia;
+    font-family: Georgia;
     src: "{{asset('css/lib/font.css') }}";
-	font-weight: normal;
+    font-weight: normal;
 }
 body {
     /* max-width: 1280px; */
-	margin: 0 auto;
+    margin: 0 auto;
     font-family: Georgia;
     background-color: #98ccd3;
 }
 .clearfix:after {
-	content: "";
-	clear: both;
-	display: block;
-	visibility: hidden;
-	font-size: 0;
+    content: "";
+    clear: both;
+    display: block;
+    visibility: hidden;
+    font-size: 0;
 }
 .header {
     margin-left: 100px;
     padding: 5px;
-    border-bottom: 1px solid #1a2b46;
 }
 .logo {
     float: left;
@@ -53,14 +52,22 @@ body {
     background-color: #ebf0f6;
     color: #1a2b46;
 }
-.logout ul li:hover .nav-ttl{
+.logout ul li:hover .nav-ttl {
     color: #1a2b46;
 }
-.header, 
+.header,
 .body {
     background-color: #98ccd3;
     width: 1280px;
     margin: auto;
+}
+.head {
+    font-size: 25px;
+    text-align: center;
+    color: #1a2b46;
+    padding: 0 160px 20px 0;
+    margin: -50px 0 0 0;
+    border-bottom: 1px solid #1a2b46;
 }
 .wrap {
     margin-right: 2rem;
@@ -197,7 +204,7 @@ body {
     display: flex;
     padding: 5px 10px 5px 10px;
     font-size: 15px;
-    font-style:italic;
+    font-style: italic;
 }
 .btn-secondary {
     color: #ebf068;
@@ -248,6 +255,19 @@ body {
 }
 .input-img {
     padding: 5px;
+}
+.img-lable {
+    cursor: pointer;
+    font-size: 13px;
+    background-color: #ebf068;
+    color: #1a2b46;
+    padding: 8px 20px;
+    border-radius: 1rem;
+}
+#upload {
+    opacity: 1;
+    position: absolute;
+    z-index: -1;
 }
 .preview-image {
     width: 50%;

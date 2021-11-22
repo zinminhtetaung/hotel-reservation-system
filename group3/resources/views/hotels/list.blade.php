@@ -1,13 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
-<!-- Styles -->
-<link href="{{ asset('css/lib/jquery.dataTables.min.css') }}" rel="stylesheet">
-<link href="{{ asset('css/hotel-list.css') }}" rel="stylesheet">
-
 <!-- Script -->
-<script src="{{ asset('js/lib/jquery.dataTables.min.js') }}"></script>
 <script src="{{ asset('js/hotel-list.js') }}"></script>
+<h1 class="head">HOTEL INFORMATION</h1>
 
 <div class="body clearfix">
   <div class="wrap">
