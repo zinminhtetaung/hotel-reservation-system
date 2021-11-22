@@ -3,6 +3,7 @@
 @section('content')
 
 <script src="{{ asset('js/room-list.js') }}"></script>
+<h1 class="head">RESERVATION INFORMATION</h1>
 
 <div class="body clearfix">
   <div class="wrap">

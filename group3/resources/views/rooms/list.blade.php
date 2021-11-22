@@ -3,7 +3,7 @@
 @section('content')
 <!-- Script -->
 <script src="{{ asset('js/room-list.js') }}"></script>
-
+<h1 class="head">ROOM INFORMATION</h1>
 <div class="body clearfix">
   <div class="wrap">
     <div class="content">
@@ -59,7 +59,8 @@
         <div class="form-group">
           <label class="input-ttl required">{{ __('Image') }}</label>
           <div class="input-box">
-            <input type="file" class="image input-img" name="image"/>
+            <label class="img-lable"for="upload">Upload an image</label>
+            <input type="file" class="image input-img" name="image" id="upload"/>
           </div>
         </div>
 
