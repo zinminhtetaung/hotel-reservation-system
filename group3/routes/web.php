@@ -44,16 +44,6 @@ Route::post('/loginuser', [LoginController::class, 'store']);
 
 Route::get('/logout', [LoginController::class, 'destroy'])->name('logout');
 
-// Route::post('/login', function () {
-//     return redirect()->route('hotelList');
-// });  
-
-// Route::get('/', function () {
-//     return redirect()->route('hotelList');
-// });
-// Route::get('/hotels/list', [HotelController::class, 'showHotelList'])->name('hotelList');
-
-
 /**
  * Display All Reservation
  */
