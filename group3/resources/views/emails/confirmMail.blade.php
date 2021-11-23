@@ -16,7 +16,6 @@
 
     <p >For More Information,feel free to contact us</p>
     <a href="tel:09401245003">Phone: 09401245003</a>
-
     <p >Thanks for book with us, Relax.com<p>
 </body>
 </html>
