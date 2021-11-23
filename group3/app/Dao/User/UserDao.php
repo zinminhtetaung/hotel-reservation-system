@@ -6,6 +6,7 @@ use App\Contracts\Dao\User\UserDaoInterface;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 /**
  * Data accessing object for User
@@ -42,7 +43,8 @@ class UserDao implements UserDaoInterface
         $user = new User();
         $user->user_name = $request->user_name;
         $user->email = $request->email;
-        $user->password = $request->password;
+        $user->password = Hash::make($request->password);
+        // $user->password = $request->password;
         $user->role = $request->role;
         $user->save();    
         return $user;
@@ -54,6 +56,8 @@ class UserDao implements UserDaoInterface
      */
     public function updateUser($request,$id) {
         $user = User::FindorFail($id);
+        
+
         $user->user_name = $request->user_name;
         $user->email = $request->email;
         $user->password = $request->password;
