@@ -1,6 +1,5 @@
-
 var copyTextareaBtn = document.querySelector(".js-textareacopybtn");
-if(copyTextareaBtn){
+if (copyTextareaBtn) {
     copyTextareaBtn.addEventListener("click", function (event) {
         var copyTextarea = document.querySelector(".js-copytextarea");
         copyTextarea.focus();
@@ -19,16 +18,16 @@ if(copyTextareaBtn){
     const showMenu = (headerToggle, navbarId) => {
         const toggleBtn = document.getElementById(headerToggle),
             nav = document.getElementById(navbarId);
-    if(showMenu)
-        // Validate that variables exist
-        if (headerToggle && navbarId) {
-            toggleBtn.addEventListener("click", () => {
-                // We add the show-menu class to the div tag with the nav__menu class
-                nav.classList.toggle("show-menu");
-                // change icon
-                toggleBtn.classList.toggle("bx-x");
-            });
-        }
+        if (showMenu)
+            if (headerToggle && navbarId) {
+                // Validate that variables exist
+                toggleBtn.addEventListener("click", () => {
+                    // We add the show-menu class to the div tag with the nav__menu class
+                    nav.classList.toggle("show-menu");
+                    // change icon
+                    toggleBtn.classList.toggle("bx-x");
+                });
+            }
     };
     showMenu("header-toggle", "navbar");
 
@@ -39,4 +38,6 @@ if(copyTextareaBtn){
         linkColor.forEach((l) => l.classList.remove("active"));
         this.classList.add("active");
     }
+
+    linkColor.forEach((l) => l.addEventListener("click", colorLink));
 }
