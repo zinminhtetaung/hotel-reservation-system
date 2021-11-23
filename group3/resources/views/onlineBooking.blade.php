@@ -40,8 +40,8 @@
                 <td>{{ $booking->email }}</td>
                 <td>{{ $booking->room_id }}</td>
                 <td>{{ $booking->number_of_guest}}</td>
-                <td>{{ $booking->check_in }}</td>
-                <td>{{ $booking->check_out }}</td>
+                <td>{{ date('d/m/Y', strtotime($booking->check_in)) }}</td>
+                <td>{{ date('d/m/Y', strtotime($booking->check_out)) }}</td>
                 <!-- <td>{{ $booking->created_at }}</td>
                 <td>{{ $booking->updated_at }}</td> -->
                 <!-- Update Button -->
