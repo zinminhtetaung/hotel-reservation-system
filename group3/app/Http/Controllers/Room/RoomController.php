@@ -41,7 +41,7 @@ class RoomController extends Controller
     public function searchRoom(Request $request) {
         $room = $this->roomServiceInterface->searchRoom($request);
         return view('showRoomId', [
-            'room' => $room[0]
+            'room' => $room
         ]);
     }
 
@@ -63,13 +63,20 @@ class RoomController extends Controller
      * @return View Room list
      */
     public function saveRoom(RoomRequest $request) {
-        $room = $this->roomServiceInterface->saveRoom($request);
         if($request->hasFile('image')){
             $des_path = 'public/images';
             $image = $request->file('image');
             $img_name = $image->getClientOriginalName();
             $path = $request->file('image')->storeAs($des_path, $img_name);
         }
+        if ($request->hotel_name == "Lotte Hotel") {
+            $request->hotel_id = "1";
+        } elseif ($request->hotel_name == "Novotel Hotel") {
+            $request->hotel_id = "2";
+        } elseif ($request->hotel_name == "Sedona Hotel") {
+            $request->hotel_id = "3";
+        }
+        $room = $this->roomServiceInterface->saveRoom($request);
         return redirect()->route('showroomList');
     }
 
@@ -93,6 +100,19 @@ class RoomController extends Controller
      * @return View Room list
      */
     public function updateRoom(RoomRequest $request,$id) {
+        if($request->hasFile('image')){
+            $des_path = 'public/images';
+            $image = $request->file('image');
+            $img_name = $image->getClientOriginalName();
+            $path = $request->file('image')->storeAs($des_path, $img_name);
+        }
+        if ($request->hotel_name == "Lotte Hotel") {
+            $request->hotel_id = "1";
+        } elseif ($request->hotel_name == "Novotel Hotel") {
+            $request->hotel_id = "2";
+        } elseif ($request->hotel_name == "Sedona Hotel") {
+            $request->hotel_id = "3";
+        }
         $room = $this->roomServiceInterface->updateRoom($request,$id);
         return redirect()->route('showroomList');
     }

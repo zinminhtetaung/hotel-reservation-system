@@ -21,13 +21,6 @@ function showHotelDetail(hotelInfo) {
     $("#hotel-detail #hotel-description").text(hotelInfo.description);
     $("#hotel-detail #hotel-phone").text(hotelInfo.phone);
     $("#hotel-detail #hotel-location").text(hotelInfo.location);
-    $("#hotel-detail #hotel-created-at").text(
-        moment(hotelInfo.created_at).format("YYYY/MM/DD")
-    );
-    $("#hotel-detail #hotel-updated-at").text(
-        moment(hotelInfo.updated_at).format("YYYY/MM/DD")
-    );
-    $("#hotel-detail #hotel-updated-hotel").text(hotelInfo.updated_hotel);
 }
 
 /**

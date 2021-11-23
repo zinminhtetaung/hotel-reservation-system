@@ -23,13 +23,6 @@ function showRoomDetail(roomInfo) {
     $("#room-detail #service").text(roomInfo.service);
     $("#room-detail #price").text(roomInfo.price);
     $("#room-detail #status").text(roomInfo.status);
-    $("#room-detail #created-at").text(
-        moment(roomInfo.created_at).format("YYYY/MM/DD")
-    );
-    $("#room-detail #room-updated-at").text(
-        moment(roomInfo.updated_at).format("YYYY/MM/DD")
-    );
-    $("#room-detail #room-updated-room").text(roomInfo.updated_room);
 }
 
 /**

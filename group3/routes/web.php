@@ -25,10 +25,6 @@ use Illuminate\Support\Facades\Auth;
 
 
 
-Route::get('/user', function () {
-    return view('users');
-});
-
 Route::post('/addUser', [UserController::class, 'addUser']);
 
 Route::post('/users/update/{id}', [UserController::class, 'update']);
@@ -48,20 +44,10 @@ Route::post('/loginuser', [LoginController::class, 'store']);
 
 Route::get('/logout', [LoginController::class, 'destroy'])->name('logout');
 
-// Route::post('/login', function () {
-//     return redirect()->route('hotelList');
-// });  
-
-// Route::get('/', function () {
-//     return redirect()->route('hotelList');
-// });
-// Route::get('/hotels/list', [HotelController::class, 'showHotelList'])->name('hotelList');
-
-
 /**
  * Display All Reservation
  */
-Route::get('/', [ReservationController::class, 'showReservationList']);
+Route::get('/', [ReservationController::class, 'showReservationList'])->name('reservationList');
 
 /**
  * Add A New Reservation
@@ -108,7 +94,7 @@ Route::delete('/delete-booking/{id}/{room_id}', [OnlineBookingController::class,
 /**
  * Show Graph
  */
-Route::get('Graph/graph', [ChartJsController::class, 'index'])->name('chartjs.index');
+Route::get('/graph', [ChartJsController::class, 'index'])->name('chartjs.index');
 
 Route::get('/hotels/list', [HotelController::class, 'showHotelList'])->name('hotelList');
 
@@ -122,19 +108,39 @@ Route::post('/rooms/create',  [RoomController::class, 'saveRoom'])->name('create
 
 Route::delete('/rooms/delete/{id}', [RoomController::class, 'deleteRoomById']);
 
-Route::post('rooms/update/{id}', [RoomController::class, 'update']);
+Route::post('/rooms/update/{id}', [RoomController::class, 'update']);
 
 Route::post('/updateRoom/{id}', [RoomController::class, 'updateRoom']);
 
+// Search form 
+Route::get('/search', [ReservationController::class, 'searchForm']);
 
-Route::get('user/hotel/hotellist',[HotelController::class,'showHotelListUser'])->name('hotelview');
+/**
+ * Search By --
+ */
+Route::post('/searchRID', [ReservationController::class, 'searchReservationbyRID']);
 
-Route::get('user/roomuserview',[RoomController::class,'showRoomUserview'])->name('roomuserview');
+Route::post('/searchCustomer', [ReservationController::class, 'searchByCustomer']);
 
-Route::get('/rooms/list', [RoomController::class, 'showRoomListUserView'])->name('showroomListuserview');
+Route::post('/searchPhNo', [ReservationController::class, 'searchByPhNo']);
 
-Route::get('user/booking/{id}',[OnlineBookingController::class,'createBooking'])->name('createbooking');
+Route::post('/searchGuest', [ReservationController::class, 'searchByGuestNo']);
 
-Route::post('user/storeBooking',[OnlineBookingController::class,'storeBooking'])->name('storebooking');
+Route::post('/searchCheckIn', [ReservationController::class, 'searchByCheckIn']);
 
-Route::get('user/home',[HomeController::class,'index']);                                            
+Route::post('/searchCheckout', [ReservationController::class, 'searchByCheckOut']);
+
+Route::post('/searchStartend', [ReservationController::class, 'searchByStartEnd']);
+
+Route::delete('/search/{id}/{room_id}', [ReservationController::class, 'deleteReservationSearch']);
+Route::get('/user/hotel/hotellist',[HotelController::class,'showHotelListUser'])->name('hotelview');
+
+Route::get('/user/roomuserview',[RoomController::class,'showRoomUserview'])->name('roomuserview');
+
+Route::get('/user/rooms/list', [RoomController::class, 'showRoomListUserView'])->name('showroomListuserview');
+
+Route::get('/user/booking/{id}',[OnlineBookingController::class,'createBooking'])->name('createbooking');
+
+Route::post('/user/storeBooking',[OnlineBookingController::class,'storeBooking'])->name('storebooking');
+
+Route::get('/user/home',[HomeController::class,'index']);                                            

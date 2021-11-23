@@ -26,9 +26,9 @@
 
               <div class="nav__dropdown-collapse">
                 <div class="nav__dropdown-content">
-                  <a href="user/home" class="nav__dropdown-item">Home</a>
-                  <a href="user/hotelview" class="nav__dropdown-item">Hotels</a>
-                  <a href="user/roomuserview" class="nav__dropdown-item">Rooms</a>
+                  <a href="/user/home" class="nav__dropdown-item">Home</a>
+                  <a href="/user/hotelview" class="nav__dropdown-item">Hotels</a>
+                  <a href="/user/roomuserview" class="nav__dropdown-item">Rooms</a>
                 </div>
               </div>
             </div>
@@ -57,7 +57,7 @@
 
             </div>
 
-            <a href="/Graph/graph" class="nav__link">
+            <a href="/graph" class="nav__link">
               <i class='bx bx-compass nav__icon'></i>
               <span class="nav__name">Graph</span>
             </a>
