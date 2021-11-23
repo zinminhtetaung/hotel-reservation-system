@@ -6,7 +6,7 @@
 4. MySQL  <code>8.0.27</code>
 ### Development Setup
 1. Create <code>.env</code> (copy contents for <code>.env.example</code>)
-2. Run the following
+2. Run the following:
 > $ composer install
 
 > $ php artisan migrate
