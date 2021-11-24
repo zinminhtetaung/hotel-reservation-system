@@ -3,10 +3,33 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Contracts\Services\Room\RoomServiceInterface;
 
 class HomeController extends Controller
 {
-    public function index(){
-        return view('user.home');
+    /**
+     * room interface
+     */
+    private $roomServiceInterface;
+    /**
+     * Create a new controller instance.
+     * @param RoomServiceInterface $roomServiceInterface
+     * @param HotelServiceInterface $hotelServiceInterface
+     * @return void
+     */
+    public function __construct(RoomServiceInterface $roomServiceInterface)
+    {
+        // $this->middleware('auth');
+        $this->roomServiceInterface = $roomServiceInterface;
+    }
+    /*
+     *get room list 
+     */
+    public function index()
+    {
+        $roomList = $this->roomServiceInterface->getRoomList();
+        return view('user.home', [
+            'roomList' => $roomList,
+        ]);
     }
 }

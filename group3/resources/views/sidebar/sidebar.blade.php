@@ -27,7 +27,7 @@
               <div class="nav__dropdown-collapse">
                 <div class="nav__dropdown-content">
                   <a href="/user/home" class="nav__dropdown-item">Home</a>
-                  <a href="/user/hotelview" class="nav__dropdown-item">Hotels</a>
+                  <a href="/user/hotel/hotellist" class="nav__dropdown-item">Hotels</a>
                   <a href="/user/roomuserview" class="nav__dropdown-item">Rooms</a>
                 </div>
               </div>

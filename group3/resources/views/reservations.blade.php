@@ -106,10 +106,10 @@
               <td>{{ $reservation->phone }}</td>
               <td>{{ $reservation->room_id }}</td>
               <td>{{ $reservation->number_of_guest}}</td>
-              <td>{{ $reservation->check_in }}</td>
-              <td>{{ $reservation->check_out }}</td>
-              <td>{{date('Y/m/d', strtotime($reservation->created_at))}}</td>
-              <td>{{date('Y/m/d', strtotime($reservation->updated_at))}}</td>
+              <td>{{date('d/m/Y', strtotime($reservation->check_in))}}</td>
+              <td>{{date('d/m/Y', strtotime($reservation->check_out))}}</td>
+              <td>{{date('d/m/Y', strtotime($reservation->created_at))}}</td>
+              <td>{{date('d/m/Y', strtotime($reservation->updated_at))}}</td>
 
               <!-- Delete Button -->
               <td>

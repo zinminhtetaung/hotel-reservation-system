@@ -29,32 +29,33 @@
     </div>
   </div>
   @foreach($roomList as $room)
+  
   <div class="room clearfix">
     <img class="novoroom1-img" src="{{asset('/storage/images/'.$room->image)}}" alt="room1-img">
     <table class="room1-info">
       <tr>
-        <td>Hotel ID:</td>
-        <td>{{$room->hotel_id}}</td>
+        <td class="td1">Hotel Name:</td>
+        <td class="td2">{{$room->hotel_name}}</td>
       </tr>
       <tr>
-        <td>Room No:</td>
-        <td>{{$room->room_number}}</td>
+        <td class="td1">Room No:</td>
+        <td class="td2">{{$room->room_number}}</td>
       </tr>
       <tr>
-        <td>Room Type:</td>
-        <td>{{$room->room_type}}</td>
+        <td class="td1">Room Type:</td>
+        <td class="td2">{{$room->room_type}}</td>
       </tr>
       <tr>
-        <td>Services:</td>
-        <td>{{$room->service}}</td>
+        <td class="td1">Services:</td>
+        <td class="td2">{{$room->service}}</td>
       </tr>
       <tr>
-        <td>Price:</td>
-        <td>{{$room->price}}</td>
+        <td class="td1">Price:</td>
+        <td class="td2">{{$room->price}}</td>
       </tr>
       <tr>
-        <td>Status:</td>
-        <td>{{$room->status}}</td>
+        <td class="td1">Status:</td>
+        <td class="td2">{{$room->status}}</td>
       </tr>
       @if($room->status == "Available")
       <tr>

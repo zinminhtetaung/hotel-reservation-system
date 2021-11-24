@@ -60,7 +60,10 @@
             <div class="form-group">
               <label for="status" class="input-ttl">Status</label>
               <div class="input-box">
-                <input type="text" name="status" class="input-txt" value="{{ $roomList->status }}">
+                <select name="hotel_name" class="select-box">
+                  <option class="select" value="Available">&nbsp; Available &nbsp;</option>
+                  <option class="select" value="Not Available">&nbsp; Not Available &nbsp;</option>
+                </select>
               </div>
             </div>
             <div class="form-group">
@@ -72,7 +75,8 @@
             <div class="form-group">
               <label class="input-ttl">{{ __('New Image') }}</label>
               <div class="input-box">
-                <input type="file" class="image input-txt" name="image" autocomplete="image" required />
+                <label class="img-lable"for="upload">Upload an image</label>
+                <input type="file" class="image input-img" name="image" id="upload" autocomplete="image" required />
               </div>
             </div>
             <div class="col-sm-12  text-center">
