@@ -2,6 +2,8 @@
 
 @section('content')
 
+{{Auth::user()->role}}
+
 <h1 class="head">USER INFORMATION</h1>
 
 <div class="body clearfix">
@@ -12,6 +14,7 @@
   
 
   <!-- New User Form -->
+  @if (Auth::user()->role=='admin')
   <form action="/addUser" method="POST" onSubmit="return confirm('Do you want to Add this User?')" class="add-form">
     {{ csrf_field() }}
 
@@ -50,7 +53,7 @@
         </button>
     </div>
   </form>
-
+  @endif
   <!-- Current Users -->
   @if (count($User) > 0)
   <div class="card">
