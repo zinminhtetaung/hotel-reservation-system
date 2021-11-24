@@ -5,6 +5,12 @@
 <script src="{{ asset('js/room-list.js') }}"></script>
 
 <div class="body clearfix">
+
+@if ($notification = Session::get('success'))
+<div class="alert-success">
+        <strong>{{ $notification }}</strong>
+</div>
+@endif
   <div class="wrap">
     <div class="content">
       <!-- Current reservations -->
