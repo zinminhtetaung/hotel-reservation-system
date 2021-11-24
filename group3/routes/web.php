@@ -75,7 +75,7 @@ Route::post('/show-room', [RoomController::class, 'searchRoom']);
 /**
  * Display All OnlineBooking
  */
-Route::get('/onlineBooking', [OnlineBookingController::class, 'showOnlineBookingList']);
+Route::get('/onlineBooking', [OnlineBookingController::class, 'showOnlineBookingList'])->name('onlineBookingList');
 
 /**
  * View Online booking

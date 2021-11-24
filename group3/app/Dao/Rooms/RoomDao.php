@@ -128,7 +128,10 @@ class RoomDao implements RoomDaoInterface
      */
     public function getRoomListUserView()
     {
-        $roomList = Room::orderBy('created_at', 'asc')->paginate(5);
+        $roomList = DB::table('rooms')
+            ->join('hotels', 'hotels.id', '=', 'rooms.hotel_id')
+            ->select('rooms.*', 'hotels.hotel_name')
+            ->paginate(5);
         return $roomList;
     }
 }

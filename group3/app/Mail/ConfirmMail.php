@@ -29,7 +29,6 @@ class ConfirmMail extends Mailable
      */
     public function build()
     {
-        return $this->subject('Confirm Booking')
-                    ->view('emails.confirmMail');
+        return $this->markdown('emails.confirmMail');
     }
 }

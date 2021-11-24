@@ -145,10 +145,8 @@ class RoomController extends Controller
 
     public function showRoomUserview(){
         $roomList = $this->roomServiceInterface->getRoomListUserView();
-        $hotels = $this->hotelServiceInterface->getHotelList();
         return view('user.roomuserview', [
             'roomList' => $roomList,
-            'hotels' => $hotels,
         ]);
     }
 }

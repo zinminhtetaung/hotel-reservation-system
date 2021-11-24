@@ -82,9 +82,7 @@ class ReservationController extends Controller
         $Reservation = $this->ReservationInterface->addBooking($request);
         $OnlineBooking = $this->OnlineBookingInterface->removeOnlineBooking($request);
         $OnlineBookingList = $this->OnlineBookingInterface->getOnlineBooking();
-        return view('onlineBooking', [
-            'bookings' => $OnlineBookingList
-        ]);
+        return redirect()->route('onlineBookingList')->with('success','Email sent successfully!');
     }
 
     /**

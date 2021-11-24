@@ -1,0 +1,61 @@
+.body {
+    background: #98ccd3;
+}
+.nav li a {
+    text-decoration: none;
+    color: #132238;
+}
+.nav li a:hover {
+    color: #ebf0f6;
+}
+.warp {
+    padding-bottom: 5%;
+    padding-top: 5%;
+}
+.login-box {
+    background-color: #fff;
+    margin-left: 36%;
+    width: 400px;
+    padding: 40px 50px 20px 50px;
+    border: 1px solid black;
+}
+.login-title {
+    font-family: Georgia;
+    font-weight: bolder;
+    font-size: 20px;
+    text-align: center;
+}
+.email-box,
+.password-box,
+.login-button
+ {
+    padding-top: 5%;
+}
+.email-box input,
+.password-box input
+ {
+    width: 100%;
+    padding: 5px;
+    background-color: #364e68;
+    color: #ebf0f6;
+    border: 1px solid black;
+    border-radius: 4px;
+}
+::placeholder {
+    color: #ebf0f6;
+}
+.login-button {
+    width: 80px;
+    padding-top: 2px;
+    margin-left: 38%;
+    margin-top: 20px;
+    background-color: #364e68;
+    color: #ebf0f6;
+    border: 1px solid black;
+    border-radius: 4px;
+}
+.login-comment {
+    font-size: 11px;
+    text-align: center;
+    padding-top: 5%;
+}

@@ -1,45 +1,5 @@
-/*========== GOOGLE FONTS ==========*/
 
 @charset "UTF-8";
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
-
-.tooltip {
-  position: relative;
-  display: inline-block;
-}
-
-.tooltip .tooltiptext {
-  visibility: hidden;
-  width: 140px;
-  background-color: #555;
-  color: #fff;
-  text-align: center;
-  border-radius: 6px;
-  padding: 5px;
-  position: absolute;
-  z-index: 1;
-  bottom: 150%;
-  left: 50%;
-  margin-left: -75px;
-  opacity: 0;
-  transition: opacity 0.3s;
-}
-
-.tooltip .tooltiptext::after {
-  content: "";
-  position: absolute;
-  top: 100%;
-  left: 50%;
-  margin-left: -5px;
-  border-width: 5px;
-  border-style: solid;
-  border-color: #555 transparent transparent transparent;
-}
-
-.tooltip:hover .tooltiptext {
-  visibility: visible;
-  opacity: 1;
-}
 
 /*home*/
 .home-content1 {
@@ -98,18 +58,10 @@
   padding-bottom: 20px;
 }
 
-.cnt2-card1 {
+.cnt2-card {
   float: left;
   width: 23%;
-  margin-top: 40px;
-  background-color: #364e68;
-}
-
-.cnt2-card2 {
-  float: left;
-  width: 23%;
-  margin-left: 20px;
-  margin-top: 40px;
+  margin: 20px 20px 0 0;
   background-color: #364e68;
 }
 
@@ -308,25 +260,30 @@
 .novoroom1-img {
   float: left;
   width: 50%;
-
+  height: 300px;
 }
 
 .room1-info {
   float: left;
-  width: 31%;
+  width: 45%;
   margin-left: 50px;
   font-size: 20px;
-}
-
-td {
-  color: #ebf0f6;
-
 }
 
 tr {
   height: 40px;
 }
+td {
+  color: #ebf0f6;
 
+}
+
+.td1 {
+  width: 20%;
+}
+.td2 {
+  width: 70%;
+}
 .booking-btn {
   padding: 5px 20px;
   background-color: #98ccd3;
@@ -338,6 +295,8 @@ tr {
 .pagination {
   width: 400px;
   display: block;
+  margin: 20px auto 0;
+  font-size: 18px;
 
 }
 
@@ -359,63 +318,45 @@ tr {
   padding: 5px 10px;
   font-size: 18px;
 }
-
 .booking-title {
   margin-top: 0;
   text-align: center;
   font-size: 25px;
 }
-
-.error-box {
-  margin-top: 20px;
-  padding: 10px 0;
-  color: #d12323;
+.booking-form {
+  width: 500px;
+  margin: 40px auto 0;
+  padding-bottom: 20px;
   text-align: center;
 }
-
-.booking-form {
-  width: 800px;
-  margin: 20px auto 0;
-  padding-bottom: 20px;
-
+.bookingform-gp{
+  margin-top: 20px;
+  font-size: 18px;
 }
-
-.text-box1 {
+.txt-box {
   border: none;
   border-radius: 5px;
-  margin: 10px 75px;
-  width: 530px;
-  padding: 10px 0;
+  width: 100%;
+  padding: 10px 5px;
   background-color: #364e68;
   color: #ebf0f6;
   font-size: 18px;
+  margin-top: 10px;
+ 
 }
-
-.text-box2 {
+.text-box1{
   border: none;
   border-radius: 5px;
-  margin: 10px 0 10px 130px;
-  width: 67%;
-  padding: 10px 0;
+  width: 100%;
+  padding: 5px 5px;
   background-color: #364e68;
   color: #ebf0f6;
   font-size: 18px;
+  margin-top: 10px;
+  
 }
-
-.text-box3 {
-  border: none;
-  border-radius: 5px;
-  margin: 10px 60px;
-  padding: 10px 0;
-  width: 67%;
-  background-color: #364e68;
-  color: #ebf0f6;
-  font-size: 18px;
-}
-
-.check-btn,
 .confirm-btn {
-  margin: 20px 10px 10px 180px;
+  margin: 20px 10px 10px 0;
   font-size: 16px;
   padding: 8px 30px;
   border: none;
@@ -423,60 +364,4 @@ tr {
   background-color: #364e68;
   color: #ebf0f6;
 
-}
-
-.text-box4 {
-  border: none;
-  border-radius: 5px;
-  margin: 10px 0 10px 135px;
-  width: 67%;
-  padding: 10px 0;
-  background-color: #364e68;
-  color: #ebf0f6;
-  font-size: 18px;
-}
-
-.text-box5 {
-  border: none;
-  border-radius: 5px;
-  margin: 10px 70px;
-  width: 67%;
-  padding: 10px 0;
-  background-color: #364e68;
-  color: #ebf0f6;
-  font-size: 18px;
-}
-
-.text-box6 {
-  border: none;
-  border-radius: 5px;
-  margin: 10px 0 20px 55px;
-  width: 67%;
-  padding: 10px 0;
-  background-color: #364e68;
-  color: #ebf0f6;
-  font-size: 18px;
-}
-
-.text-box7 {
-  border: none;
-  border-radius: 5px;
-  margin-left: 110px;
-  margin-bottom: 20px;
-  width: 67%;
-  padding: 5px 0;
-  background-color: #364e68;
-  color: #ebf0f6;
-  font-size: 18px;
-}
-
-.text-box8 {
-  border: none;
-  border-radius: 5px;
-  margin-left: 100px;
-  width: 67%;
-  padding: 5px 0;
-  background-color: #364e68;
-  color: #ebf0f6;
-  font-size: 18px;
 }

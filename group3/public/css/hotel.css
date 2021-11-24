@@ -381,3 +381,7 @@ body {
 .search-btn {
   margin: 8px 10px;
 }
+.alert-success {
+  padding: 15px;
+  background-color: #53b6c4;
+}

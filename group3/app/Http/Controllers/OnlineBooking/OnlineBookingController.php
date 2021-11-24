@@ -77,20 +77,11 @@ class OnlineBookingController extends Controller
      * @param  $request
      * @return View Reservation list
      */
-    public function storeBooking(BookingRequest $request){
-        $validate=$request->validated();
-        if($request->status == 'Available'){
-
-            $this->OnlineBookingInterface->storeBooking($request);  
-            $this->RoomInterface->setStatus($request);
-            return redirect('user/roomuserview'); 
-        }
-      
-       else{
-           return back()->with(['status available' =>'Status must be available']);
-       }
-
-         
+    public function storeBooking(BookingRequest $request)
+    {
+        $this->OnlineBookingInterface->storeBooking($request);
+        $this->RoomInterface->setStatus($request);
+        return redirect('user/roomuserview');
     }
 
 
