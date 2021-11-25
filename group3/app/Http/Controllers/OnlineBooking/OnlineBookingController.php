@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\OnlineBooking;
 
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Contracts\Services\Room\RoomServiceInterface;
 use App\Contracts\Services\OnlineBooking\OnlineBookingServiceInterface;
@@ -33,7 +32,6 @@ class OnlineBookingController extends Controller
         $this->OnlineBookingInterface = $OnlineBookingServiceInterface;
         $this->RoomInterface = $RoomServiceInterface;
     }
-    
 
     /**
      * To show OnlineBooking list
@@ -47,12 +45,11 @@ class OnlineBookingController extends Controller
             return view('onlineBooking', [
                 'bookings' => $OnlineBookingList
             ]);
-        }
-        else{
+        } else{
             return redirect()->route('login');
-        }
-        
+        }  
     }
+
     /**
      * To show online booking data
      * @param $request
@@ -64,6 +61,7 @@ class OnlineBookingController extends Controller
             'booking'=> $booking
         ]);
     }
+
     /**
      * To delete OnlineBooking
      * @param sting $id
@@ -79,6 +77,7 @@ class OnlineBookingController extends Controller
         $roomid =$this->RoomInterface->getRoomById($id);
         return view('user.booking',['rooms'=> $roomid]);
     }
+
     /**
      * To add Booking
      * @param  $request
@@ -90,6 +89,4 @@ class OnlineBookingController extends Controller
         $this->RoomInterface->setStatus($request);
         return redirect('user/roomuserview');
     }
-
-
 }

@@ -6,7 +6,7 @@
     use App\Http\Controllers\Controller;
     use Illuminate\Support\Facades\Auth;
 
-class HotelController extends Controller
+    class HotelController extends Controller
     {
         /**
          * hotel interface
@@ -21,6 +21,7 @@ class HotelController extends Controller
         {
             $this->hotelInterface = $hotelServiceInterface;
         }
+
         /**
          * To show hotel list
          *
@@ -31,11 +32,10 @@ class HotelController extends Controller
             if(Auth::check()){
                 $hotelList = $this->hotelInterface->getHotelList();
                 return view('hotels.list', compact('hotelList'));
-            }else{
+            } else{
                 return redirect()->route('login');
             }
         }
-            
 
         /**
          * To delete hotel by id
@@ -44,12 +44,9 @@ class HotelController extends Controller
          */
         public function deleteHotelById($hotelId)
         {
-            // $msg = $this->hotelInterface->deleteHotelById($hotelId);
-            // return response($msg, 204);
             $this->hotelInterface->deleteHotelById($hotelId);
             return redirect()->route('hotelList');
         }
-
 
         /**
          * To download hotel csv file
@@ -70,7 +67,5 @@ class HotelController extends Controller
             $hotelList = $this->hotelInterface->getHotelList();
             return view('user.hotelview', compact('hotelList'));
         }
-
-
     }
 ?>

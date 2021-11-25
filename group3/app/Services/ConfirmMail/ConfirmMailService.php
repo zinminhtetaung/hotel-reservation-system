@@ -5,7 +5,6 @@ namespace App\Services\ConfirmMail;
 use App\Contracts\Services\ConfirmMail\MailServiceInterface;
 use App\Mail\ConfirmMail;
 use Illuminate\Support\Facades\Mail;
-use Illuminate\Http\Request;
 
 /**
  * Service class for OnlineBookingService.
@@ -19,6 +18,4 @@ class ConfirmMailService implements MailServiceInterface
     public function sendMail($request) {
         Mail::to($request->email)->send(new ConfirmMail($request));
     }
-
-
 }

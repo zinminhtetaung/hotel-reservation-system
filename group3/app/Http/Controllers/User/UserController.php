@@ -7,7 +7,6 @@ use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use SebastianBergmann\Environment\Console;
 
 /**
  * This is User controller.
@@ -38,18 +37,15 @@ class UserController extends Controller
      */
     public function getUser()
     {
-        
         if(Auth::user()){
             $UserList = $this->UserInterface->getUser();
 
             return view('user', [
                 'User' => $UserList
             ]);
-        }
-        else{
+        } else{
             return redirect()->route('login');
-        }
-        
+        }   
     }
 
     /**

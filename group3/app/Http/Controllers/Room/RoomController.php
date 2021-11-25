@@ -44,8 +44,7 @@ class RoomController extends Controller
             'room' => $room
         ]);
     }
-
-    
+  
     /**
      * To add Room
      * @param RoomRequest $request
@@ -120,7 +119,7 @@ class RoomController extends Controller
                 'roomList' => $roomList,
                 'hotels' => $hotels,
             ]);
-        }else{
+        } else{
             return redirect()->route('login');
         }
     }
@@ -136,6 +135,11 @@ class RoomController extends Controller
       return redirect()->route('showroomList');
     }
 
+    /**
+     * To show room list
+     *
+     * @return View Room user view
+     */
     public function showRoomUserview(){
         $roomList = $this->roomServiceInterface->getRoomListUserView();
         return view('user.roomuserview', [
