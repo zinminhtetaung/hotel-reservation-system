@@ -5,7 +5,6 @@
     use App\Models\Hotels;
     use App\Contracts\Dao\Hotel\HotelDaoInterface;
     use Illuminate\Http\Request;
-    use Illuminate\Support\Facades\DB;
 
     /**
      * Data accessing object for hotel
