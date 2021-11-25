@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\LoginRequest;
 use App\Providers\RouteServiceProvider;
+use GuzzleHttp\Cookie\SessionCookieJar;
 use Illuminate\Contracts\Session\Session as SessionSession;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -12,6 +13,8 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Session as FacadesSession;
 use Inertia\Inertia;
 use Session;
+
+use Symfony\Component\HttpFoundation\Session\Session as HttpFoundationSessionSession;
 
 class LoginController extends Controller
 {
@@ -37,7 +40,7 @@ class LoginController extends Controller
 
         $request->session()->regenerate();
 
-        return redirect('/');
+        return redirect()->route('reservationList');
     }
 
     /**
@@ -48,10 +51,11 @@ class LoginController extends Controller
      */
     public function destroy(Request $request)
     {
-        // Session::flush();
+        
         // Auth::logout();
+        // Session::flush();
         Auth::guard('web')->logout();
-
+        
         $request->session()->invalidate();
 
         $request->session()->regenerateToken();
