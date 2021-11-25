@@ -26,6 +26,7 @@
 
           </div>
         </div>
+        @if (Auth::user()->role=='manager')
         <div class="form-group">
           <label for="room_number" class="input-ttl required">Room number</label>
           <div class="input-box">
@@ -70,6 +71,7 @@
               <i class="fa fa-plus"></i> Add Room
             </button>
         </div>
+        @endif
       </form>
       <div class="card">
         <div class="card-header">{{ __('Room Information') }}</div>
@@ -103,6 +105,7 @@
                 <td>{{$room->status}}</td>
 
                 <td><img height="50px" width="75px" src="{{asset('/storage/images/'.$room->image)}}" /></td>
+                @if (Auth::user()->role=='manager')
                 <td>
                   <form method="POST" action="/rooms/delete/{{ $room->id }}" onSubmit="return confirm('Are you sure you want to delete?')">
                     {{ csrf_field() }}
@@ -110,6 +113,7 @@
                     <button type="submit" class="btn del-btn">Delete</button>
                   </form>
                 </td>
+                
                 <!-- Update Button -->
                 <td>
                   <form action="/rooms/update/{{ $room->id }}" method="POST">
@@ -119,6 +123,7 @@
                     </button>
                   </form>
                 </td>
+                @endif
               </tr>
               @endforeach
             </tbody>

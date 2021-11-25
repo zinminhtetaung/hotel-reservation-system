@@ -83,6 +83,7 @@
                   <td>{{ $User->role }}</td>
                   <td>{{ $User->created_at }}</td>
                   <td>{{ $User->updated_at }}</td>
+                  @if (Auth::user()->role=='admin')
                   <td>
                   <form action="/users/update/{{ $User->id }}" method="POST" >
                     {{ csrf_field() }}
@@ -97,8 +98,9 @@
                 <button type="submit" class="btn del-btn">
                   <i class="fa fa-btn fa-trash"></i>Delete
                 </button>
-              </form>
+                  </form>
                 </td>
+                @endif
               </tr>
             @endforeach
             </tbody>

@@ -26,6 +26,7 @@
         </div>
       </form>
 
+      @if(Auth::user()->role=='receptionist')
       <!-- New reservation Form -->
       <form action="/reservation" method="POST" onSubmit="return confirm('Do you want to add this reservation?')" class="add-form">
         {{ csrf_field() }}
@@ -75,7 +76,7 @@
             </button>
         </div>
       </form>
-
+      @endif
 
       <!-- Current reservations -->
       @if (count($reservations) > 0)
@@ -111,6 +112,7 @@
               <td>{{date('Y/m/d', strtotime($reservation->created_at))}}</td>
               <td>{{date('Y/m/d', strtotime($reservation->updated_at))}}</td>
 
+              @if (Auth::user()->role=='receptionist')
               <!-- Delete Button -->
               <td>
                 <form action="/reservation/{{ $reservation->id }}/{{ $reservation->room_id }}" method="POST" onSubmit="return confirm('Are you sure you want to delete?')">
@@ -130,6 +132,7 @@
                   </button>
                 </form>
               </td>
+              @endif
             </tr>
             @endforeach
             </tbody>

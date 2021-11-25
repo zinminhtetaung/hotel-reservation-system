@@ -53,8 +53,12 @@ class RoomController extends Controller
     public function showRoomProfile($roomID)
     {
         // $roomId = Auth::room()->id;
-        $room = $this->roomServiceInterface->getRoomById($roomID);
-        return view('rooms.profile', compact('room'));
+        if(Auth::check()){
+            $room = $this->roomServiceInterface->getRoomById($roomID);
+            return view('rooms.profile', compact('room'));
+        }
+        
+        
     }
     
     /**
@@ -124,12 +128,14 @@ class RoomController extends Controller
      */
     public function showRoomList()
     {
-        $roomList = $this->roomServiceInterface->getRoomList();
-        $hotels = $this->hotelServiceInterface->getHotelList();
-        return view('rooms.list', [
-            'roomList' => $roomList,
-            'hotels' => $hotels,
-        ]);
+        if(Auth::check()){
+            $roomList = $this->roomServiceInterface->getRoomList();
+            $hotels = $this->hotelServiceInterface->getHotelList();
+            return view('rooms.list', [
+                'roomList' => $roomList,
+                'hotels' => $hotels,
+            ]);
+        }
     }
 
     /**

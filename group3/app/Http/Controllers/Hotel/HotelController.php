@@ -4,7 +4,7 @@
 
     use App\Contracts\Services\Hotel\HotelServiceInterface;
     use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Auth;
+    use Illuminate\Support\Facades\Auth;
 
 class HotelController extends Controller
     {
