@@ -15,23 +15,54 @@
 
     <form class="booking-form " action="{{route('storebooking')}}" method="post">
       {{ csrf_field() }}
-      <label class="booking-label">Room Number</label>
-      <input class="text-box1" type="text" name="room_id" readonly="readonly" value="{{$rooms->id}}"><br>
-      <label class="booking-label">Status</label>
-      <input class="text-box2" type="text" name="status" readonly="readonly" value="{{$rooms->status}}"><br>
-      <label class="booking-label">Customer Name</label>
-      <input class="text-box3" type="text" name="customername" required><br>
-      <label class="booking-label">Email</label>
-      <input class="text-box4" type="text" name="email" require><br>
-
-      <label class="booking-label">Phone Number</label>
-      <input class="text-box5" type="text" name="phonenumber" required><br>
-      <label class="booking-label">Number of guest</label>
-      <input class="text-box6" type="text" name="guestno" required><br>
-      <label class="booking-label">Check In</label>
-      <input class="text-box7" type="date" name="checkin" required><br>
-      <label class="booking-label">Check Out</label>
-      <input class="text-box8" type="date" name="checkout" required><br>
+      <div class="bookingform-gp">
+        <label>Room Number</label>
+        <div class="text-box">
+          <input class="txt-box" type="text" name="room_id" readonly="readonly" value="{{$rooms->id}}">
+        </div>
+      </div>
+      <div class="bookingform-gp">
+        <label>Status</label>
+        <div class="text-box">
+          <input class="txt-box" type="text" name="status" readonly="readonly" value="{{$rooms->status}}"><br>
+        </div>
+      </div>
+      <div class="bookingform-gp">
+        <label>Customer Name</label>
+        <div class="text-box">
+          <input class="txt-box" type="text" name="customername" required><br>
+        </div>
+      </div>
+      <div class="bookingform-gp">
+        <label>Email</label>
+        <div class="text-box">
+          <input class="txt-box" type="text" name="email"><br>
+        </div>
+      </div>
+      <div class="bookingform-gp">
+        <label>Phone Number</label>
+        <div class="text-box">
+          <input class="txt-box" type="text" name="phonenumber" required><br>
+        </div>
+      </div>
+      <div class="bookingform-gp">
+        <label>Number of guest</label>
+        <div class="text-box">
+          <input class="txt-box" type="text" name="guestno" required><br>
+        </div>
+      </div>
+      <div class="bookingform-gp">
+        <label>Check In</label><br>
+        <div class="text-box">
+          <input class="text-box1" type="date" name="checkin" required><br>
+        </div>
+      </div>
+      <div class="bookingform-gp">
+        <label>Check Out</label><br>
+        <div class="text-box">
+          <input class="text-box1" type="date" name="checkout" required><br>
+        </div>
+      </div>
       <button class="confirm-btn">Confirm</button><br>
 
     </form>

@@ -6,6 +6,11 @@
 <h1 class="head">ONLINE BOOKING</h1>
 
 <div class="body clearfix">
+  @if ($notification = Session::get('success'))
+  <div class="alert-success">
+    <strong>{{ $notification }}</strong>
+  </div>
+  @endif
   <div class="wrap">
     <div class="content">
       <!-- Current reservations -->
@@ -40,8 +45,8 @@
                 <td>{{ $booking->email }}</td>
                 <td>{{ $booking->room_id }}</td>
                 <td>{{ $booking->number_of_guest}}</td>
-                <td>{{ $booking->check_in }}</td>
-                <td>{{ $booking->check_out }}</td>
+                <td>{{ date('d/m/Y', strtotime($booking->check_in)) }}</td>
+                <td>{{ date('d/m/Y', strtotime($booking->check_out)) }}</td>
                 <!-- <td>{{ $booking->created_at }}</td>
                 <td>{{ $booking->updated_at }}</td> -->
                 <!-- Update Button -->

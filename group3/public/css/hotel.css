@@ -163,6 +163,7 @@ body {
 .tbody td {
   color: #1a2b46;
   background-color: #98ccd3;
+  vertical-align: middle;
 }
 
 .modal {
@@ -281,9 +282,11 @@ body {
   background-color: #1a2b46;
   color: #ebf068;
   font-size: 15px;
+  padding: 5px;
+  width: 150px;
+  text-align: center;
   border: 1px solid #1a2b46;
   border-radius: 1rem;
-  padding: 5px;
 }
 
 .input-txt,
@@ -294,7 +297,6 @@ body {
   text-align: left;
   background-color: #1a2b46;
   color: #ebf068;
-  /* border: 1px solid #1a2b46; */
   border-radius: 1rem;
 }
 
@@ -378,4 +380,8 @@ body {
 
 .search-btn {
   margin: 8px 10px;
+}
+.alert-success {
+  padding: 15px;
+  background-color: #53b6c4;
 }

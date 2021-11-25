@@ -20,7 +20,7 @@
           <div class="input-box">
             <select name="hotel_name" class="select-box">
               @foreach ($hotels as $hotel)
-              <option value="{{$hotel->hotel_name}}">&nbsp; {{$hotel->hotel_name}} &nbsp;</option>
+              <option class="select" value="{{$hotel->hotel_name}}"> {{$hotel->hotel_name}} </option>
               @endforeach
             </select>
 
@@ -54,7 +54,10 @@
         <div class="form-group">
           <label for="status" class="input-ttl required">Status</label>
           <div class="input-box">
-            <input type="text" name="status" class="input-txt">
+            <select name="hotel_name" class="select-box">
+              <option class="select" value="Available">&nbsp; Available &nbsp;</option>
+              <option class="select" value="Not Available">&nbsp; Not Available &nbsp;</option>
+            </select>
           </div>
         </div>
         <div class="form-group">

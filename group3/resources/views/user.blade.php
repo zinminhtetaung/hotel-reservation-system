@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+<script src="{{ asset('js/room-list.js') }}"></script>
 
 {{Auth::user()->role}}
 
@@ -60,7 +61,7 @@
         <div class="card-header">User Info</div>
 
       <div class="card-body">
-        <table class="table">
+        <table class="table" id="room-list">
             <thead>
             <tr>
                 <th>ID</th>
@@ -81,9 +82,8 @@
                   <td>{{ $User->email }}</td>
                   <td>{{"password"}}</td>
                   <td>{{ $User->role }}</td>
-                  <td>{{ $User->created_at }}</td>
-                  <td>{{ $User->updated_at }}</td>
-                  @if (Auth::user()->role=='admin')
+                  <td>{{ date('d/m/Y', strtotime($User->created_at)) }}</td>
+                  <td>{{ date('d/m/Y', strtotime($User->updated_at)) }}</td>
                   <td>
                   <form action="/users/update/{{ $User->id }}" method="POST" >
                     {{ csrf_field() }}
