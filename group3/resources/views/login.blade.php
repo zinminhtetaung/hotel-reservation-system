@@ -25,7 +25,7 @@
         <div class="login-title">{{ __('LOGIN') }}</div>
 
         <div>
-          <form method="POST" action="/loginuser">
+          <form method="POST" action="/loginuserstore">
             @csrf
 
             <div>

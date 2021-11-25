@@ -11,6 +11,7 @@
       <!-- Display Validation Errors -->
       @include('common.errors')
       <!-- Check Id and status -->
+      @if(Auth::user()->role=='receptionist')
       <form action="/show-room" method="POST" class="add-form">
         {{ csrf_field() }}
         <div class="form-group">
@@ -26,6 +27,7 @@
         </div>
       </form>
 
+      
       <!-- New reservation Form -->
       <form action="/reservation" method="POST" onSubmit="return confirm('Do you want to add this reservation?')" class="add-form">
         {{ csrf_field() }}
@@ -75,7 +77,7 @@
             </button>
         </div>
       </form>
-
+      @endif
 
       <!-- Current reservations -->
       @if (count($reservations) > 0)
@@ -94,8 +96,10 @@
                 <th>Check Out</th>
                 <th>Created at</th>
                 <th>Updated at</th>
+                @if (Auth::user()->role=='receptionist')
                 <th>Delete Action</th>
                 <th>Update Action</th>
+                @endif
               </tr>
             </thead>
             <tbody class="tbody">
@@ -111,6 +115,7 @@
               <td>{{date('d/m/Y', strtotime($reservation->created_at))}}</td>
               <td>{{date('d/m/Y', strtotime($reservation->updated_at))}}</td>
 
+              @if (Auth::user()->role=='receptionist')
               <!-- Delete Button -->
               <td>
                 <form action="/reservation/{{ $reservation->id }}/{{ $reservation->room_id }}" method="POST" onSubmit="return confirm('Are you sure you want to delete?')">
@@ -130,6 +135,7 @@
                   </button>
                 </form>
               </td>
+              @endif
             </tr>
             @endforeach
             </tbody>

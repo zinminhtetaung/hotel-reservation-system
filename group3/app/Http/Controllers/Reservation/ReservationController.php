@@ -9,6 +9,7 @@ use App\Contracts\Services\OnlineBooking\OnlineBookingServiceInterface;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ReservationRequest;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 /**
  * This is Reservation controller.
@@ -55,10 +56,15 @@ class ReservationController extends Controller
      */
     public function showReservationList()
     {
-        $ReservationList = $this->ReservationInterface->getReservation();
-        return view('reservations', [
-            'reservations' => $ReservationList
-        ]);
+        if(Auth::check()){
+            $ReservationList = $this->ReservationInterface->getReservation();
+            return view('reservations', [
+                'reservations' => $ReservationList
+            ]);
+        }else{
+            return redirect()->route('login');
+        }
+        
     }
     /**
      * To add Reservation
@@ -134,8 +140,13 @@ class ReservationController extends Controller
      * @return View Reservation
      */
     public function searchForm() {
-        $reservations = $this->ReservationInterface->getReservation();
-        return view('search', ['reservations' => $reservations]);
+        if(Auth::check()){
+            $reservations = $this->ReservationInterface->getReservation();
+            return view('search', ['reservations' => $reservations]);
+        }else{
+            return redirect()->route('login');
+        }
+        
     }
 
     /**

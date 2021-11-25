@@ -45,17 +45,6 @@ class RoomController extends Controller
         ]);
     }
 
-    /**
-     * Show room profile
-     *
-     * @return View RoomProfile
-     */
-    public function showRoomProfile($roomID)
-    {
-        // $roomId = Auth::room()->id;
-        $room = $this->roomServiceInterface->getRoomById($roomID);
-        return view('rooms.profile', compact('room'));
-    }
     
     /**
      * To add Room
@@ -124,12 +113,16 @@ class RoomController extends Controller
      */
     public function showRoomList()
     {
-        $roomList = $this->roomServiceInterface->getRoomList();
-        $hotels = $this->hotelServiceInterface->getHotelList();
-        return view('rooms.list', [
-            'roomList' => $roomList,
-            'hotels' => $hotels,
-        ]);
+        if(Auth::check()){
+            $roomList = $this->roomServiceInterface->getRoomList();
+            $hotels = $this->hotelServiceInterface->getHotelList();
+            return view('rooms.list', [
+                'roomList' => $roomList,
+                'hotels' => $hotels,
+            ]);
+        }else{
+            return redirect()->route('login');
+        }
     }
 
     /**

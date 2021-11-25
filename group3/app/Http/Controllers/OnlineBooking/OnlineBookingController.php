@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Contracts\Services\Room\RoomServiceInterface;
 use App\Contracts\Services\OnlineBooking\OnlineBookingServiceInterface;
 use App\Http\Requests\BookingRequest;
+use Illuminate\Support\Facades\Auth;
 
 /**
  * This is OnlineBooking controller.
@@ -41,10 +42,16 @@ class OnlineBookingController extends Controller
      */
     public function showOnlineBookingList()
     {
-        $OnlineBookingList = $this->OnlineBookingInterface->getOnlineBooking();
-        return view('onlineBooking', [
-            'bookings' => $OnlineBookingList
-        ]);
+        if(Auth::check()){
+            $OnlineBookingList = $this->OnlineBookingInterface->getOnlineBooking();
+            return view('onlineBooking', [
+                'bookings' => $OnlineBookingList
+            ]);
+        }
+        else{
+            return redirect()->route('login');
+        }
+        
     }
     /**
      * To show online booking data

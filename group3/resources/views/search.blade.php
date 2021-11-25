@@ -105,7 +105,9 @@
                 <th>Check Out</th>
                 <th>Created at</th>
                 <th>Updated at</th>
+                @if (Auth::user()->role=='receptionist')
                 <th>Delete Action</th>
+                @endif
               </tr>
             </thead>
             <tbody class="tbody">
@@ -121,6 +123,7 @@
                 <td>{{date('d/m/Y', strtotime($reservation->created_at))}}</td>
                 <td>{{date('d/m/Y', strtotime($reservation->updated_at))}}</td>
                 <!-- Delete Button -->
+                @if (Auth::user()->role=='receptionist')
                 <td>
                   <form action="/search/{{ $reservation->id }}/{{ $reservation->room_id }}" method="POST" onSubmit="return confirm('Are you sure you want to delete?')">
                     {{ csrf_field() }}
@@ -130,6 +133,7 @@
                     </button>
                   </form>
                 </td>
+                @endif
               </tr>
               @endforeach
             </tbody>

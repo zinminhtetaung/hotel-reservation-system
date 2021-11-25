@@ -6,6 +6,7 @@ use App\Contracts\Services\User\UserServiceInterface;
 use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use SebastianBergmann\Environment\Console;
 
 /**
@@ -37,11 +38,18 @@ class UserController extends Controller
      */
     public function getUser()
     {
-        $UserList = $this->UserInterface->getUser();
+        
+        if(Auth::user()){
+            $UserList = $this->UserInterface->getUser();
 
-        return view('user', [
-            'User' => $UserList
-        ]);
+            return view('user', [
+                'User' => $UserList
+            ]);
+        }
+        else{
+            return redirect()->route('login');
+        }
+        
     }
 
     /**

@@ -4,8 +4,9 @@
 
     use App\Contracts\Services\Hotel\HotelServiceInterface;
     use App\Http\Controllers\Controller;
+    use Illuminate\Support\Facades\Auth;
 
-    class HotelController extends Controller
+class HotelController extends Controller
     {
         /**
          * hotel interface
@@ -27,9 +28,14 @@
          */
         public function showHotelList()
         {
-            $hotelList = $this->hotelInterface->getHotelList();
-            return view('hotels.list', compact('hotelList'));
+            if(Auth::check()){
+                $hotelList = $this->hotelInterface->getHotelList();
+                return view('hotels.list', compact('hotelList'));
+            }else{
+                return redirect()->route('login');
+            }
         }
+            
 
         /**
          * To delete hotel by id

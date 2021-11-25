@@ -49,7 +49,7 @@
                 <a href="/users" class="nav__dropdown-item">User</a>
                   <a href="/hotels/list" class="nav__dropdown-item">Hotel</a>
                   <a href="/rooms/list" class="nav__dropdown-item">Room</a>
-                  <a href="/" class="nav__dropdown-item">Reservation</a>
+                  <a href="/reservationlist" class="nav__dropdown-item">Reservation</a>
                   <a href="/search" class="nav__dropdown-item">Search</a>
                   <a href="/onlineBooking" class="nav__dropdown-item">Online Booking</a>
                 </div>
