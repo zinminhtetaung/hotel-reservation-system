@@ -61,6 +61,8 @@ class ReservationController extends Controller
             return view('reservations', [
                 'reservations' => $ReservationList
             ]);
+        }else{
+            return redirect()->route('login');
         }
         
     }
@@ -141,6 +143,8 @@ class ReservationController extends Controller
         if(Auth::check()){
             $reservations = $this->ReservationInterface->getReservation();
             return view('search', ['reservations' => $reservations]);
+        }else{
+            return redirect()->route('login');
         }
         
     }

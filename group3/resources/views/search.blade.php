@@ -105,7 +105,9 @@
                 <th>Check Out</th>
                 <th>Created at</th>
                 <th>Updated at</th>
+                @if (Auth::user()->role=='receptionist')
                 <th>Delete Action</th>
+                @endif
               </tr>
             </thead>
             <tbody class="tbody">

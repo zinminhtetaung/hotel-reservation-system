@@ -90,8 +90,10 @@
                 <th>Price</th>
                 <th>Status</th>
                 <th>Image</th>
+                @if (Auth::user()->role=='manager')
                 <th>Operation1</th>
                 <th>Operation2</th>
+                @endif
               </tr>
             </thead>
             <tbody class="tbody">

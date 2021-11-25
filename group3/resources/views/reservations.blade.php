@@ -11,6 +11,7 @@
       <!-- Display Validation Errors -->
       @include('common.errors')
       <!-- Check Id and status -->
+      @if(Auth::user()->role=='receptionist')
       <form action="/show-room" method="POST" class="add-form">
         {{ csrf_field() }}
         <div class="form-group">
@@ -26,7 +27,7 @@
         </div>
       </form>
 
-      @if(Auth::user()->role=='receptionist')
+      
       <!-- New reservation Form -->
       <form action="/reservation" method="POST" onSubmit="return confirm('Do you want to add this reservation?')" class="add-form">
         {{ csrf_field() }}
@@ -95,8 +96,10 @@
                 <th>Check Out</th>
                 <th>Created at</th>
                 <th>Updated at</th>
+                @if (Auth::user()->role=='receptionist')
                 <th>Delete Action</th>
                 <th>Update Action</th>
+                @endif
               </tr>
             </thead>
             <tbody class="tbody">

@@ -32,8 +32,10 @@
                 <th>Check Out</th>
                 <!-- <th>Created at</th>
                 <th>Updated at</th> -->
+                @if (Auth::user()->role=='receptionist')
                 <th>View Booking</th>
                 <th>Delete Action</th>
+                @endif
               </tr>
             </thead>
             <tbody class="tbody">
@@ -50,6 +52,7 @@
                 <!-- <td>{{ $booking->created_at }}</td>
                 <td>{{ $booking->updated_at }}</td> -->
                 <!-- Update Button -->
+                @if (Auth::user()->role=='receptionist')
                 <td>
                   <form action="/view-booking/{{$booking->id}}" method="POST">
                     {{ csrf_field() }}
@@ -68,6 +71,7 @@
                     </button>
                   </form>
                 </td>
+                @endif
               </tr>
               @endforeach
             </tbody>

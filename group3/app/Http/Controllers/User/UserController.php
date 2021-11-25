@@ -46,8 +46,8 @@ class UserController extends Controller
                 'User' => $UserList
             ]);
         }
-        else {
-            abort(403);
+        else{
+            return redirect()->route('login');
         }
         
     }

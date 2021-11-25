@@ -31,6 +31,8 @@ class HotelController extends Controller
             if(Auth::check()){
                 $hotelList = $this->hotelInterface->getHotelList();
                 return view('hotels.list', compact('hotelList'));
+            }else{
+                return redirect()->route('login');
             }
         }
             

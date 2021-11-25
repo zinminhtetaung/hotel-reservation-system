@@ -23,7 +23,9 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-
+Route::get('/', function () {
+    return redirect()->route('home');
+  });
 
 Route::post('/addUser', [UserController::class, 'addUser']);
 
@@ -35,19 +37,19 @@ Route::delete('/user/{id}', [UserController::class, 'deleteUser']);
 
 Route::get('/users', [UserController::class, 'getUser']);
 
-Route::get('/login', function () {
-    return view('login');
-});  
+// Route::get('/login', function () {
+//     return view('login');
+// });  
 
-Route::get('/loginuser', [LoginController::class, 'create']);
-Route::post('/loginuser', [LoginController::class, 'store']);
+Route::get('/loginuser', [LoginController::class, 'create'])->name('login');
+Route::post('/loginuserstore', [LoginController::class, 'store']);
 
 Route::get('/logout', [LoginController::class, 'destroy'])->name('logout');
 
 /**
  * Display All Reservation
  */
-Route::get('/', [ReservationController::class, 'showReservationList'])->name('reservationList');
+Route::get('/reservationlist', [ReservationController::class, 'showReservationList'])->name('reservationList');
 
 /**
  * Add A New Reservation
@@ -143,4 +145,4 @@ Route::get('/user/booking/{id}',[OnlineBookingController::class,'createBooking']
 
 Route::post('/user/storeBooking',[OnlineBookingController::class,'storeBooking'])->name('storebooking');
 
-Route::get('/user/home',[HomeController::class,'index']);                                            
+Route::get('/user/home',[HomeController::class,'index'])->name('home');                                            
