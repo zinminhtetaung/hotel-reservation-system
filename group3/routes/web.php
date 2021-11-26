@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\ChartJsController;
+use App\Http\Controllers\ChartController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Reservation\ReservationController;
 use App\Http\Controllers\Room\RoomController;
@@ -96,7 +96,7 @@ Route::delete('/delete-booking/{id}/{room_id}', [OnlineBookingController::class,
 /**
  * Show Graph
  */
-Route::get('/graph', [ChartJsController::class, 'index'])->name('chartjs.index');
+Route::get('/graph', [ChartController::class, 'index'])->name('chart.index');
 
 Route::get('/hotels/list', [HotelController::class, 'showHotelList'])->name('hotelList');
 

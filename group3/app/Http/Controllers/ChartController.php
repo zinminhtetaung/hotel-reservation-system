@@ -5,7 +5,7 @@ use App\Models\Reservation;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 
-class ChartJsController extends Controller
+class ChartController extends Controller
 {
     public function index()
     {
@@ -19,8 +19,9 @@ class ChartJsController extends Controller
                 ->count();
             }
     
-            return view('chartjs')->with('months',json_encode($months,JSON_NUMERIC_CHECK))->with('reservations',json_encode($reservations,JSON_NUMERIC_CHECK));
-        } else{
+            return view('chart')->with('months',json_encode($months,JSON_NUMERIC_CHECK))
+                                ->with('reservations',json_encode($reservations,JSON_NUMERIC_CHECK));
+        } else {
             return redirect()->route('login');
         }
 
