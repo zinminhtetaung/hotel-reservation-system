@@ -21,7 +21,8 @@ class ChartJsController extends Controller
                 ->count();
             }
     
-            return view('chartjs')->with('months',json_encode($months,JSON_NUMERIC_CHECK))->with('reservations',json_encode($reservations,JSON_NUMERIC_CHECK));
+            return view('chartjs')->with('months',json_encode($months,JSON_NUMERIC_CHECK))
+            ->with('reservations',json_encode($reservations,JSON_NUMERIC_CHECK));
         }else{
             return redirect()->route('login');
         }

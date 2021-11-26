@@ -28,7 +28,8 @@ class OnlineBookingController extends Controller
      *
      * @return void
      */
-    public function __construct(OnlineBookingServiceInterface $OnlineBookingServiceInterface, RoomServiceInterface $RoomServiceInterface)
+    public function __construct(OnlineBookingServiceInterface $OnlineBookingServiceInterface,
+     RoomServiceInterface $RoomServiceInterface)
     {
         $this->OnlineBookingInterface = $OnlineBookingServiceInterface;
         $this->RoomInterface = $RoomServiceInterface;

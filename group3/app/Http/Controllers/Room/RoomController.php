@@ -26,7 +26,8 @@ class RoomController extends Controller
      * @param HotelServiceInterface $hotelServiceInterface
      * @return void
      */
-    public function __construct(RoomServiceInterface $roomServiceInterface, HotelServiceInterface $hotelServiceInterface)
+    public function __construct(RoomServiceInterface $roomServiceInterface,
+     HotelServiceInterface $hotelServiceInterface)
     {
         // $this->middleware('auth');
         $this->roomServiceInterface = $roomServiceInterface;

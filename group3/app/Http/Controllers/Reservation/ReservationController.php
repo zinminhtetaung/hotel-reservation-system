@@ -40,7 +40,10 @@ class ReservationController extends Controller
      *
      * @return void
      */
-    public function __construct(ReservationServiceInterface $ReservationServiceInterface, RoomServiceInterface $RoomServiceInterface ,OnlineBookingServiceInterface $OnlineBookingServiceInterface,MailServiceInterface $MailServiceInterface)
+    public function __construct(ReservationServiceInterface $ReservationServiceInterface,
+     RoomServiceInterface $RoomServiceInterface ,
+     OnlineBookingServiceInterface $OnlineBookingServiceInterface,
+     MailServiceInterface $MailServiceInterface)
     {
         $this->ReservationInterface = $ReservationServiceInterface;
         $this->RoomInterface = $RoomServiceInterface;
