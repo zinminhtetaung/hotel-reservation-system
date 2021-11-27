@@ -52,8 +52,4 @@ public function register(){
             Paginator::useBootstrap();
         }
     }
-<<<<<<< HEAD
-}
-=======
 ?>
->>>>>>> b3fb05b5dc3325a74e618644a4ea567fb3a1c8a3
