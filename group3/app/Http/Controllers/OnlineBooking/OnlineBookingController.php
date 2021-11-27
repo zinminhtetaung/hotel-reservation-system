@@ -17,22 +17,22 @@ class OnlineBookingController extends Controller
     /**
      * OnlineBooking interface
      */
-    private $OnlineBookingInterface;
+    private $onlineBookingInterface;
     /**
      * Room interface
      */
-    private $RoomInterface;
+    private $roomInterface;
 
     /**
      * Create a new controller instance.
      *
      * @return void
      */
-    public function __construct(OnlineBookingServiceInterface $OnlineBookingServiceInterface,
-     RoomServiceInterface $RoomServiceInterface)
+    public function __construct(OnlineBookingServiceInterface $onlineBookingServiceInterface,
+     RoomServiceInterface $roomServiceInterface)
     {
-        $this->OnlineBookingInterface = $OnlineBookingServiceInterface;
-        $this->RoomInterface = $RoomServiceInterface;
+        $this->onlineBookingInterface = $onlineBookingServiceInterface;
+        $this->roomInterface = $roomServiceInterface;
     }
     
 
@@ -44,9 +44,9 @@ class OnlineBookingController extends Controller
     public function showOnlineBookingList()
     {
         if(Auth::check()){
-            $OnlineBookingList = $this->OnlineBookingInterface->getOnlineBooking();
+            $onlineBookingList = $this->onlineBookingInterface->getOnlineBooking();
             return view('onlineBooking', [
-                'bookings' => $OnlineBookingList
+                'bookings' => $onlineBookingList
             ]);
         }
         else{
@@ -60,7 +60,7 @@ class OnlineBookingController extends Controller
      * @return View confirm
      */
     public function getBookingById($id) {
-        $booking = $this->OnlineBookingInterface->getBookingById($id);
+        $booking = $this->onlineBookingInterface->getBookingById($id);
         return view('confirm',[
             'booking'=> $booking
         ]);
@@ -71,13 +71,13 @@ class OnlineBookingController extends Controller
      * @return View OnlineBooking list
      */
     public function deleteOnlineBooking($id,$room_id) {
-        $this->OnlineBookingInterface->deleteOnlineBooking($id);
-        $Room = $this->RoomInterface->unsetStatus($room_id);
+        $this->onlineBookingInterface->deleteOnlineBooking($id);
+        $Room = $this->roomInterface->unsetStatus($room_id);
         return redirect("onlineBooking");
     }
 
     public function createBooking($id){
-        $roomid =$this->RoomInterface->getRoomById($id);
+        $roomid =$this->roomInterface->getRoomById($id);
         return view('user.booking',['rooms'=> $roomid]);
     }
     /**
@@ -87,8 +87,8 @@ class OnlineBookingController extends Controller
      */
     public function storeBooking(BookingRequest $request)
     {
-        $this->OnlineBookingInterface->storeBooking($request);
-        $this->RoomInterface->setStatus($request);
+        $this->onlineBookingInterface->storeBooking($request);
+        $this->roomInterface->setStatus($request);
         return redirect('user/roomuserview');
     }
 

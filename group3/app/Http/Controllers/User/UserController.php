@@ -17,16 +17,16 @@ class UserController extends Controller
     /**
      * User interface,User interface
      */
-    private $UserInterface;
+    private $userInterface;
 
     /**
      * Create a new controller instance.
      *
      * @return void
      */
-    public function __construct(UserServiceInterface $UserServiceInterface)
+    public function __construct(UserServiceInterface $userServiceInterface)
     {
-        $this->UserInterface = $UserServiceInterface;
+        $this->userInterface = $userServiceInterface;
 
     }
     
@@ -40,10 +40,10 @@ class UserController extends Controller
     {
         
         if(Auth::user()){
-            $UserList = $this->UserInterface->getUser();
+            $userList = $this->userInterface->getUser();
 
             return view('user', [
-                'User' => $UserList
+                'User' => $userList
             ]);
         }
         else{
@@ -59,7 +59,7 @@ class UserController extends Controller
      */
     public function addUser(Request $request) {
 
-        $User = $this->UserInterface->addUser($request);
+        $User = $this->userInterface->addUser($request);
         return redirect('/users');
     }
 
@@ -69,7 +69,7 @@ class UserController extends Controller
      * @return View User 
      */
     public function update($id) {
-        $User = $this->UserInterface->getUserById($id);
+        $User = $this->userInterface->getUserById($id);
         return view('userUpdate',[
             'User'=> $User
         ]);
@@ -83,7 +83,7 @@ class UserController extends Controller
      */
     public function updateUser(Request $request,$id) {
         // $validated = $request->validated();
-        $User = $this->UserInterface->updateUser($request,$id);
+        $User = $this->userInterface->updateUser($request,$id);
         return redirect('/users');
     }
 
@@ -93,7 +93,7 @@ class UserController extends Controller
      * @return View User list
      */
     public function deleteUser($id) {
-        $this->UserInterface->deleteUser($id);
+        $this->userInterface->deleteUser($id);
         return redirect('/users');
     }
 
