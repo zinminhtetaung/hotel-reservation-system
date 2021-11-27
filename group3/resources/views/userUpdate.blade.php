@@ -40,13 +40,18 @@
               </div>
             </div>
 
-
             <div class="form-group">
               <label for="role" class="input-ttl">Role</label>
               <div class="input-box">
-                <input type="text" min=0 name="role" value="{{ $User->role }}" class="input-txt">
+                <select name="role" class="select-box">
+                  <option class="select" value="admin">&nbsp; admin &nbsp;</option>
+                  <option class="select" value="manager">&nbsp; manager &nbsp;</option>
+                  <option class="select" value="receptionist">&nbsp; receptionist &nbsp;</option>
+                </select>
+                </select>
               </div>
             </div>
+
             <button type="submit" class="btn upd-btn">Update</button>
             <button type="submit" class="btn del-btn" onclick="return confirm('Are you sure to exit')">Cancel</button>
         </div>

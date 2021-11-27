@@ -27,21 +27,22 @@ Route::get('/', function () {
     return redirect()->route('home');
   });
 
-Route::post('/addUser', [UserController::class, 'addUser']);
+Route::post('/addUser', [UserController::class, 'addUser'])
+->middleware('preventBackHistory');
 
-Route::post('/users/update/{id}', [UserController::class, 'update']);
+Route::post('/users/update/{id}', [UserController::class, 'update'])
+->middleware('preventBackHistory');
 
-Route::post('/updateUser/{id}', [UserController::class, 'updateUser']);
+Route::post('/updateUser/{id}', [UserController::class, 'updateUser'])
+->middleware('preventBackHistory');
 
 Route::delete('/user/{id}', [UserController::class, 'deleteUser']);
 
-Route::get('/users', [UserController::class, 'getUser']);
-
-// Route::get('/login', function () {
-//     return view('login');
-// });  
+Route::get('/users', [UserController::class, 'getUser'])
+->middleware('preventBackHistory');
 
 Route::get('/loginuser', [LoginController::class, 'create'])->name('login');
+
 Route::post('/loginuserstore', [LoginController::class, 'store']);
 
 Route::get('/logout', [LoginController::class, 'destroy'])->name('logout');
@@ -49,22 +50,26 @@ Route::get('/logout', [LoginController::class, 'destroy'])->name('logout');
 /**
  * Display All Reservation
  */
-Route::get('/reservationlist', [ReservationController::class, 'showReservationList'])->name('reservationList');
+Route::get('/reservationlist', [ReservationController::class, 'showReservationList'])->name('reservationList')
+->middleware('preventBackHistory');
 
 /**
  * Add A New Reservation
  */
-Route::post('/reservation', [ReservationController::class, 'addReservation']);
+Route::post('/reservation', [ReservationController::class, 'addReservation'])
+->middleware('preventBackHistory');
 
 /**
  * Update Reservation Form
  */
-Route::post('/update/{id}', [ReservationController::class, 'update']);
+Route::post('/update/{id}', [ReservationController::class, 'update'])
+->middleware('preventBackHistory');
 
 /**
  * Update Reservation 
  */
-Route::post('/updateReservation/{id}', [ReservationController::class, 'updateReservation']);
+Route::post('/updateReservation/{id}', [ReservationController::class, 'updateReservation'])
+->middleware('preventBackHistory');
 /**
  * Delete An Existing Reservation
  */
@@ -72,22 +77,26 @@ Route::delete('/reservation/{id}/{room_id}', [ReservationController::class, 'del
 /**
  * 
  */
-Route::post('/show-room', [RoomController::class, 'searchRoom']);
+Route::post('/show-room', [RoomController::class, 'searchRoom'])
+->middleware('preventBackHistory');
 
 /**
  * Display All OnlineBooking
  */
-Route::get('/onlineBooking', [OnlineBookingController::class, 'showOnlineBookingList'])->name('onlineBookingList');
+Route::get('/onlineBooking', [OnlineBookingController::class, 'showOnlineBookingList'])
+->name('onlineBookingList')->middleware('preventBackHistory');
 
 /**
  * View Online booking
  */
-Route::post('/view-booking/{id}', [OnlineBookingController::class, 'getBookingById']);
+Route::post('/view-booking/{id}', [OnlineBookingController::class, 'getBookingById'])
+->middleware('preventBackHistory');
 
 /**
  * Confirm Online booking
  */
-Route::post('/confirm-booking', [ReservationController::class, 'addBooking']);
+Route::post('/confirm-booking', [ReservationController::class, 'addBooking'])
+->middleware('preventBackHistory');
 
 /**
  * Delete An Online Booking
@@ -96,26 +105,34 @@ Route::delete('/delete-booking/{id}/{room_id}', [OnlineBookingController::class,
 /**
  * Show Graph
  */
-Route::get('/graph', [ChartJsController::class, 'index'])->name('chartjs.index');
+Route::get('/graph', [ChartJsController::class, 'index'])->name('chartjs.index')
+->middleware('preventBackHistory');
 
-Route::get('/hotels/list', [HotelController::class, 'showHotelList'])->name('hotelList');
+Route::get('/hotels/list', [HotelController::class, 'showHotelList'])->name('hotelList')
+->middleware('preventBackHistory');
 
-Route::get('/hotel/download', [HotelController::class, 'downloadHotelCSV'])->name('downloadHotelCSV');
+Route::get('/hotel/download', [HotelController::class, 'downloadHotelCSV'])
+->name('downloadHotelCSV')->middleware('preventBackHistory');
 
 Route::delete('/hotels/list/{id}', [HotelController::class, 'deleteHotelById']);
 
-Route::get('/rooms/list', [RoomController::class, 'showRoomList'])->name('showroomList');
+Route::get('/rooms/list', [RoomController::class, 'showRoomList'])->name('showroomList')
+->middleware('preventBackHistory');
 
-Route::post('/rooms/create',  [RoomController::class, 'saveRoom'])->name('create.room');
+Route::post('/rooms/create',  [RoomController::class, 'saveRoom'])->name('create.room')
+->middleware('preventBackHistory');
 
 Route::delete('/rooms/delete/{id}', [RoomController::class, 'deleteRoomById']);
 
-Route::post('/rooms/update/{id}', [RoomController::class, 'update']);
+Route::post('/rooms/update/{id}', [RoomController::class, 'update'])
+->middleware('preventBackHistory');
 
-Route::post('/updateRoom/{id}', [RoomController::class, 'updateRoom']);
+Route::post('/updateRoom/{id}', [RoomController::class, 'updateRoom'])
+->middleware('preventBackHistory');
 
 // Search form 
-Route::get('/search', [ReservationController::class, 'searchForm']);
+Route::get('/search', [ReservationController::class, 'searchForm'])
+->middleware('preventBackHistory');
 
 /**
  * Search By --
@@ -135,14 +152,20 @@ Route::post('/searchCheckout', [ReservationController::class, 'searchByCheckOut'
 Route::post('/searchStartend', [ReservationController::class, 'searchByStartEnd']);
 
 Route::delete('/search/{id}/{room_id}', [ReservationController::class, 'deleteReservationSearch']);
-Route::get('/user/hotel/hotellist',[HotelController::class,'showHotelListUser'])->name('hotelview');
 
-Route::get('/user/roomuserview',[RoomController::class,'showRoomUserview'])->name('roomuserview');
+Route::get('/user/hotel/hotellist',[HotelController::class,'showHotelListUser'])
+->name('hotelview')->middleware('preventBackHistory');
 
-Route::get('/user/rooms/list', [RoomController::class, 'showRoomListUserView'])->name('showroomListuserview');
+Route::get('/user/roomuserview',[RoomController::class,'showRoomUserview'])
+->name('roomuserview')->middleware('preventBackHistory');
 
-Route::get('/user/booking/{id}',[OnlineBookingController::class,'createBooking'])->name('createbooking');
+Route::get('/user/rooms/list', [RoomController::class, 'showRoomListUserView'])
+->name('showroomListuserview')->middleware('preventBackHistory');
 
-Route::post('/user/storeBooking',[OnlineBookingController::class,'storeBooking'])->name('storebooking');
+Route::get('/user/booking/{id}',[OnlineBookingController::class,'createBooking'])
+->name('createbooking')->middleware('preventBackHistory');
+
+Route::post('/user/storeBooking',[OnlineBookingController::class,'storeBooking'])
+->name('storebooking')->middleware('preventBackHistory');
 
 Route::get('/user/home',[HomeController::class,'index'])->name('home');                                            
