@@ -4,8 +4,6 @@ namespace App\Dao\User;
 
 use App\Contracts\Dao\User\UserDaoInterface;
 use App\Models\User;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
 /**
@@ -21,7 +19,6 @@ class UserDao implements UserDaoInterface
         $user = User::orderBy('created_at', 'asc')->get();
         return $user;
     }
-
     
     /**
      * To get User by id
@@ -32,7 +29,6 @@ class UserDao implements UserDaoInterface
         $user = User::FindorFail($id);
         return $user;
     }
-
 
     /**
      * To save User
@@ -48,6 +44,7 @@ class UserDao implements UserDaoInterface
         $user->save();    
         return $user;
     }
+
      /**
      * To update User
      * @param string $id User id
@@ -64,6 +61,7 @@ class UserDao implements UserDaoInterface
         $user->save();    
         return $user;
     }
+
     /**
      * To delete User
      * @param string $id User id
@@ -71,7 +69,5 @@ class UserDao implements UserDaoInterface
      */
     public function deleteUser($id) {
         User::findOrFail($id)->delete();
-    }
-    
-    
+    }    
 }

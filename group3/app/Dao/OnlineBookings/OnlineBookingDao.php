@@ -4,7 +4,6 @@ namespace App\Dao\OnlineBookings;
 
 use App\Models\OnlineBooking;
 use App\Contracts\Dao\OnlineBooking\OnlineBookingDaoInterface;
-use Illuminate\Http\Request;
 
 /**
  * Data accessing object for OnlineBooking
@@ -19,6 +18,7 @@ class OnlineBookingDao implements OnlineBookingDaoInterface
         $bookings = OnlineBooking::orderBy('created_at', 'asc')->get();
         return $bookings;
     }
+
     /**
      * To get online booking by id
      * @param string $id reservation id
@@ -37,6 +37,7 @@ class OnlineBookingDao implements OnlineBookingDaoInterface
     public function deleteOnlineBooking($id) {
         OnlineBooking::findOrFail($id)->delete();
     }
+
     /**
      * To remove OnlineBooking
      * @param string $id OnlineBooking id
@@ -46,13 +47,22 @@ class OnlineBookingDao implements OnlineBookingDaoInterface
         OnlineBooking::findOrFail($request->id)->delete();
         
     }
+    /**
+     * To add Booking to reservation when booked
+     * @param $request
+     * @return $addOnlineBooking onlineBookingList in admin side
+     */
     public function storeBooking($request){
         $addBooking =$this->addData($request);
         $addOnlineBooking=OnlineBooking::create($addBooking);
-        return $addOnlineBooking;
-         
+        return $addOnlineBooking;   
     }
-     private function addData($request){
+
+    /**
+     * add Data to storeBooking
+     * @param $request
+     */
+    private function addData($request){
         return[
             'room_id' =>$request->input('room_id'),
             'customer_name' =>$request->customername,
@@ -62,5 +72,5 @@ class OnlineBookingDao implements OnlineBookingDaoInterface
             'check_in'=>$request->checkin,
             'check_out'=>$request->checkout,
         ];
-     }
+    }
 }

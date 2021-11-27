@@ -4,8 +4,6 @@ namespace App\Services\Reservation;
 
 use App\Contracts\Dao\Reservation\ReservationDaoInterface;
 use App\Contracts\Services\Reservation\ReservationServiceInterface;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Validator;
 
 /**
  * Service class for Reservation.
@@ -33,6 +31,7 @@ class ReservationService implements ReservationServiceInterface
     public function getReservation() {
         return $this->ReservationDao->getReservation();
     }
+    
     /**
      * To get reservation by id
      * @param string $id reservation id
@@ -41,6 +40,7 @@ class ReservationService implements ReservationServiceInterface
     public function getReservationById($id) {
         return $this->ReservationDao->getReservationById($id);
     }
+    
     /**
      * To save Reservation
      * @param object $request request value to validate
@@ -49,6 +49,7 @@ class ReservationService implements ReservationServiceInterface
     public function addReservation($request) {
         return $this->ReservationDao->addReservation($request);
     }
+    
     /**
      * To save online booking
      * @param object $booking 
@@ -57,6 +58,7 @@ class ReservationService implements ReservationServiceInterface
     public function addBooking($request) {
         return $this->ReservationDao->addBooking($request);
     }
+    
        /**
      * To update Reservation
      * @param object $request request value to validate

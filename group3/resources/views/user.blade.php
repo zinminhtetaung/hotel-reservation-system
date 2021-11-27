@@ -15,7 +15,7 @@
 
 
       <!-- New User Form -->
-      @if (Auth::user()->role=='admin')
+      @if (Auth::user()->role=='admin' || Auth::user()->role=='0')
       <form action="/addUser" method="POST" onSubmit="return confirm('Do you want to Add this User?')" class="add-form">
         {{ csrf_field() }}
 
@@ -75,7 +75,7 @@
                 <th>Role</th>
                 <th>Created_at</th>
                 <th>Updated_at</th>
-                @if (Auth::user()->role=='admin')
+                @if (Auth::user()->role=='admin' || Auth::user()->role=='0')
                 <th>Action 1</th>
                 <th>Action 2</th>
                 @endif
@@ -91,7 +91,7 @@
                 <td>{{ $User->role }}</td>
                 <td>{{ date('d/m/Y', strtotime($User->created_at)) }}</td>
                 <td>{{ date('d/m/Y', strtotime($User->updated_at)) }}</td>
-                @if (Auth::user()->role=='admin')
+                @if (Auth::user()->role=='admin' || Auth::user()->role=='0')
                 <td>
                   <form action="/users/update/{{ $User->id }}" method="POST">
                     {{ csrf_field() }}

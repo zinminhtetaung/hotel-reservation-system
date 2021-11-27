@@ -51,7 +51,6 @@ class ReservationController extends Controller
         $this->mailInterface=$mailServiceInterface;
     }
     
-
     /**
      * To show Reservation list
      *
@@ -64,11 +63,12 @@ class ReservationController extends Controller
             return view('reservations', [
                 'reservations' => $reservationList
             ]);
-        }else{
+        } else{
             return redirect()->route('login');
         }
         
     }
+
     /**
      * To add Reservation
      * @param ReservationRequest $request
@@ -146,7 +146,7 @@ class ReservationController extends Controller
         if(Auth::check()){
             $reservations = $this->reservationInterface->getReservation();
             return view('search', ['reservations' => $reservations]);
-        }else{
+        } else{
             return redirect()->route('login');
         }
         

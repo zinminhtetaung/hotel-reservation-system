@@ -165,7 +165,14 @@ body {
   background-color: #98ccd3;
   vertical-align: middle;
 }
-
+.hotel-name {
+  text-decoration: none;
+  color: #1a51aa;
+}
+.room_number {
+  text-decoration: none;
+  color: #1a51aa;
+}
 .modal {
   position: fixed;
   top: 50px;
@@ -207,6 +214,7 @@ body {
 
 .modal-body {
   position: relative;
+  font-size: 16px;
   padding: 1rem;
 }
 

@@ -3,8 +3,6 @@
 namespace App\Http\Controllers;
 use App\Models\Reservation;
 use Illuminate\Support\Facades\DB;
-use Carbon\Carbon;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class ChartJsController extends Controller

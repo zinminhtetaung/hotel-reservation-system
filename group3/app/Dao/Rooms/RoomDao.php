@@ -20,12 +20,11 @@ class RoomDao implements RoomDaoInterface
     public function searchRoom($request) {
 
         $room = DB::select( DB::raw("SELECT * FROM rooms WHERE
-                                    deleted_at IS NULL
-                                    AND
-                                    room_number = :room_number"), array(
-                                    'room_number' => $request->room_number                                   
-                                    ));
-                
+                deleted_at IS NULL
+                AND
+                room_number = :room_number"), array(
+                'room_number' => $request->room_number                                   
+            ));
         return $room;
     }
 

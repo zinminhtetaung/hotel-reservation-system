@@ -5,7 +5,6 @@
     use App\Contracts\Dao\Hotel\HotelDaoInterface;
     use App\Contracts\Services\Hotel\HotelServiceInterface;
     use Illuminate\Http\Request;
-    use Illuminate\Support\Facades\Storage;
 
     /**
      * Service class for service.

@@ -5,7 +5,6 @@ namespace App\Services\Room;
 use App\Contracts\Dao\Room\RoomDaoInterface;
 use App\Contracts\Services\Room\RoomServiceInterface;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Validator;
 
 /**
  * Service class for Room.

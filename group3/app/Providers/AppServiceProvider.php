@@ -1,18 +1,18 @@
 <?php
 
-namespace App\Providers;
+    namespace App\Providers;
 
-use Illuminate\Pagination\Paginator;
-use Illuminate\Support\ServiceProvider;
-use Illuminate\Support\Facades\Validator;
-use App\Contracts\Dao\Hotel\HotelDaoInterface;
-use App\Contracts\Services\Hotel\HotelServiceInterface;
-use App\Contracts\Dao\User\UserDaoInterface;
-use App\Contracts\Services\User\UserServiceInterface;
-use App\Dao\Hotel\HotelDao;
-use App\Dao\User\UserDao;
-use App\Services\Hotel\HotelService;
-use App\Services\User\UserService;
+    use Illuminate\Pagination\Paginator;
+    use Illuminate\Support\ServiceProvider;
+    use Illuminate\Support\Facades\Validator;
+    use App\Contracts\Dao\Hotel\HotelDaoInterface;
+    use App\Contracts\Services\Hotel\HotelServiceInterface;
+    use App\Contracts\Dao\User\UserDaoInterface;
+    use App\Contracts\Services\User\UserServiceInterface;
+    use App\Dao\Hotel\HotelDao;
+    use App\Dao\User\UserDao;
+    use App\Services\Hotel\HotelService;
+    use App\Services\User\UserService;
 
 
 class AppServiceProvider extends ServiceProvider
@@ -42,14 +42,18 @@ public function register(){
     
     }
     
-    /**
-     * Bootstrap any application services.
-     *
-     * @return void
-     */
-    public function boot()
-    {
-       Paginator::useBootstrap();
-       
+        /**
+         * Bootstrap any application services.
+         *
+         * @return void
+         */
+        public function boot()
+        {
+            Paginator::useBootstrap();
+        }
     }
+<<<<<<< HEAD
 }
+=======
+?>
+>>>>>>> b3fb05b5dc3325a74e618644a4ea567fb3a1c8a3

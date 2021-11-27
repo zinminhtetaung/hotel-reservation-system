@@ -6,8 +6,6 @@ namespace App\Services\User;
 use App\Contracts\Dao\User\UserDaoInterface;
 
 use App\Contracts\Services\User\UserServiceInterface;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Validator;
 
 /**
  * Service class for User.
@@ -17,7 +15,7 @@ class UserService implements UserServiceInterface
     /**
      * post dao
      */
-    private $userDao;
+    private $UserDao;
     /**
      * Class Constructor
      * @param UserDaoInterface
@@ -35,6 +33,7 @@ class UserService implements UserServiceInterface
     public function getUser() {
         return $this->UserDao->getUser();
     }
+    
     /**
      * To get User by id
      * @param string $id User id
@@ -43,6 +42,7 @@ class UserService implements UserServiceInterface
     public function getUserById($id) {
         return $this->UserDao->getUserById($id);
     }
+    
     /**
      * To save User
      * @param object $request request value to validate
@@ -51,6 +51,7 @@ class UserService implements UserServiceInterface
     public function addUser($request) {
         return $this->UserDao->addUser($request);
     }
+    
        /**
      * To update User
      * @param object $request request value to validate

@@ -11,6 +11,8 @@
       @include('common.errors')
 
       <!-- New reservation Form -->
+      
+      @if (Auth::user()->role=='manager')
       <form action="/rooms/create" method="POST" class="add-form" enctype="multipart/form-data">
         {{ csrf_field() }}
 
@@ -26,7 +28,6 @@
 
           </div>
         </div>
-        @if (Auth::user()->role=='manager')
         <div class="form-group">
           <label for="room_number" class="input-ttl required">Room number</label>
           <div class="input-box">
