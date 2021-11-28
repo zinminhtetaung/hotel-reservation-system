@@ -17,8 +17,7 @@ class ReservationDao implements ReservationDaoInterface
      */
     public function getReservation()
     {
-        $reservations = Reservation::orderBy('created_at', 'asc')->get();
-        return $reservations;
+        return Reservation::orderBy('created_at', 'asc')->get();
     }
 
     /**
@@ -28,8 +27,7 @@ class ReservationDao implements ReservationDaoInterface
      */
     public function getReservationById($id)
     {
-        $reservation = Reservation::FindorFail($id);
-        return $reservation;
+        return Reservation::FindorFail($id);
     }
 
     /**
@@ -39,16 +37,17 @@ class ReservationDao implements ReservationDaoInterface
      */
     public function addReservation($request)
     {
-        $reservations = new Reservation();
-        $reservations->customer_name = $request->customer_name;
-        $reservations->phone = $request->phone;
-        $reservations->room_id = $request->room_id;
-        $reservations->number_of_guest = $request->number_of_guest;
-        $reservations->check_in = $request->check_in;
-        $reservations->check_out = $request->check_out;
-        $reservations->user_id = 1;
-        $reservations->save();
-        return $reservations;
+        return DB::transaction(function () use ($request){
+            $reservations = new Reservation();
+            $reservations->customer_name = $request->customer_name;
+            $reservations->phone = $request->phone;
+            $reservations->room_id = $request->room_id;
+            $reservations->number_of_guest = $request->number_of_guest;
+            $reservations->check_in = $request->check_in;
+            $reservations->check_out = $request->check_out;
+            $reservations->user_id = 1;
+            $reservations->save();
+        });
     }
 
     /**
@@ -57,15 +56,17 @@ class ReservationDao implements ReservationDaoInterface
      */
     public function addBooking($request)
     {
-        $reservations = new Reservation();
-        $reservations->customer_name = $request->customer_name;
-        $reservations->phone = $request->phone;
-        $reservations->room_id = $request->room_id;
-        $reservations->number_of_guest = $request->number_of_guest;
-        $reservations->check_in = $request->check_in;
-        $reservations->check_out = $request->check_out;
-        $reservations->user_id = 1;
-        $reservations->save();
+        return DB::transaction(function () use ($request){
+            $reservations = new Reservation();
+            $reservations->customer_name = $request->customer_name;
+            $reservations->phone = $request->phone;
+            $reservations->room_id = $request->room_id;
+            $reservations->number_of_guest = $request->number_of_guest;
+            $reservations->check_in = $request->check_in;
+            $reservations->check_out = $request->check_out;
+            $reservations->user_id = 1;
+            $reservations->save();
+        });
     }
 
     /**
@@ -75,15 +76,16 @@ class ReservationDao implements ReservationDaoInterface
      */
     public function updateReservation($request, $id)
     {
-        $reservations = Reservation::FindorFail($id);
-        $reservations->customer_name = $request->customer_name;
-        $reservations->phone = $request->phone;
-        $reservations->number_of_guest = $request->number_of_guest;
-        $reservations->check_in = $request->check_in;
-        $reservations->check_out = $request->check_out;
-        $reservations->user_id = 1;
-        $reservations->save();
-        return $reservations;
+        return DB::transaction(function () use ($request, $id){
+            $reservations = Reservation::FindorFail($id);
+            $reservations->customer_name = $request->customer_name;
+            $reservations->phone = $request->phone;
+            $reservations->number_of_guest = $request->number_of_guest;
+            $reservations->check_in = $request->check_in;
+            $reservations->check_out = $request->check_out;
+            $reservations->user_id = 1;
+            $reservations->save();
+        });
     }
 
     /**
@@ -93,7 +95,14 @@ class ReservationDao implements ReservationDaoInterface
      */
     public function deleteReservation($id)
     {
-        Reservation::findOrFail($id)->delete();
+        return DB::transaction(function () use ($id){
+            $reservation = Reservation::find($id);
+            if ($reservation) {
+            $reservation->delete();
+            return 'Deleted Successfully!';
+            }
+            return 'Reservation Not Found!';
+        });
     }
 
     /**
@@ -102,13 +111,12 @@ class ReservationDao implements ReservationDaoInterface
      */
     public function searchReservationbyRID($request)
     {
-        $reservations = DB::select(DB::raw("SELECT * FROM reservations WHERE                                      
+        return DB::select(DB::raw("SELECT * FROM reservations WHERE                                      
             deleted_at IS NULL
             AND
             room_id = :room_id"), array(
             'room_id' => $request->room_id,
         ));
-        return $reservations;
     }
 
     /**
@@ -117,13 +125,12 @@ class ReservationDao implements ReservationDaoInterface
      */
     public function searchByCustomer($customer)
     {
-        $reservations = DB::select(DB::raw("SELECT * FROM reservations WHERE   
+        return DB::select(DB::raw("SELECT * FROM reservations WHERE   
         deleted_at IS NULL
             AND                                   
                 customer_name = :customer_name"), array(
             'customer_name' => $customer->customer_name,
         ));
-        return $reservations;
     }
 
     /**
@@ -132,13 +139,12 @@ class ReservationDao implements ReservationDaoInterface
      */
     public function searchByPhNo($phone)
     {
-        $reservations = DB::select(DB::raw("SELECT * FROM reservations WHERE  
+        return DB::select(DB::raw("SELECT * FROM reservations WHERE  
         deleted_at IS NULL
             AND                                    
                 phone = :phone"), array(
             'phone' => $phone->phone,
         ));
-        return $reservations;
     }
 
     /**
@@ -147,13 +153,12 @@ class ReservationDao implements ReservationDaoInterface
      */
     public function searchByGuestNo($guest_no)
     {
-        $reservations = DB::select(DB::raw("SELECT * FROM reservations WHERE  
+        return DB::select(DB::raw("SELECT * FROM reservations WHERE  
         deleted_at IS NULL
             AND                                    
                 number_of_guest = :number_of_guest"), array(
             'number_of_guest' => $guest_no->number_of_guest,
         ));
-        return $reservations;
     }
 
     /**
@@ -162,13 +167,12 @@ class ReservationDao implements ReservationDaoInterface
      */
     public function searchByCheckIn($checkin)
     {
-        $reservations = DB::select(DB::raw("SELECT * FROM reservations WHERE  
+        return DB::select(DB::raw("SELECT * FROM reservations WHERE  
         deleted_at IS NULL
             AND                                    
                 check_in = :check_in"), array(
             'check_in' => $checkin->check_in,
         ));
-        return $reservations;
     }
 
     /**
@@ -177,13 +181,12 @@ class ReservationDao implements ReservationDaoInterface
      */
     public function searchByCheckOut($checkout)
     {
-        $reservations = DB::select(DB::raw("SELECT * FROM reservations WHERE   
+        return DB::select(DB::raw("SELECT * FROM reservations WHERE   
         deleted_at IS NULL
             AND                                   
                 check_out = :check_out"), array(
             'check_out' => $checkout->check_out,
         ));
-        return $reservations;
     }
 
     /**
@@ -194,7 +197,7 @@ class ReservationDao implements ReservationDaoInterface
      */
     public function searchByStartEnd($start, $end)
     {
-        $reservations = DB::select(DB::raw("SELECT * FROM reservations WHERE
+        return DB::select(DB::raw("SELECT * FROM reservations WHERE
         deleted_at IS NULL
             AND
                 created_at >= :created_at AND
@@ -202,6 +205,5 @@ class ReservationDao implements ReservationDaoInterface
             'created_at' => $start->created_at,
             'created_at' => $end->created_at,
         ));
-        return $reservations;
     }
 }

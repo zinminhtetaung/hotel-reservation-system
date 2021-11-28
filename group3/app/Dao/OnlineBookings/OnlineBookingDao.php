@@ -3,6 +3,7 @@
 namespace App\Dao\OnlineBookings;
 
 use App\Models\OnlineBooking;
+use Illuminate\Support\Facades\DB;
 use App\Contracts\Dao\OnlineBooking\OnlineBookingDaoInterface;
 
 /**
@@ -15,8 +16,7 @@ class OnlineBookingDao implements OnlineBookingDaoInterface
      * @return OnlineBookings
      */
     public function getOnlineBooking() {
-        $bookings = OnlineBooking::orderBy('created_at', 'asc')->get();
-        return $bookings;
+        return OnlineBooking::orderBy('created_at', 'asc')->get();
     }
 
     /**
@@ -25,8 +25,7 @@ class OnlineBookingDao implements OnlineBookingDaoInterface
      * @return reservation
      */
     public function getBookingById($id) {
-        $booking = OnlineBooking::FindorFail($id);
-        return $booking;
+        return OnlineBooking::FindorFail($id);
     }
 
     /**
@@ -35,7 +34,14 @@ class OnlineBookingDao implements OnlineBookingDaoInterface
      * @return 
      */
     public function deleteOnlineBooking($id) {
-        OnlineBooking::findOrFail($id)->delete();
+        return DB::transaction(function () use ($id){
+            $booking = OnlineBooking::find($id);
+            if ($booking) {
+            $booking->delete();
+            return 'Deleted Successfully!';
+            }
+            return 'Booking Not Found!';
+        });
     }
 
     /**
@@ -44,7 +50,9 @@ class OnlineBookingDao implements OnlineBookingDaoInterface
      * @return message
      */
     public function removeOnlineBooking($request) {
-        OnlineBooking::findOrFail($request->id)->delete();
+        return DB::transaction(function () use ($request){ 
+            OnlineBooking::findOrFail($request->id)->delete();
+        });
         
     }
     /**
@@ -53,9 +61,10 @@ class OnlineBookingDao implements OnlineBookingDaoInterface
      * @return $addOnlineBooking onlineBookingList in admin side
      */
     public function storeBooking($request){
-        $addBooking =$this->addData($request);
-        $addOnlineBooking=OnlineBooking::create($addBooking);
-        return $addOnlineBooking;   
+        return DB::transaction(function () use ($request){ 
+            $addBooking =$this->addData($request);
+            return OnlineBooking::create($addBooking); 
+        });
     }
 
     /**
@@ -63,14 +72,16 @@ class OnlineBookingDao implements OnlineBookingDaoInterface
      * @param $request
      */
     private function addData($request){
-        return[
-            'room_id' =>$request->input('room_id'),
-            'customer_name' =>$request->customername,
-            'email'=>$request->email,
-            'phone' =>$request->phonenumber,
-            'number_of_guest'=>$request->guestno,
-            'check_in'=>$request->checkin,
-            'check_out'=>$request->checkout,
-        ];
+        return DB::transaction(function () use ($request){ 
+            return[
+                'room_id' =>$request->input('room_id'),
+                'customer_name' =>$request->customername,
+                'email'=>$request->email,
+                'phone' =>$request->phonenumber,
+                'number_of_guest'=>$request->guestno,
+                'check_in'=>$request->checkin,
+                'check_out'=>$request->checkout,
+            ];
+        });
     }
 }
