@@ -37,9 +37,17 @@
         <nav class="logout">
           <ul>
             <li>
-              <a class="nav-ttl" href="/logout">Logout</a>
+              <!-- <a class="nav-ttl" href="/logout">Logout</a> -->
+              <div class="dropdown">
+                  <button class="dropbtn">{{Auth::user()->user_name}}</button>
+                  
+                  <div class="dropdown-content">
+                    <a class="nav-ttl" href="/logout">Logout</a>
+                  </div>
+              </div>
             </li>
           </ul>
+
         </nav>
     </header>
   </div>
