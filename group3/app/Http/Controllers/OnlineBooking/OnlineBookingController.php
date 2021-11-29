@@ -42,9 +42,7 @@ class OnlineBookingController extends Controller
     {
         if(Auth::check()){
             $OnlineBookingList = $this->OnlineBookingInterface->getOnlineBooking();
-            return view('onlineBooking', [
-                'bookings' => $OnlineBookingList
-            ]);
+            return view('onlineBooking')->with(['bookings'=>$OnlineBookingList]);
         } else{
             return redirect()->route('login');
         }  
@@ -57,9 +55,7 @@ class OnlineBookingController extends Controller
      */
     public function getBookingById($id) {
         $booking = $this->OnlineBookingInterface->getBookingById($id);
-        return view('confirm',[
-            'booking'=> $booking
-        ]);
+        return view('confirm', compact('booking'));
     }
 
     /**
@@ -70,12 +66,12 @@ class OnlineBookingController extends Controller
     public function deleteOnlineBooking($id,$room_id) {
         $this->OnlineBookingInterface->deleteOnlineBooking($id);
         $Room = $this->RoomInterface->unsetStatus($room_id);
-        return redirect("onlineBooking");
+        return redirect()->route('onlineBookingList');
     }
 
     public function createBooking($id){
         $roomid =$this->RoomInterface->getRoomById($id);
-        return view('user.booking',['rooms'=> $roomid]);
+        return view('user.booking')->with(['rooms'=>$roomid]);
     }
 
     /**
@@ -87,6 +83,6 @@ class OnlineBookingController extends Controller
     {
         $this->OnlineBookingInterface->storeBooking($request);
         $this->RoomInterface->setStatus($request);
-        return redirect('user/roomuserview');
+        return redirect()->route('roomuserview');
     }
 }

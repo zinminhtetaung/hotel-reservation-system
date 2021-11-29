@@ -1,5 +1,6 @@
 @extends('layouts.app')
 @section('content')
+<h1 class="head">Monthly Checked In Reservation</h1>
 <div class="container">
   <div class="row">
     <div class="col-md-10 offset-md-1">

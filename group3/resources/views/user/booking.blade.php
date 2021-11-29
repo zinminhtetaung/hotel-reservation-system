@@ -13,7 +13,7 @@
       @endif
     </div>
 
-    <form class="booking-form " action="{{route('storebooking')}}" method="post">
+    <form class="booking-form " action="{{route('booking.store')}}" method="post">
       {{ csrf_field() }}
       <div class="bookingform-gp">
         <label>Room Number</label>

@@ -31,7 +31,7 @@
         {
             if(Auth::check()){
                 $hotelList = $this->hotelInterface->getHotelList();
-                return view('hotels.list', compact('hotelList'));
+                return view('hotels.list')->with(['hotelList'=>$hotelList]);
             } else{
                 return redirect()->route('login');
             }
@@ -65,7 +65,7 @@
         public function showHotelListUser()
         {
             $hotelList = $this->hotelInterface->getHotelList();
-            return view('user.hotelview', compact('hotelList'));
+            return view('user.hotelview')->with(['hotelList'=>$hotelList]);
         }
     }
 ?>

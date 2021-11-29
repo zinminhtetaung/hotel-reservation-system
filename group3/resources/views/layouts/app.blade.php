@@ -37,7 +37,7 @@
         <nav class="logout">
           <ul>
             <li>
-              <a class="nav-ttl" href="/logout">Logout</a>
+              <a class="nav-ttl" href="{{ route('logout') }}">Logout</a>
             </li>
           </ul>
         </nav>

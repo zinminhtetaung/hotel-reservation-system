@@ -54,16 +54,12 @@
                 <!-- Update Button -->
                 @if (Auth::user()->role=='receptionist')
                 <td>
-                  <form action="/view-booking/{{$booking->id}}" method="POST">
-                    {{ csrf_field() }}
-                    <button type="submit" class="btn add-btn">
-                      <i class="fa fa-btn fa-eye"></i>View
-                    </button>
-                  </form>
+                  <a type="button" class="btn btn-primary" href="/booking/{{$booking->id}}">View</a>
+
                 </td>
                 <!-- Delete Button -->
                 <td>
-                  <form action="/delete-booking/{{$booking->id}}/{{$booking->room_id}}" method="POST" onSubmit="return confirm('Are you sure you want to delete?')">
+                  <form action="/booking/{{$booking->id}}/{{$booking->room_id}}" method="POST" onSubmit="return confirm('Are you sure you want to delete?')">
                     {{ csrf_field() }}
                     {{ method_field('DELETE') }}
                     <button type="submit" class="btn del-btn">

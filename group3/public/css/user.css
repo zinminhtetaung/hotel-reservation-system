@@ -228,18 +228,18 @@
   width: 43.5%;
   left: 0;
   background-color: #132238;
-  margin-top: 15px;
+  top: 58px;
 }
 
 .roominfo-ttl::after {
   content: '';
   position: absolute;
   display: block;
-  height: 1px;
+  height: 2px;
   width: 43.5%;
   right: 0;
   background-color: #132238;
-
+  top: 58px;
 }
 
 .roominfo-ttl {

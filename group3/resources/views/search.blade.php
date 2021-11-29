@@ -12,7 +12,7 @@
       @include('common.errors')
 
       <!-- Search by RoomID -->
-      <form action="/searchRID" method="POST" class="form-search">
+      <form action="{{ route('searchRID')}}" method="POST" class="form-search">
         {{ csrf_field() }}
         <div class="search-form">
           <input type="text" name="room_id" class="search-txt" placeholder="search by roomID">
@@ -23,7 +23,7 @@
       </form>
 
       <!-- Search by Customer Name -->
-      <form action="/searchCustomer" method="POST" class="form-search">
+      <form action="{{ route('searchCusNm')}}" method="POST" class="form-search">
         {{ csrf_field() }}
         <div class="search-form">
           <input type="text" name="customer_name" class="search-txt" placeholder="search by customer name">
@@ -34,7 +34,7 @@
       </form>
 
       <!-- Search by Phone Number -->
-      <form action="/searchPhNo" method="POST" class="form-search">
+      <form action="{{ route('searchPhNo')}}" method="POST" class="form-search">
         {{ csrf_field() }}
         <div class="search-form">
           <input type="text" name="phone" class="search-txt" placeholder="search by phone number">
@@ -45,7 +45,7 @@
       </form>
 
       <!-- Search by Number of Guest -->
-      <form action="/searchGuest" method="POST" class="form-search">
+      <form action="{{ route('searchGNo')}}" method="POST" class="form-search">
         {{ csrf_field() }}
         <div class="search-form">
           <input type="number" min=0 name="number_of_guest" class="search-txt" placeholder=" search by Number of Guest">
@@ -56,7 +56,7 @@
       </form>
 
       <!-- Search by Check_In time -->
-      <form action="/searchCheckIn" method="POST" class="form-search">
+      <form action="{{ route('searchCheckIn')}}" method="POST" class="form-search">
         {{ csrf_field() }}
         <div class="search-form">
           <input type="date" name="check_in" class="search-txt" placeholder="search by check_in time">
@@ -67,7 +67,7 @@
       </form>
 
       <!-- Search by Check_out time -->
-      <form action="/searchCheckout" method="POST" class="form-search">
+      <form action="{{ route('searchCheckOut')}}" method="POST" class="form-search">
         {{ csrf_field() }}
         <div class="search-form">
           <input type="date" name="check_out" class="search-txt" placeholder="search by check_out time">
@@ -78,7 +78,7 @@
       </form>
 
       <!-- Search by Created time -->
-      <!-- <form action="/searchCheckout" method="POST" class="form-search">
+      <!-- <form action="{{ route('searchStartEnd')}}" method="POST" class="form-search">
         {{ csrf_field() }}
         <div class="search-form">
           <input type="date" name="start_date" class="search-txt">

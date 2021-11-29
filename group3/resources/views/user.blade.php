@@ -16,7 +16,7 @@
 
       <!-- New User Form -->
       @if (Auth::user()->role=='admin' || Auth::user()->role=='0')
-      <form action="/addUser" method="POST" onSubmit="return confirm('Do you want to Add this User?')" class="add-form">
+      <form action="{{route('user.create')}}" method="POST" onSubmit="return confirm('Do you want to Add this User?')" class="add-form">
         {{ csrf_field() }}
 
         <!-- User Name -->
@@ -49,8 +49,6 @@
             </select>
           </div>
         </div>
-
-
         <!-- Add User Button -->
         <div class="form-group">
           <button type="submit" onSubmit="return confirm('Do you want to add this User?')" class="btn add-btn">
@@ -93,15 +91,10 @@
                 <td>{{ date('d/m/Y', strtotime($User->updated_at)) }}</td>
                 @if (Auth::user()->role=='admin' || Auth::user()->role=='0')
                 <td>
-                  <form action="/users/update/{{ $User->id }}" method="POST">
-                    {{ csrf_field() }}
-                    <button type="submit" class="btn upd-btn">
-                      <i class="fa fa-btn fa-pencil-alt"></i>Update
-                    </button>
-                  </form>
+                  <a type="button" class="btn btn-primary" href="/users/{{ $User->id }}/update">Update</a>
                 </td>
                 <td>
-                  <form action="/user/{{ $User->id }}" method="POST" onSubmit="return confirm('Are you sure you want to delete?')">
+                  <form action="/user/{{ $User->id }}/delete" method="POST" onSubmit="return confirm('Are you sure you want to delete?')">
                     {{ csrf_field() }}
                     {{ method_field('DELETE') }}
 

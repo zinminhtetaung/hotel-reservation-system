@@ -60,7 +60,7 @@
       @if($room->status == "Available")
       <tr>
         <td colspan="2">
-          <a href="{{route('createbooking',$room->id)}}">
+          <a href="{{route('booking.create',$room->id)}}">
             <button type="submit" class="booking-btn">Booking</button>
           </a>
         </td>

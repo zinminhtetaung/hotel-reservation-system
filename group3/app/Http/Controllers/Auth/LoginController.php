@@ -31,7 +31,7 @@ class LoginController extends Controller
 
         $request->session()->regenerate();
 
-        return redirect('/reservationlist');
+        return redirect()->route('reservationList');
     }
 
     /**
@@ -50,7 +50,7 @@ class LoginController extends Controller
 
         $request->session()->regenerateToken();
 
-        return redirect('/user/home');
+        return redirect()->route('home');
     }
 
 }

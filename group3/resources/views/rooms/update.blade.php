@@ -20,7 +20,7 @@
           </div>
           @endif
 
-          <form action="/updateRoom/{{ $roomList->id }}" method="POST" onSubmit="return confirm('Do you want to update this room?')" class="add-form">
+          <form method="POST" onSubmit="return confirm('Do you want to update this room?')" class="add-form" enctype="multipart/form-data">
             {{ csrf_field() }}
 
             <div class="form-group">
@@ -60,7 +60,7 @@
             <div class="form-group">
               <label for="status" class="input-ttl">Status</label>
               <div class="input-box">
-                <select name="hotel_name" class="select-box">
+                <select name="status" class="select-box">
                   <option class="select" value="Available">&nbsp; Available &nbsp;</option>
                   <option class="select" value="Not Available">&nbsp; Not Available &nbsp;</option>
                 </select>
@@ -76,7 +76,7 @@
               <label class="input-ttl">{{ __('New Image') }}</label>
               <div class="input-box">
                 <label class="img-lable"for="upload">Upload an image</label>
-                <input type="file" class="image input-img" name="image" id="upload" autocomplete="image" required />
+                <input type="file" class="image input-img" name="image" id="upload" required />
               </div>
             </div>
             <div class="col-sm-12  text-center">

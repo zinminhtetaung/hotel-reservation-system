@@ -17,7 +17,7 @@ interface RoomDaoInterface
 
     /**
      * To save room that from api request
-     * @param array $request Validated values form request
+     * @param $request Validated values form request
      * @return Object created room object
      */
     public function saveRoom($request);

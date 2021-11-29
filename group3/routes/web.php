@@ -8,9 +8,7 @@ use App\Http\Controllers\Reservation\ReservationController;
 use App\Http\Controllers\Room\RoomController;
 use App\Http\Controllers\OnlineBooking\OnlineBookingController;
 use App\Http\Controllers\Hotel\HotelController;
-
 use App\Http\Controllers\User\UserController;
-use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,125 +22,89 @@ use Illuminate\Support\Facades\Auth;
 */
 
 Route::get('/', function () {
-    return redirect()->route('home');
-  });
+  return redirect()->route('home');
+});
 
-Route::post('/addUser', [UserController::class, 'addUser']);
+/**
+ * User view routes
+ */
+Route::get('/user/home',[HomeController::class,'index'])->name('home'); 
+Route::get('/user/hotel/hotellist',[HotelController::class,'showHotelListUser'])->name('hotelview');
+Route::get('/user/roomuserview',[RoomController::class,'showRoomUserview'])->name('roomuserview');
+Route::get('/user/rooms/list', [RoomController::class, 'showRoomListUserView'])->name('userview.roomlist');
+Route::get('/user/booking/{id}',[OnlineBookingController::class,'createBooking'])->name('booking.create');
+Route::post('/user/storeBooking',[OnlineBookingController::class,'storeBooking'])->name('booking.store');
 
-Route::post('/users/update/{id}', [UserController::class, 'update']);
+/**
+ * User routes
+ */
+Route::get('/users', [UserController::class, 'getUser'])->name('userlist');
+Route::post('/addUser', [UserController::class, 'addUser'])->name('user.create');
+Route::get('/users/{id}/update', [UserController::class, 'update'])->name('user.update');
+Route::post('/users/{id}/update', [UserController::class, 'updateUser'])->name('user.update');
+Route::delete('/user/{id}/delete', [UserController::class, 'deleteUser']);
 
-Route::post('/updateUser/{id}', [UserController::class, 'updateUser']);
-
-Route::delete('/user/{id}', [UserController::class, 'deleteUser']);
-
-Route::get('/users', [UserController::class, 'getUser']);
-
-// Route::get('/login', function () {
-//     return view('login');
-// });  
-
+/**
+ * Login routes
+ */
 Route::get('/loginuser', [LoginController::class, 'create'])->name('login');
-Route::post('/loginuserstore', [LoginController::class, 'store']);
-
+Route::post('/loginuserstore', [LoginController::class, 'store'])->name('login');
 Route::get('/logout', [LoginController::class, 'destroy'])->name('logout');
 
 /**
- * Display All Reservation
+ * Reservation routes
  */
 Route::get('/reservationlist', [ReservationController::class, 'showReservationList'])->name('reservationList');
-
-/**
- * Add A New Reservation
- */
-Route::post('/reservation', [ReservationController::class, 'addReservation']);
-
-/**
- * Update Reservation Form
- */
-Route::post('/update/{id}', [ReservationController::class, 'update']);
-
-/**
- * Update Reservation 
- */
-Route::post('/updateReservation/{id}', [ReservationController::class, 'updateReservation']);
-/**
- * Delete An Existing Reservation
- */
+Route::post('/reservation', [ReservationController::class, 'addReservation'])->name('reservation.add');
+Route::get('/reservation/{id}/edit', [ReservationController::class, 'update'])->name('reservation.update');
+Route::post('/reservation/{id}/edit', [ReservationController::class, 'updateReservation'])
+->name('reservation.update');
 Route::delete('/reservation/{id}/{room_id}', [ReservationController::class, 'deleteReservation']);
-/**
- * 
- */
-Route::post('/show-room', [RoomController::class, 'searchRoom']);
 
 /**
- * Display All OnlineBooking
+ *room search in reservation
  */
-Route::get('/onlineBooking', [OnlineBookingController::class, 'showOnlineBookingList'])->name('onlineBookingList');
+Route::post('/show-room', [RoomController::class, 'searchRoom'])->name('room.search');
 
 /**
- * View Online booking
+ * Online Booking admin view routes
  */
-Route::post('/view-booking/{id}', [OnlineBookingController::class, 'getBookingById']);
+Route::get('/onlineBooking', [OnlineBookingController::class, 'showOnlineBookingList'])
+->name('onlineBookingList');
+Route::get('/booking/{id}', [OnlineBookingController::class, 'getBookingById'])->name('booking.add');
+Route::post('/booking/{id}', [ReservationController::class, 'addBooking'])->name('booking.add');
+Route::delete('/booking/{id}/{room_id}', [OnlineBookingController::class, 'deleteOnlineBooking']);
 
-/**
- * Confirm Online booking
- */
-Route::post('/confirm-booking', [ReservationController::class, 'addBooking']);
-
-/**
- * Delete An Online Booking
- */
-Route::delete('/delete-booking/{id}/{room_id}', [OnlineBookingController::class, 'deleteOnlineBooking']);
 /**
  * Show Graph
  */
-Route::get('/graph', [ChartJsController::class, 'index'])->name('chartjs.index');
-
-Route::get('/hotels/list', [HotelController::class, 'showHotelList'])->name('hotelList');
-
-Route::get('/hotel/download', [HotelController::class, 'downloadHotelCSV'])->name('downloadHotelCSV');
-
-Route::delete('/hotels/list/{id}', [HotelController::class, 'deleteHotelById']);
-
-Route::get('/rooms/list', [RoomController::class, 'showRoomList'])->name('showroomList');
-
-Route::post('/rooms/create',  [RoomController::class, 'saveRoom'])->name('create.room');
-
-Route::delete('/rooms/delete/{id}', [RoomController::class, 'deleteRoomById']);
-
-Route::post('/rooms/update/{id}', [RoomController::class, 'update']);
-
-Route::post('/updateRoom/{id}', [RoomController::class, 'updateRoom']);
-
-// Search form 
-Route::get('/search', [ReservationController::class, 'searchForm']);
+Route::get('/graph', [ChartJsController::class, 'index'])->name('chartjs');
 
 /**
+ * Hotel routes
+ */
+Route::get('/hotels/list', [HotelController::class, 'showHotelList'])->name('hotelList');
+Route::get('/hotel/download', [HotelController::class, 'downloadHotelCSV'])->name('downloadHotelCSV');
+
+/**
+ * Room routes
+ */
+Route::get('/rooms/list', [RoomController::class, 'showRoomList'])->name('roomList');
+Route::post('/rooms/create',  [RoomController::class, 'saveRoom'])->name('create.room');
+Route::delete('/rooms/{id}/delete', [RoomController::class, 'deleteRoomById']);
+Route::get('/rooms/{id}/update', [RoomController::class, 'update'])->name('room.update');
+Route::post('/rooms/{id}/update', [RoomController::class, 'updateRoom'])->name('room.update');
+
+/**
+ * Search routes
  * Search By --
  */
-Route::post('/searchRID', [ReservationController::class, 'searchReservationbyRID']);
-
-Route::post('/searchCustomer', [ReservationController::class, 'searchByCustomer']);
-
-Route::post('/searchPhNo', [ReservationController::class, 'searchByPhNo']);
-
-Route::post('/searchGuest', [ReservationController::class, 'searchByGuestNo']);
-
-Route::post('/searchCheckIn', [ReservationController::class, 'searchByCheckIn']);
-
-Route::post('/searchCheckout', [ReservationController::class, 'searchByCheckOut']);
-
-Route::post('/searchStartend', [ReservationController::class, 'searchByStartEnd']);
-
+Route::get('/search', [ReservationController::class, 'searchForm'])->name('search');
+Route::post('/searchRID', [ReservationController::class, 'searchReservationbyRID'])->name('searchRID');
+Route::post('/searchCustomer', [ReservationController::class, 'searchByCustomer'])->name('searchCusNm');
+Route::post('/searchPhNo', [ReservationController::class, 'searchByPhNo'])->name('searchPhNo');
+Route::post('/searchGuest', [ReservationController::class, 'searchByGuestNo'])->name('searchGNo');
+Route::post('/searchCheckIn', [ReservationController::class, 'searchByCheckIn'])->name('searchCheckIn');
+Route::post('/searchCheckout', [ReservationController::class, 'searchByCheckOut'])->name('searchCheckOut');
+Route::post('/searchStartend', [ReservationController::class, 'searchByStartEnd'])->name('searchStartEnd');
 Route::delete('/search/{id}/{room_id}', [ReservationController::class, 'deleteReservationSearch']);
-Route::get('/user/hotel/hotellist',[HotelController::class,'showHotelListUser'])->name('hotelview');
-
-Route::get('/user/roomuserview',[RoomController::class,'showRoomUserview'])->name('roomuserview');
-
-Route::get('/user/rooms/list', [RoomController::class, 'showRoomListUserView'])->name('showroomListuserview');
-
-Route::get('/user/booking/{id}',[OnlineBookingController::class,'createBooking'])->name('createbooking');
-
-Route::post('/user/storeBooking',[OnlineBookingController::class,'storeBooking'])->name('storebooking');
-
-Route::get('/user/home',[HomeController::class,'index'])->name('home');                                            
