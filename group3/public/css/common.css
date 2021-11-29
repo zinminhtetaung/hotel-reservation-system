@@ -2,10 +2,6 @@
   float: left;
 }
 
-.logo {
-  width: 40%;
-}
-
 .navbar-nav {
   float: right;
 }
@@ -41,12 +37,32 @@ body {
 
 .logo {
   float: left;
+  width: 15%;
   margin-left: 50px;
 }
 
-.logo img {
-  width: 150px;
+.logo a img {
+  display: block;
+  width: 100%;
   border-radius: 50%;
+}
+
+.back {
+  position: relative;
+  text-decoration: none;
+  text-align: center;
+  color: #132238;
+  font-size: 20px;
+  margin-left: 30px;
+  top: 40px;
+}
+
+.back img {
+  width: 1.1%;
+}
+
+.back:hover {
+  color: #132238;
 }
 
 .nav {
@@ -68,9 +84,12 @@ body {
 .active {
   background-color: #364e68;
   border-radius: 5px;
-  color: #ebf0f6;
+  color: #ebf0f6 !important;
 }
 
+.active a{
+  color: #ebf0f6;
+}
 a:hover {
   color: #ebf0f6;
 }

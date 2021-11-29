@@ -7,8 +7,13 @@
 <div class="header">
 
   <div class="header-in clearfix">
-    <h1 class="logo"> <a href=""><img src="{{ asset('image/logo.jpeg') }}" alt="logo"></a></h1>
-    <ul class="nav">
+    <h1 class="logo">
+      <a href=""><img src="{{ asset('image/logo.jpeg') }}" alt="logo"></a>
+    </h1>
+    @if (Auth::user())
+    <a class="back" href="{{route('reservationList')}}">
+      <img src="{{ asset('image/l_arrow.png') }}"> Back to Dashboard</a>
+    @endif <ul class="nav">
       <li><a href="{{route('home')}}">Home</a></li>
       <li><a href="{{route('hotelview')}}">Hotel</a></li>
       <li> <a href="{{route('roomuserview')}}">Room</a></li>
@@ -24,7 +29,7 @@
       <div>
         <div class="login-title">{{ __('LOGIN') }}</div>
         <div>
-          <form method="POST" action="/loginuserstore">
+          <form method="POST" action="{{route('login')}}">
             @csrf
             <div>
               <div class="email-box">
