@@ -59,7 +59,7 @@
   <!-- JavaScripts -->
   <script src="{{asset ('js/lib/jquery.min.js')}}"></script>
   <script src="{{asset ('js/lib/bootstrap.min.js')}}"></script>
-  <script src="{{asset('js/script.js')}}"></script>
+  <script src="{{asset('js/common.js')}}"></script>
   <script src="{{asset ('js/lib/Chart.min.js')}}"></script>
   <script src="{{ asset('js/lib/jquery.dataTables.min.js') }}"></script>
 </body>

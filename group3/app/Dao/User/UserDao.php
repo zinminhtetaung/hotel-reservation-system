@@ -5,6 +5,7 @@ namespace App\Dao\User;
 use App\Contracts\Dao\User\UserDaoInterface;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\DB;
 
 /**
  * Data accessing object for User
@@ -16,8 +17,7 @@ class UserDao implements UserDaoInterface
      * @return Users
      */
     public function getUser() {
-        $user = User::orderBy('created_at', 'asc')->get();
-        return $user;
+        return User::orderBy('created_at', 'asc')->get();
     }
     
     /**
@@ -26,8 +26,7 @@ class UserDao implements UserDaoInterface
      * @return User
      */
     public function getUserById($id) {
-        $user = User::FindorFail($id);
-        return $user;
+        return User::FindorFail($id);
     }
 
     /**
@@ -35,14 +34,15 @@ class UserDao implements UserDaoInterface
      * @param object $request Validated values from request
      * @return Object created User object
      */
-    public function addUser($request) {    
-        $user = new User();
-        $user->user_name = $request->user_name;
-        $user->email = $request->email;
-        $user->password = Hash::make($request->password);
-        $user->role = $request->role;
-        $user->save();    
-        return $user;
+    public function addUser($request) {   
+        return DB::transaction(function () use ($request){ 
+            $user = new User();
+            $user->user_name = $request->user_name;
+            $user->email = $request->email;
+            $user->password = Hash::make($request->password);
+            $user->role = $request->role;
+            $user->save();    
+        });
     }
 
      /**
@@ -51,15 +51,14 @@ class UserDao implements UserDaoInterface
      * @return 
      */
     public function updateUser($request,$id) {
-        $user = User::FindorFail($id);
-        
-
-        $user->user_name = $request->user_name;
-        $user->email = $request->email;
-        $user->password = $request->password;
-        $user->role = $request->role;
-        $user->save();    
-        return $user;
+        return DB::transaction(function () use ($request, $id){ 
+            $user = User::FindorFail($id);        
+            $user->user_name = $request->user_name;
+            $user->email = $request->email;
+            $user->password = $request->password;
+            $user->role = $request->role;
+            $user->save();    
+        });
     }
 
     /**
@@ -68,6 +67,13 @@ class UserDao implements UserDaoInterface
      * @return 
      */
     public function deleteUser($id) {
-        User::findOrFail($id)->delete();
+        return DB::transaction(function () use ($id){
+            $user = User::find($id);
+            if ($user) {
+            $user->delete();
+            return 'Deleted Successfully!';
+            }
+            return 'User Not Found!';
+        });
     }    
 }
