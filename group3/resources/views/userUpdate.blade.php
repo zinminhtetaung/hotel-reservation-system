@@ -49,6 +49,7 @@
                 </select>              
               </div>
             </div>
+
             <button type="submit" class="btn upd-btn">Update</button>
             <button type="submit" class="btn del-btn" onclick="return confirm('Are you sure to exit')">Cancel</button>
         </div>

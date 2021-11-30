@@ -3,7 +3,7 @@
 @section('content')
 <script src="{{ asset('js/room-list.js') }}"></script>
 
-{{Auth::user()->role}}
+{{Auth::user()->user_name}}
 
 <h1 class="head">USER INFORMATION</h1>
 

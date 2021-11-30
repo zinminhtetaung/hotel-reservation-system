@@ -7,6 +7,8 @@ use App\Http\Requests\Auth\LoginRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
+use Symfony\Component\HttpFoundation\Session\Session as HttpFoundationSessionSession;
+
 class LoginController extends Controller
 {
     /**
@@ -42,12 +44,9 @@ class LoginController extends Controller
      */
     public function destroy(Request $request)
     {
-        // Session::flush();
-        // Auth::logout();
+        
         Auth::guard('web')->logout();
-
         $request->session()->invalidate();
-
         $request->session()->regenerateToken();
 
         return redirect()->route('home');
