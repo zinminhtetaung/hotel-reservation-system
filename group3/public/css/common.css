@@ -1,38 +1,38 @@
 .navbar-brand {
-    float: left;
+  float: left;
 }
 
 .navbar-nav {
-    float: right;
+  float: right;
 }
 
 body {
-    margin: 0;
+  margin: 0;
 }
 
 /* user view */
 * {
-    color: #132238;
+  color: #132238;
 }
 
 .container {
-    width: 1280px;
-    margin: 0 auto;
+  width: 1280px;
+  margin: 0 auto;
 }
 
 .clearfix::after {
-    content: "";
-    display: block;
-    visibility: hidden;
-    font-size: 0;
-    clear: both;
+  content: "";
+  display: block;
+  visibility: hidden;
+  font-size: 0;
+  clear: both;
 }
 
 .header {
-    background-color: #98ccd3;
-    padding-top: 30px;
-    padding-bottom: 10px;
-    border-bottom: 1px solid #132238;
+  background-color: #98ccd3;
+  padding-top: 30px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #132238;
 }
 
 .logo {
@@ -66,19 +66,19 @@ body {
 }
 
 .nav {
-    float: right;
-    padding-right: 40px;
+  float: right;
+  padding-right: 40px;
 }
 
 .nav li {
-    display: inline-block;
-    padding: 40px 10px;
+  display: inline-block;
+  padding: 40px 10px;
 }
 
 .nav a {
-    text-decoration: none;
-    padding: 2px 15px;
-    font-size: 20px;
+  text-decoration: none;
+  padding: 2px 15px;
+  font-size: 20px;
 }
 
 .active {
@@ -87,74 +87,77 @@ body {
   color: #ebf0f6 !important;
 }
 
-.active a{
+.active a {
   color: #ebf0f6;
 }
+
 a:hover {
-    color: #ebf0f6;
+  color: #ebf0f6;
 }
 
 #sctop {
-    width: 50px;
-    border-radius: 5px;
-    border: none;
-    position: fixed;
-    bottom: 100px;
-    right: 60px;
-   
+  width: 50px;
+  border-radius: 5px;
+  border: none;
+  position: fixed;
+  bottom: 100px;
+  right: 60px;
+
 }
-.arrow-img{
-    width: 100%;
+
+.arrow-img {
+  width: 100%;
 }
+
 .footer {
-    background-color: #364e68;
+  background-color: #364e68;
 }
 
 .address {
-    padding-bottom: 30px;
+  padding-bottom: 30px;
 }
 
 .office {
-    float: left;
-    margin: 20px 0 0 60px;
-    width: 30%;
+  float: left;
+  margin: 20px 0 0 60px;
+  width: 30%;
 }
 
 .partner {
-    float: left;
-    width: 28%;
-    margin: 20px 0 0 70px;
+  float: left;
+  width: 28%;
+  margin: 20px 0 0 70px;
 }
 
 .contact {
-    float: right;
-    width: 27%;
-    margin: 20px 0 0 30px;
+  float: right;
+  width: 27%;
+  margin: 20px 0 0 30px;
 }
 
 .office-title,
 .partner-title,
 .contact-title {
-    font-size: 25px;
-    padding-bottom: 20px;
-    color: #98ccd3;
+  font-size: 25px;
+  padding-bottom: 20px;
+  color: #98ccd3;
 }
 
 .office li,
 .partner li,
 .contact li {
-    padding-top: 15px;
-    font-size: 18px;
-    color: #ebf0f6;
+  padding-top: 15px;
+  font-size: 18px;
+  color: #ebf0f6;
 }
 
 .copyright {
-    border-top: 1px solid #132238;
-    padding-bottom: 20px;
-    padding-top: 10px;
+  border-top: 1px solid #132238;
+  padding-bottom: 20px;
+  padding-top: 10px;
 }
 
 .copyright p {
-    text-align: center;
-    color: #ebf0f6;
+  text-align: center;
+  color: #ebf0f6;
 }
