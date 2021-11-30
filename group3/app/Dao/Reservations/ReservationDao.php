@@ -38,16 +38,17 @@ class ReservationDao implements ReservationDaoInterface
      */
     public function addReservation($request)
     {
-        $reservations = new Reservation();
-        $reservations->customer_name = $request->customer_name;
-        $reservations->phone = $request->phone;
-        $reservations->room_id = $request->room_id;
-        $reservations->number_of_guest = $request->number_of_guest;
-        $reservations->check_in = $request->check_in;
-        $reservations->check_out = $request->check_out;
-        $reservations->user_id = Auth::user()->id;
-        $reservations->save();
-        return $reservations;
+        return DB::transaction(function () use ($request){
+            $reservations = new Reservation();
+            $reservations->customer_name = $request->customer_name;
+            $reservations->phone = $request->phone;
+            $reservations->room_id = $request->room_id;
+            $reservations->number_of_guest = $request->number_of_guest;
+            $reservations->check_in = $request->check_in;
+            $reservations->check_out = $request->check_out;
+            $reservations->user_id = Auth::user()->id;
+            $reservations->save();
+        });
     }
 
     /**
@@ -56,15 +57,17 @@ class ReservationDao implements ReservationDaoInterface
      */
     public function addBooking($request)
     {
-        $reservations = new Reservation();
-        $reservations->customer_name = $request->customer_name;
-        $reservations->phone = $request->phone;
-        $reservations->room_id = $request->room_id;
-        $reservations->number_of_guest = $request->number_of_guest;
-        $reservations->check_in = $request->check_in;
-        $reservations->check_out = $request->check_out;
-        $reservations->user_id = Auth::user()->id;
-        $reservations->save();
+        return DB::transaction(function () use ($request){
+            $reservations = new Reservation();
+            $reservations->customer_name = $request->customer_name;
+            $reservations->phone = $request->phone;
+            $reservations->room_id = $request->room_id;
+            $reservations->number_of_guest = $request->number_of_guest;
+            $reservations->check_in = $request->check_in;
+            $reservations->check_out = $request->check_out;
+            $reservations->user_id = Auth::user()->id;
+            $reservations->save();
+        });
     }
 
     /**
@@ -74,15 +77,16 @@ class ReservationDao implements ReservationDaoInterface
      */
     public function updateReservation($request, $id)
     {
-        $reservations = Reservation::FindorFail($id);
-        $reservations->customer_name = $request->customer_name;
-        $reservations->phone = $request->phone;
-        $reservations->number_of_guest = $request->number_of_guest;
-        $reservations->check_in = $request->check_in;
-        $reservations->check_out = $request->check_out;
-        $reservations->user_id = Auth::user()->id;
-        $reservations->save();
-        return $reservations;
+        return DB::transaction(function () use ($request, $id){
+            $reservations = Reservation::FindorFail($id);
+            $reservations->customer_name = $request->customer_name;
+            $reservations->phone = $request->phone;
+            $reservations->number_of_guest = $request->number_of_guest;
+            $reservations->check_in = $request->check_in;
+            $reservations->check_out = $request->check_out;
+            $reservations->user_id = Auth::user()->id;
+            $reservations->save();
+        });
     }
 
     /**

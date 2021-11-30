@@ -60,17 +60,18 @@ class RoomDao implements RoomDaoInterface
      */
     public function saveRoom($request)
     {
-        $room = new Room();
-        $room->hotel_id = $request->hotel_id;  
-        $room->room_number = $request->room_number;   
-        $room->room_type = $request->room_type;
-        $room->service = $request->service;
-        $room->price = $request->price;
-        $room->status = $request->status;
-        $room->image = $request->image->getClientOriginalName();
-        $room->user_id = Auth::user()->id;
-        $room->save();
-        return $room;
+        return DB::transaction(function () use ($request){
+            $room = new Room();
+            $room->hotel_id = $request->hotel_id;  
+            $room->room_number = $request->room_number;   
+            $room->room_type = $request->room_type;
+            $room->service = $request->service;
+            $room->price = $request->price;
+            $room->status = $request->status;
+            $room->image = $request->image->getClientOriginalName();
+            $room->user_id = Auth::user()->id;
+            $room->save();
+        });   
     }
 
     /**
@@ -100,17 +101,18 @@ class RoomDao implements RoomDaoInterface
      */
     public function updateRoomByID(Request $request, $id)
     {
-        $room = Room::find($id);
-        $room->hotel_id = $request->hotel_id;  
-        $room->room_number = $request->room_number;   
-        $room->room_type = $request->room_type;
-        $room->service = $request->service;
-        $room->price = $request->price;
-        $room->status = $request->status;
-        $room->image = $request->image;
-        $room->user_id = Auth::user()->id;
-        $room->save();
-        return $room;
+        return DB::transaction(function () use ($request, $id){
+            $room = Room::find($id);
+            $room->hotel_id = $request->hotel_id;  
+            $room->room_number = $request->room_number;   
+            $room->room_type = $request->room_type;
+            $room->service = $request->service;
+            $room->price = $request->price;
+            $room->status = $request->status;
+            $room->image = $request->image->getClientOriginalName();
+            $room->user_id = Auth::user()->id;
+            $room->save();
+        });
     }
 
     /**
