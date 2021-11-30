@@ -38,8 +38,8 @@ class UserController extends Controller
     public function getUser()
     {
         if(Auth::user()){
-            $UserList = $this->userInterface->getUser();
-            return view('user')->with(['User'=>$UserList]);
+            $userList = $this->userInterface->getUser();
+            return view('user')->with('User', $userList);
         } else{
             return redirect()->route('login');
         }   
@@ -51,8 +51,7 @@ class UserController extends Controller
      * @return View User list
      */
     public function addUser(Request $request) {
-
-        $User = $this->userInterface->addUser($request);
+        $this->userInterface->addUser($request);
         return redirect()->route('userlist');
     }
 
@@ -62,8 +61,8 @@ class UserController extends Controller
      * @return View User 
      */
     public function update($id) {
-        $User = $this->userInterface->getUserById($id);
-        return view('userUpdate')->with(['User'=>$User]);
+        $user = $this->userInterface->getUserById($id);
+        return view('userUpdate')->with( 'User', $user);
     }
 
     /**
@@ -72,7 +71,7 @@ class UserController extends Controller
      * @return View User list
      */
     public function updateUser(Request $request,$id) {
-        $User = $this->userInterface->updateUser($request,$id);
+        $this->userInterface->updateUser($request,$id);
         return redirect()->route('userlist');
     }
 

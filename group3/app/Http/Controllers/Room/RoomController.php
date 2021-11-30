@@ -39,11 +39,12 @@ class RoomController extends Controller
      *
      * @return View Room list
      */
-    public function searchRoom(Request $request) {
+    public function searchRoom(Request $request)
+    {
         $room = $this->roomServiceInterface->searchRoom($request);
-        return view('showRoomId')->with(['room'=>$room]);
+        return view('showRoomId')->with('room', $room);
     }
-  
+
     /**
      * To add Room
      * @param RoomRequest $request
@@ -59,7 +60,8 @@ class RoomController extends Controller
      * @param RoomRequest $request
      * @return View Room 
      */
-    public function update($id) {
+    public function update($id)
+    {
         $room = $this->roomServiceInterface->getRoomById($id);
         $hotels = $this->hotelServiceInterface->getHotelList();
         return view('rooms.update')->with(['hotels'=>$hotels,'roomList'=>$room]);
@@ -82,11 +84,11 @@ class RoomController extends Controller
      */
     public function showRoomList()
     {
-        if(Auth::check()){
+        if (Auth::check()) {
             $roomList = $this->roomServiceInterface->getRoomList();
             $hotels = $this->hotelServiceInterface->getHotelList();
             return view('rooms.list')->with(['hotels'=>$hotels,'roomList'=>$roomList]);
-        } else{
+        } else {
             return redirect()->route('login');
         }
     }
@@ -107,8 +109,9 @@ class RoomController extends Controller
      *
      * @return View Room user view
      */
-    public function showRoomUserview(){
+    public function showRoomUserview()
+    {
         $roomList = $this->roomServiceInterface->getRoomListUserView();
-        return view('user.roomuserview')->with(['roomList'=>$roomList]);
+        return view('user.roomlist')->with('roomList', $roomList);
     }
 }

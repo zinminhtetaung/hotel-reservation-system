@@ -27,8 +27,6 @@ class HomeController extends Controller
     public function index()
     {
         $roomList = $this->roomServiceInterface->getRoomList();
-        return view('user.home', [
-            'roomList' => $roomList,
-        ]);
+        return view('user.home')->with('roomList', $roomList);
     }
 }

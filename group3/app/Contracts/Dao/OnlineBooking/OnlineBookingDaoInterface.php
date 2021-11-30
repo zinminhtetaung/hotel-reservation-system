@@ -2,8 +2,6 @@
 
 namespace App\Contracts\Dao\OnlineBooking;
 
-use Illuminate\Http\Request;
-
 /**
  * Interface for Data Accessing Object of Post
  */

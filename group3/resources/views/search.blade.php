@@ -76,19 +76,6 @@
           </button>
         </div>
       </form>
-
-      <!-- Search by Created time -->
-      <!-- <form action="{{ route('searchStartEnd')}}" method="POST" class="form-search">
-        {{ csrf_field() }}
-        <div class="search-form">
-          <input type="date" name="start_date" class="search-txt">
-        </div>
-        <input type="date" name="end_date" class="search-txt">
-        <button type="submit" class="btn search-btn">
-          <i class="fa fa-search"></i> Search by Created time
-        </button>
-      </form> -->
-
       <!-- Result reservations -->
       <div class="card">
         <div class="card-header">{{ __('Search results') }}</div>
