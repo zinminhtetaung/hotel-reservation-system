@@ -56,7 +56,7 @@ Route::delete('/user/{id}/delete', [UserController::class, 'deleteUser']);
  * Login routes
  */
 Route::get('/loginuser', [LoginController::class, 'create'])->name('login');
-Route::post('/loginuserstore', [LoginController::class, 'store'])->name('login');
+Route::post('/loginuserstore', [LoginController::class, 'store'])->name('logins');
 Route::get('/logout', [LoginController::class, 'destroy'])->name('logout');
 
 /**

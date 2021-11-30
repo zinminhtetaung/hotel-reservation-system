@@ -27,7 +27,7 @@
       <div>
         <div class="login-title">{{ __('LOGIN') }}</div>
         <div>
-          <form method="POST" action="{{route('login')}}">
+          <form method="POST" action="{{route('logins')}}">
             @csrf
             <div>
               <div class="email-box">

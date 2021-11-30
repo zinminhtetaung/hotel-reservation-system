@@ -42,15 +42,15 @@ if (copyTextareaBtn) {
     linkColor.forEach((l) => l.addEventListener("click", colorLink));
 }
 /*==================== Top button====================*/
-window.onscroll=function(){
-    scrollFun()
-  };
-var btntop=document.getElementById("sctop")
-function scrollFun(){
-    if(document.body.scrollTop>400||document.documentElement.scrollTop>400){
-        btntop.style.display="block";
+
+var btntop=document.getElementById("sctop");
+window.onscroll = function() {scrollFunction()};
+
+function scrollFunction(){
+    if(document.body.scrollTop>20||document.documentElement.scrollTop>20){ 
+        btntop.style.display = "block";
     }else{
-        btntop.style.display="none";
+        btntop.style.display = "none";
     }
 }
 function topFun(){

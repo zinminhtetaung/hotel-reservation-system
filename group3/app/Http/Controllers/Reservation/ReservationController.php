@@ -65,7 +65,6 @@ class ReservationController extends Controller
         } else{
             return redirect()->route('login');
         }
-        
     }
 
     /**
@@ -74,8 +73,8 @@ class ReservationController extends Controller
      * @return View Reservation list
      */
     public function addReservation(ReservationRequest $request) {
-        $this->ReservationInterface->addReservation($request);
-        $this->RoomInterface->setStatus($request);
+        $this->reservationInterface->addReservation($request);
+        $this->roomInterface->setStatus($request);
         return redirect()->route('reservationList');
     }
 
@@ -85,10 +84,10 @@ class ReservationController extends Controller
      * @return View Online Booking
      */
     public function addBooking(Request $request) {
-        $this->MailInterface->sendMail($request);
-        $this->ReservationInterface->addBooking($request);
-        $this->OnlineBookingInterface->removeOnlineBooking($request);
-        $this->OnlineBookingInterface->getOnlineBooking();
+        $this->mailInterface->sendMail($request);
+        $this->reservationInterface->addBooking($request);
+        $this->onlineBookingInterface->removeOnlineBooking($request);
+        $this->onlineBookingInterface->getOnlineBooking();
         return redirect()->route('onlineBookingList')->with('success','Email sent successfully!');
     }
 
@@ -108,7 +107,7 @@ class ReservationController extends Controller
      * @return View Reservation list
      */
     public function updateReservation(Request $request,$id) {
-        $this->ReservationInterface->updateReservation($request,$id);
+        $this->reservationInterface->updateReservation($request,$id);
         return redirect()->route('reservationList');
     }
 
@@ -118,8 +117,8 @@ class ReservationController extends Controller
      * @return View Reservation list
      */
     public function deleteReservation($id,$room_id) {
-        $this->ReservationInterface->deleteReservation($id);
-        $this->RoomInterface->unsetStatus($room_id);
+        $this->reservationInterface->deleteReservation($id);
+        $this->roomInterface->unsetStatus($room_id);
         return redirect()->route('reservationList');
     }
 
@@ -129,8 +128,8 @@ class ReservationController extends Controller
      * @return View Reservation list
      */
     public function deleteReservationSearch($id,$room_id) {
-        $this->ReservationInterface->deleteReservation($id);
-        $this->RoomInterface->unsetStatus($room_id);
+        $this->reservationInterface->deleteReservation($id);
+        $this->roomInterface->unsetStatus($room_id);
         return redirect('/search');
     }
 
@@ -145,7 +144,6 @@ class ReservationController extends Controller
         } else{
             return redirect()->route('login');
         }
-        
     }
 
     /**
@@ -153,7 +151,7 @@ class ReservationController extends Controller
      * @return View Reservation
      */
     public function searchReservationbyRID(Request $request) {
-        $reservations = $this->ReservationInterface->searchReservationbyRID($request);
+        $reservations = $this->reservationInterface->searchReservationbyRID($request);
         return view('search')->with('reservations',$reservations);
     }
 
@@ -162,7 +160,7 @@ class ReservationController extends Controller
      * @return view $reservations
      */
     public function searchByCustomer(Request $request) {
-        $reservations = $this->ReservationInterface->searchByCustomer($request);
+        $reservations = $this->reservationInterface->searchByCustomer($request);
         return view('search')->with('reservations',$reservations);
     }
 
@@ -171,7 +169,7 @@ class ReservationController extends Controller
      * @return view $reservations
      */
     public function searchByPhNo(Request $request) {
-        $reservations = $this->ReservationInterface->searchByPhNo($request);
+        $reservations = $this->reservationInterface->searchByPhNo($request);
         return view('search')->with('reservations', $reservations) ;
     }
 
@@ -180,7 +178,7 @@ class ReservationController extends Controller
      * @return view $reservations
      */
     public function searchByGuestNo(Request $request) {
-        $reservations = $this->ReservationInterface->searchByGuestNo($request);
+        $reservations = $this->reservationInterface->searchByGuestNo($request);
         return view('search')->with('reservations', $reservations); 
     }
 
@@ -189,7 +187,7 @@ class ReservationController extends Controller
      * @return view $reservations
      */
     public function searchByCheckIn(Request $request) {
-        $reservations = $this->ReservationInterface->searchByCheckIn($request);
+        $reservations = $this->reservationInterface->searchByCheckIn($request);
         return view('search')->with('reservations', $reservations);
     }
 
@@ -198,7 +196,7 @@ class ReservationController extends Controller
      * @return view $reservations
      */
     public function searchByCheckOut(Request $request) {
-        $reservations = $this->ReservationInterface->searchByCheckOut($request);
+        $reservations = $this->reservationInterface->searchByCheckOut($request);
         return view('search')->with('reservations', $reservations);
     }
 
@@ -209,7 +207,7 @@ class ReservationController extends Controller
      * @return view $reservations
      */
     public function searchByStartEnd(Request $start, Request $end) {
-        $reservations = $this->ReservationInterface->searchByStartEnd($start, $end);
+        $reservations = $this->reservationInterface->searchByStartEnd($start, $end);
         return view('search')->with('reservations', $reservations);
     }
 }

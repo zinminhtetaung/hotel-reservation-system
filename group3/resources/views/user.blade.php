@@ -3,8 +3,6 @@
 @section('content')
 <script src="{{ asset('js/room-list.js') }}"></script>
 
-{{Auth::user()->user_name}}
-
 <h1 class="head">USER INFORMATION</h1>
 
 <div class="body clearfix">
@@ -12,8 +10,7 @@
     <div class="content">
       <!-- Display Validation Errors -->
       @include('common.errors')
-
-
+      
       <!-- New User Form -->
       @if (Auth::user()->role=='admin' || Auth::user()->role=='0')
       <form action="{{route('user.create')}}" method="POST" onSubmit="return confirm('Do you want to Add this User?')" class="add-form">

@@ -13,7 +13,9 @@
       <li><a href="{{route('home')}}" class="active">Home</a></li>
       <li><a href="{{route('hotelview')}}">Hotel</a></li>
       <li> <a href="{{route('roomuserview')}}">Room</a></li>
-      <li><a href="{{url('/loginuser')}}">Login</a></li>
+      @if (!Auth::user())
+        <li><a href="{{route('login')}}">Login</a></li>
+      @endif 
     </ul>
   </div>
 </div>

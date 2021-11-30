@@ -10,11 +10,14 @@
     @if (Auth::user())
     <a class="back" href="{{route('reservationList')}}">
       <img src="{{ asset('image/l_arrow.png') }}"> Back to Dashboard</a>
-    @endif <ul class="nav">
+    @endif 
+    <ul class="nav">
       <li><a href="{{route('home')}}">Home</a></li>
       <li><a href="{{route('hotelview')}}">Hotel</a></li>
       <li> <a href="{{route('roomuserview')}}" class="active">Room</a></li>
-      <li><a href="{{url('/loginuser')}}">Login</a></li>
+      @if (!Auth::user())
+        <li><a href="{{url('/loginuser')}}">Login</a></li>
+      @endif 
     </ul>
   </div>
 </div>
