@@ -6,8 +6,9 @@
 <title>Hotel Reservation System</title>
 <link rel="stylesheet" href="{{ asset('css/user.css') }}">
 <link rel="stylesheet" href="{{ asset('css/reset.css') }}">
-<link rel="stylesheet" href="{{ asset('css/common.css') }}">
 <link rel="stylesheet" href="{{ asset('css/login.css')}}">
+<link rel="stylesheet" href="{{ asset('css/common.css') }}">
+
 
 </head>
 
@@ -43,5 +44,6 @@
     </div>
   </div>
 </body>
-
+<script src="{{asset ('js/lib/jquery.min.js')}}"></script>
+<script src="{{asset('js/common.js')}}"></script>
 </html>

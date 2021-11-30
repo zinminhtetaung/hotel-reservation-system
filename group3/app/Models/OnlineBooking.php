@@ -16,5 +16,5 @@ class OnlineBooking extends Model
         'number_of_guest',
         'check_in',
         'check_out',
-];
+    ];
 }

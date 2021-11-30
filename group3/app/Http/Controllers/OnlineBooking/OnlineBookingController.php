@@ -41,14 +41,13 @@ class OnlineBookingController extends Controller
      */
     public function showOnlineBookingList()
     {
-        if(Auth::check()){
-            $onlineBookingList = $this->onlineBookingInterface->getOnlineBooking();
-            return view('onlineBooking', [
-                'bookings' => $onlineBookingList
-            ]);
-        } else{
+        if (Auth::check()) {
+            $OnlineBookingList = $this->OnlineBookingInterface->getOnlineBooking();
+            return view('onlineBooking')->with('bookings', $OnlineBookingList);
+
+        } else {
             return redirect()->route('login');
-        }  
+        }
     }
 
     /**
@@ -56,11 +55,10 @@ class OnlineBookingController extends Controller
      * @param $request
      * @return View confirm
      */
-    public function getBookingById($id) {
-        $booking = $this->onlineBookingInterface->getBookingById($id);
-        return view('confirm',[
-            'booking'=> $booking
-        ]);
+    public function getBookingById($id)
+    {
+        $booking = $this->OnlineBookingInterface->getBookingById($id);
+        return view('confirm')->with('booking', $booking);
     }
 
     /**
@@ -68,15 +66,17 @@ class OnlineBookingController extends Controller
      * @param sting $id
      * @return View OnlineBooking list
      */
-    public function deleteOnlineBooking($id,$room_id) {
-        $this->onlineBookingInterface->deleteOnlineBooking($id);
-        $Room = $this->roomInterface->unsetStatus($room_id);
+    public function deleteOnlineBooking($id, $room_id)
+    {
+        $this->OnlineBookingInterface->deleteOnlineBooking($id);
+        $this->RoomInterface->unsetStatus($room_id);
         return redirect("onlineBooking");
     }
 
-    public function createBooking($id){
-        $roomid =$this->roomInterface->getRoomById($id);
-        return view('user.booking',['rooms'=> $roomid]);
+    public function createBooking($id)
+    {
+        $roomid = $this->RoomInterface->getRoomById($id);
+        return view('user.booking')->with('rooms', $roomid);
     }
 
     /**

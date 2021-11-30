@@ -28,6 +28,6 @@ class ConfirmMail extends Mailable
      */
     public function build()
     {
-        return $this->markdown('emails.confirmMail');
+        return $this->markdown('emails.confirm');
     }
 }

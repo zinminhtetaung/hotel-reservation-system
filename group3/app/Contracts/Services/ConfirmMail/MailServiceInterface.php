@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Contracts\Services\ConfirmMail;
-use Illuminate\Http\Request;
 
 /**
  * Interface for Mail service

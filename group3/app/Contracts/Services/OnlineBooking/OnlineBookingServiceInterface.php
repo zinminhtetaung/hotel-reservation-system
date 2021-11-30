@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Contracts\Services\OnlineBooking;
-use Illuminate\Http\Request;
+
 
 /**
  * Interface for OnlineBooking service

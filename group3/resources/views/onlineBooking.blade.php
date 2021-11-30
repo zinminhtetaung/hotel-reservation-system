@@ -4,7 +4,6 @@
 
 <script src="{{ asset('js/room-list.js') }}"></script>
 <h1 class="head">ONLINE BOOKING</h1>
-
 <div class="body clearfix">
   @if ($notification = Session::get('success'))
   <div class="alert-success">
@@ -30,8 +29,6 @@
                 <th>Number of Guest</th>
                 <th>Check In</th>
                 <th>Check Out</th>
-                <!-- <th>Created at</th>
-                <th>Updated at</th> -->
                 @if (Auth::user()->role=='receptionist')
                 <th>View Booking</th>
                 <th>Delete Action</th>
@@ -49,8 +46,6 @@
                 <td>{{ $booking->number_of_guest}}</td>
                 <td>{{ date('d/m/Y', strtotime($booking->check_in)) }}</td>
                 <td>{{ date('d/m/Y', strtotime($booking->check_out)) }}</td>
-                <!-- <td>{{ $booking->created_at }}</td>
-                <td>{{ $booking->updated_at }}</td> -->
                 <!-- Update Button -->
                 @if (Auth::user()->role=='receptionist')
                 <td>

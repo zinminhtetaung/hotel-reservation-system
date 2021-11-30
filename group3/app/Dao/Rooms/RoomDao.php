@@ -33,11 +33,9 @@ class RoomDao implements RoomDaoInterface
      * @return 
      */
     public function setStatus($request) {
-        return DB::transaction(function () use ($request){
-            $room = Room::FindorFail($request->room_id);
-            $room->status = "not available";
-            $room->save(); 
-        });   
+        $room = Room::FindorFail($request->room_id);
+        $room->status = "Not Available";
+        $room->save();    
     }
     /**
      * To Change room status
