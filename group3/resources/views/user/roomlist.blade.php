@@ -16,7 +16,7 @@
       <li><a href="{{route('hotelview')}}">Hotel</a></li>
       <li> <a href="{{route('roomuserview')}}" class="active">Room</a></li>
       @if (!Auth::user())
-        <li><a href="{{url('/loginuser')}}">Login</a></li>
+        <li><a href="{{route('login')}}">Login</a></li>
       @endif 
     </ul>
   </div>
