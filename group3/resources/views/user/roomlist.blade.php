@@ -28,6 +28,7 @@
       <h2 class="roominfo-ttl">Room Information</h2>
     </div>
   </div>
+  <a  onclick="topFun()" id="sctop"><img class="arrow-img" src="{{asset('image/uparrow.png')}}" alt="arrow"></a>
   @foreach($roomList as $room)
   
   <div class="room clearfix">

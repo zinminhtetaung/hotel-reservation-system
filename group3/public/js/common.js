@@ -41,3 +41,19 @@ if (copyTextareaBtn) {
 
     linkColor.forEach((l) => l.addEventListener("click", colorLink));
 }
+/*==================== Top button====================*/
+window.onscroll=function(){
+    scrollFun()
+  };
+var btntop=document.getElementById("sctop")
+function scrollFun(){
+    if(document.body.scrollTop>400||document.documentElement.scrollTop>400){
+        btntop.style.display="block";
+    }else{
+        btntop.style.display="none";
+    }
+}
+function topFun(){
+    document.body.scrollTop=0;
+    document.documentElement.scrollTop=0;
+}

@@ -26,7 +26,7 @@
   <!-- Script -->
   <script src="{{ asset('js/app.js') }}"></script>
 </head>
-@include('sidebar.sidebar')
+@include('sidebar.index')
 
 <body>
   <div id="app">
