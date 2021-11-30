@@ -65,7 +65,6 @@ class ReservationController extends Controller
         } else{
             return redirect()->route('login');
         }
-        
     }
 
     /**
@@ -145,7 +144,6 @@ class ReservationController extends Controller
         } else{
             return redirect()->route('login');
         }
-        
     }
 
     /**
