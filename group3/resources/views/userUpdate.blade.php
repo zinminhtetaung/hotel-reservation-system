@@ -48,7 +48,6 @@
                   <option class="select" value="manager">&nbsp; manager &nbsp;</option>
                   <option class="select" value="receptionist">&nbsp; receptionist &nbsp;</option>
                 </select>
-                </select>
               </div>
             </div>
 
