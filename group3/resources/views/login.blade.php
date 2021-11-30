@@ -5,12 +5,17 @@
 <div class="header">
 
   <div class="header-in clearfix">
-    <h1 class="logo"> <a href=""><img src="{{ asset('image/logo.jpeg') }}" alt="logo"></a></h1>
-    <ul class="nav">
-      <li><a href="{{url('user/home')}}">Home</a></li>
+    <h1 class="logo">
+      <a href=""><img src="{{ asset('image/logo.jpeg') }}" alt="logo"></a>
+    </h1>
+    @if (Auth::user())
+    <a class="back" href="{{route('reservationList')}}">
+      <img src="{{ asset('image/l_arrow.png') }}"> Back to Dashboard</a>
+    @endif <ul class="nav">
+      <li><a href="{{route('home')}}">Home</a></li>
       <li><a href="{{route('hotelview')}}">Hotel</a></li>
       <li> <a href="{{route('roomuserview')}}">Room</a></li>
-      <li><a href="{{url('/loginuser')}}" class="active">Login</a></li>
+      <li><a href="{{route('login')}}" class="active">Login</a></li>
     </ul>
   </div>
 
@@ -21,11 +26,9 @@
     <div class="login-box">
       <div>
         <div class="login-title">{{ __('LOGIN') }}</div>
-
         <div>
-          <form method="POST" action="/loginuserstore">
+          <form method="POST" action="{{route('login')}}">
             @csrf
-
             <div>
               <div class="email-box">
                 <input id="email" type="email" class="@error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" placeholder="Enter Your Email" required autocomplete="email" autofocus>
@@ -48,25 +51,15 @@
                 @enderror
               </div>
             </div>
-
-            <div>
-              <div>
-                <div>
-                </div>
-              </div>
-            </div>
-
             <div>
               <div>
                 <button type="submit" class="login-button">
                   {{ __('Login') }}
                 </button>
-
+                <div class="login-comment">
+                  <p>If you have login problem contact to system admin</p>
+                </div>
               </div>
-              <div class="login-comment">
-                <p>If you have login problem contact to system admin</p>
-              </div>
-            </div>
           </form>
         </div>
       </div>

@@ -2,9 +2,15 @@
 @section ('content')
 <div class="header">
   <div class="header-in clearfix">
-    <h1 class="logo"> <a href=""><img src="{{ asset('image/logo.jpeg') }}" alt="logo"></a></h1>
+    <h1 class="logo"> 
+      <a href=""><img src="{{ asset('image/logo.jpeg') }}" alt="logo"></a>
+    </h1>
+    @if (Auth::user())
+      <a class="back" href="{{route('reservationList')}}">
+        <img src="{{ asset('image/l_arrow.png') }}"> Back to Dashboard</a>
+    @endif
     <ul class="nav">
-      <li><a href="{{url('user/home')}}" class="active">Home</a></li>
+      <li><a href="{{route('home')}}" class="active">Home</a></li>
       <li><a href="{{route('hotelview')}}">Hotel</a></li>
       <li> <a href="{{route('roomuserview')}}">Room</a></li>
       <li><a href="{{url('/loginuser')}}">Login</a></li>

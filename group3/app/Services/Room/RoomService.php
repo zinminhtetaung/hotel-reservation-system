@@ -73,6 +73,19 @@ class RoomService implements RoomServiceInterface
      */
     public function updateRoom(Request $request, $id)
     {
+        if($request->hasFile('image')){
+            $des_path = 'public/images';
+            $image = $request->file('image');
+            $img_name = $image->getClientOriginalName();
+            $path = $request->file('image')->storeAs($des_path, $img_name);
+        }
+        if ($request->hotel_name == "Lotte Hotel") {
+            $request->hotel_id = "1";
+        } elseif ($request->hotel_name == "Novotel Hotel") {
+            $request->hotel_id = "2";
+        } elseif ($request->hotel_name == "Sedona Hotel") {
+            $request->hotel_id = "3";
+        }
         return $this->RoomDao->updateRoomByID($request, $id);
     }
     
@@ -91,9 +104,22 @@ class RoomService implements RoomServiceInterface
      * @param array $validated Validated values form request
      * @return Object created room object
      */
-    public function saveRoom($validated)
+    public function saveRoom($request)
     {
-      $room = $this->RoomDao->saveRoom($validated);
+        if($request->hasFile('image')){
+            $des_path = 'public/images';
+            $image = $request->file('image');
+            $img_name = $image->getClientOriginalName();
+            $path = $request->file('image')->storeAs($des_path, $img_name);
+        }
+        if ($request->hotel_name == "Lotte Hotel") {
+            $request->hotel_id = "1";
+        } elseif ($request->hotel_name == "Novotel Hotel") {
+            $request->hotel_id = "2";
+        } elseif ($request->hotel_name == "Sedona Hotel") {
+            $request->hotel_id = "3";
+        }
+      $room = $this->RoomDao->saveRoom($request);
       return $room;
     }
 

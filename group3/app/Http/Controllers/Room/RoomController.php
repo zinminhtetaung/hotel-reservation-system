@@ -50,23 +50,9 @@ class RoomController extends Controller
      * @param RoomRequest $request
      * @return View Room list
      */
-    public function saveRoom(RoomRequest $request)
-    {
-        if ($request->hasFile('image')) {
-            $des_path = 'public/images';
-            $image = $request->file('image');
-            $img_name = $image->getClientOriginalName();
-            $path = $request->file('image')->storeAs($des_path, $img_name);
-        }
-        if ($request->hotel_name == "Lotte Hotel") {
-            $request->hotel_id = "1";
-        } elseif ($request->hotel_name == "Novotel Hotel") {
-            $request->hotel_id = "2";
-        } elseif ($request->hotel_name == "Sedona Hotel") {
-            $request->hotel_id = "3";
-        }
+    public function saveRoom(RoomRequest $request) {
         $room = $this->roomServiceInterface->saveRoom($request);
-        return redirect()->route('showroomList');
+        return redirect()->route('roomList');
     }
 
     /**
@@ -78,7 +64,7 @@ class RoomController extends Controller
     {
         $room = $this->roomServiceInterface->getRoomById($id);
         $hotels = $this->hotelServiceInterface->getHotelList();
-        return view('rooms/update')->with(['hotels'=>$hotels,'roomList'=>$room]);
+        return view('rooms.update')->with(['hotels'=>$hotels,'roomList'=>$room]);
     }
 
     /**
@@ -86,23 +72,9 @@ class RoomController extends Controller
      * @param RoomRequest $request
      * @return View Room list
      */
-    public function updateRoom(RoomRequest $request, $id)
-    {
-        if ($request->hasFile('image')) {
-            $des_path = 'public/images';
-            $image = $request->file('image');
-            $img_name = $image->getClientOriginalName();
-            $path = $request->file('image')->storeAs($des_path, $img_name);
-        }
-        if ($request->hotel_name == "Lotte Hotel") {
-            $request->hotel_id = "1";
-        } elseif ($request->hotel_name == "Novotel Hotel") {
-            $request->hotel_id = "2";
-        } elseif ($request->hotel_name == "Sedona Hotel") {
-            $request->hotel_id = "3";
-        }
-         $this->roomServiceInterface->updateRoom($request, $id);
-        return redirect()->route('showroomList');
+    public function updateRoom(RoomRequest $request,$id) {
+        $room = $this->roomServiceInterface->updateRoom($request,$id);
+        return redirect()->route('roomList');
     }
 
     /**
@@ -128,8 +100,8 @@ class RoomController extends Controller
      */
     public function deleteRoomById($id)
     {
-        $this->roomServiceInterface->deleteRoomById($id);
-        return redirect()->route('showroomList');
+      $this->roomServiceInterface->deleteRoomById($id);
+      return redirect()->route('roomList');
     }
 
     /**

@@ -33,7 +33,7 @@ class LoginController extends Controller
 
         $request->session()->regenerate();
 
-        return redirect('/reservationlist');
+        return redirect()->route('reservationList');
     }
 
     /**
@@ -48,7 +48,8 @@ class LoginController extends Controller
         Auth::guard('web')->logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
-        return redirect('/user/home');
+
+        return redirect()->route('home');
     }
 
 }

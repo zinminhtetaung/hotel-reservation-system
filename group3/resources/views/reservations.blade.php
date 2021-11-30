@@ -29,7 +29,7 @@
 
       
       <!-- New reservation Form -->
-      <form action="/reservation" method="POST" onSubmit="return confirm('Do you want to add this reservation?')" class="add-form">
+      <form action="{{ route('reservation.add') }}" method="POST" onSubmit="return confirm('Do you want to add this reservation?')" class="add-form">
         {{ csrf_field() }}
 
         <!-- reservation form -->
@@ -127,12 +127,7 @@
               </td>
               <!-- Update Button -->
               <td>
-                <form action="/update/{{ $reservation->id }}" method="POST">
-                  {{ csrf_field() }}
-                  <button type="submit" class="btn upd-btn">
-                    <i class="fa fa-btn fa-pencil-alt"></i>Update
-                  </button>
-                </form>
+                <a type="button" class="btn btn-primary" href="/reservation/{{ $reservation->id }}/edit">Update</a>
               </td>
               @endif
             </tr>

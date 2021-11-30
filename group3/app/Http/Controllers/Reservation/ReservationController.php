@@ -59,7 +59,7 @@ class ReservationController extends Controller
     public function showReservationList()
     {
         if(Auth::check()){
-            $ReservationList = $this->ReservationInterface->getReservation();
+            $ReservationList = $this->reservationInterface->getReservation();
             return view('reservations')->with('reservations' ,$ReservationList);
 
         } else{
@@ -98,7 +98,7 @@ class ReservationController extends Controller
      * @return View Reservation 
      */
     public function update($id) {
-        $reservation = $this->ReservationInterface->getReservationById($id);
+        $reservation = $this->reservationInterface->getReservationById($id);
         return view('update')->with('reservation',$reservation);
     }
 
@@ -140,7 +140,7 @@ class ReservationController extends Controller
      */
     public function searchForm() {
         if(Auth::check()){
-            $reservations = $this->ReservationInterface->getReservation();
+            $reservations = $this->reservationInterface->getReservation();
             return view('search')->with('reservations',$reservations);
         } else{
             return redirect()->route('login');

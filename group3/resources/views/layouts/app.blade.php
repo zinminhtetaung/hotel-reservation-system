@@ -22,7 +22,6 @@
   <link rel="stylesheet" href="{{ asset('css/style.css') }}">
   <link rel="stylesheet" href="{{ asset('css/hotel.css')}}">
   <link rel="stylesheet" href="{{ asset('css/login.css')}}">
-  
   <!-- Script -->
   <script src="{{ asset('js/app.js') }}"></script>
 </head>
@@ -36,18 +35,13 @@
           <img src="{{asset('logo.jpeg')}}">
         </a>
         <nav class="logout">
-          <ul>
-            <li>
-              <!-- <a class="nav-ttl" href="/logout">Logout</a> -->
               <div class="dropdown">
                   <button class="dropbtn">{{Auth::user()->user_name}}</button>
                   
                   <div class="dropdown-content">
-                    <a class="nav-ttl" href="/logout">Logout</a>
+                    <a class="nav-ttl" href="{{ route('logout') }}">Logout</a>
                   </div>
               </div>
-            </li>
-          </ul>
 
         </nav>
     </header>
