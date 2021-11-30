@@ -42,7 +42,7 @@
       </div>
 
     </div>
-    <a href="/" class="btn copy-btn">Back to Reservation</a>
+    <a href="/reservationlist" class="btn copy-btn">Back to Reservation</a>
   </div>
 </div>
 @endsection
