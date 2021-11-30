@@ -19,13 +19,12 @@ class RoomDao implements RoomDaoInterface
      */
     public function searchRoom($request) {
 
-        $room = DB::select( DB::raw("SELECT * FROM rooms WHERE
+        return DB::select( DB::raw("SELECT * FROM rooms WHERE
                 deleted_at IS NULL
                 AND
                 room_number = :room_number"), array(
                 'room_number' => $request->room_number                                   
             ));
-        return $room;
     }
 
     /**
@@ -44,29 +43,32 @@ class RoomDao implements RoomDaoInterface
      * @return 
      */
     public function unsetStatus($room_id) {
-        $room = Room::FindorFail($room_id);
-        $room->status = "Available";
-        $room->save();    
+        return DB::transaction(function () use ($room_id){
+            $room = Room::FindorFail($room_id);
+            $room->status = "Available";
+            $room->save();
+        });    
     }
 
     /**
      * To save room 
-     * @param array $request Validated values form request
+     * @param $request Validated values form request
      * @return Object created room object
      */
     public function saveRoom($request)
     {
-        $room = new Room();
-        $room->hotel_id = $request->hotel_id;  
-        $room->room_number = $request->room_number;   
-        $room->room_type = $request->room_type;
-        $room->service = $request->service;
-        $room->price = $request->price;
-        $room->status = $request->status;
-        $room->image = $request->image->getClientOriginalName();
-        $room->user_id = 1;
-        $room->save();
-        return $room;
+        return DB::transaction(function () use ($request){
+            $room = new Room();
+            $room->hotel_id = $request->hotel_id;  
+            $room->room_number = $request->room_number;   
+            $room->room_type = $request->room_type;
+            $room->service = $request->service;
+            $room->price = $request->price;
+            $room->status = $request->status;
+            $room->image = $request->image->getClientOriginalName();
+            $room->user_id = 1;
+            $room->save();
+        });   
     }
 
     /**
@@ -76,8 +78,7 @@ class RoomDao implements RoomDaoInterface
      */
     public function getRoomById($id)
     {
-        $room = Room::find($id);
-        return $room;
+        return Room::find($id);
     }
 
     /**
@@ -86,8 +87,8 @@ class RoomDao implements RoomDaoInterface
      */
     public function getRoomList()
     {
-        $roomList = Room::orderBy('created_at', 'asc')->get();
-        return $roomList;
+        return Room::orderBy('created_at', 'asc')->get();
+
     }
 
     /**
@@ -97,17 +98,18 @@ class RoomDao implements RoomDaoInterface
      */
     public function updateRoomByID(Request $request, $id)
     {
-        $room = Room::find($id);
-        $room->hotel_id = $request->hotel_id;  
-        $room->room_number = $request->room_number;   
-        $room->room_type = $request->room_type;
-        $room->service = $request->service;
-        $room->price = $request->price;
-        $room->status = $request->status;
-        $room->image = $request->image;
-        $room->user_id = 1;
-        $room->save();
-        return $room;
+        return DB::transaction(function () use ($request, $id){
+            $room = Room::find($id);
+            $room->hotel_id = $request->hotel_id;  
+            $room->room_number = $request->room_number;   
+            $room->room_type = $request->room_type;
+            $room->service = $request->service;
+            $room->price = $request->price;
+            $room->status = $request->status;
+            $room->image = $request->image;
+            $room->user_id = 1;
+            $room->save();
+        });
     }
 
     /**
@@ -117,7 +119,14 @@ class RoomDao implements RoomDaoInterface
      */
     public function deleteRoomById($id)
     {
-        Room::findOrFail($id)->delete();
+        return DB::transaction(function () use ($id){
+            $room = Room::find($id);
+            if ($room) {
+            $room->delete();
+            return 'Deleted Successfully!';
+            }
+            return 'Room Not Found!';
+        });
     }
 
     /**
@@ -126,10 +135,9 @@ class RoomDao implements RoomDaoInterface
      */
     public function getRoomListUserView()
     {
-        $roomList = DB::table('rooms')
+        return DB::table('rooms')
             ->join('hotels', 'hotels.id', '=', 'rooms.hotel_id')
             ->select('rooms.*', 'hotels.hotel_name')
             ->paginate(5);
-        return $roomList;
     }
 }

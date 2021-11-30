@@ -19,33 +19,36 @@ class ReservationController extends Controller
     /**
      * Reservation interface
      */
-    private $ReservationInterface;
+    private $reservationInterface;
     /**
      * Room interface
      */
-    private $RoomInterface;
+    private $roomInterface;
 
     /**
      * OnlineBooking interface
      */
-    private $OnlineBookingInterface;
+    private $onlineBookingInterface;
 
     /**
      * Mail interface
      */
-    private $MailInterface;
+    private $mailInterface;
 
     /**
      * Create a new controller instance.
      *
      * @return void
      */
-    public function __construct(ReservationServiceInterface $ReservationServiceInterface, RoomServiceInterface $RoomServiceInterface ,OnlineBookingServiceInterface $OnlineBookingServiceInterface,MailServiceInterface $MailServiceInterface)
+    public function __construct(ReservationServiceInterface $reservationServiceInterface,
+     RoomServiceInterface $roomServiceInterface ,
+     OnlineBookingServiceInterface $onlineBookingServiceInterface,
+     MailServiceInterface $mailServiceInterface)
     {
-        $this->ReservationInterface = $ReservationServiceInterface;
-        $this->RoomInterface = $RoomServiceInterface;
-        $this->OnlineBookingInterface=$OnlineBookingServiceInterface;
-        $this->MailInterface=$MailServiceInterface;
+        $this->reservationInterface = $reservationServiceInterface;
+        $this->roomInterface = $roomServiceInterface;
+        $this->onlineBookingInterface=$onlineBookingServiceInterface;
+        $this->mailInterface=$mailServiceInterface;
     }
     
     /**

@@ -16,21 +16,22 @@ class OnlineBookingController extends Controller
     /**
      * OnlineBooking interface
      */
-    private $OnlineBookingInterface;
+    private $onlineBookingInterface;
     /**
      * Room interface
      */
-    private $RoomInterface;
+    private $roomInterface;
 
     /**
      * Create a new controller instance.
      *
      * @return void
      */
-    public function __construct(OnlineBookingServiceInterface $OnlineBookingServiceInterface, RoomServiceInterface $RoomServiceInterface)
+    public function __construct(OnlineBookingServiceInterface $onlineBookingServiceInterface,
+     RoomServiceInterface $roomServiceInterface)
     {
-        $this->OnlineBookingInterface = $OnlineBookingServiceInterface;
-        $this->RoomInterface = $RoomServiceInterface;
+        $this->onlineBookingInterface = $onlineBookingServiceInterface;
+        $this->roomInterface = $roomServiceInterface;
     }
 
     /**
@@ -85,8 +86,8 @@ class OnlineBookingController extends Controller
      */
     public function storeBooking(BookingRequest $request)
     {
-        $this->OnlineBookingInterface->storeBooking($request);
-        $this->RoomInterface->setStatus($request);
+        $this->onlineBookingInterface->storeBooking($request);
+        $this->roomInterface->setStatus($request);
         return redirect('user/roomuserview');
     }
 }
