@@ -57,7 +57,7 @@
 
             </div>
 
-            <a href="{{ route('chartjs')}}" class="nav__link">
+            <a href="{{ route('chart.index')}}" class="nav__link">
               <i class='bx bx-compass nav__icon'></i>
               <span class="nav__name">Graph</span>
             </a>

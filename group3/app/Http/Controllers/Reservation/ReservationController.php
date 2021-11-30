@@ -59,14 +59,9 @@ class ReservationController extends Controller
     public function showReservationList()
     {
         if(Auth::check()){
-<<<<<<< HEAD
             $ReservationList = $this->reservationInterface->getReservation();
-            return view('reservations')->with(['reservations'=>$ReservationList]);
-=======
-            $ReservationList = $this->ReservationInterface->getReservation();
             return view('reservations')->with('reservations' ,$ReservationList);
 
->>>>>>> origin/develop
         } else{
             return redirect()->route('login');
         }
@@ -103,13 +98,8 @@ class ReservationController extends Controller
      * @return View Reservation 
      */
     public function update($id) {
-<<<<<<< HEAD
         $reservation = $this->reservationInterface->getReservationById($id);
-        return view('update')->with(['reservation'=>$reservation]);
-=======
-        $reservation = $this->ReservationInterface->getReservationById($id);
         return view('update')->with('reservation',$reservation);
->>>>>>> origin/develop
     }
 
     /**
@@ -150,13 +140,8 @@ class ReservationController extends Controller
      */
     public function searchForm() {
         if(Auth::check()){
-<<<<<<< HEAD
             $reservations = $this->reservationInterface->getReservation();
-            return view('search')->with(['reservations'=>$reservations]);
-=======
-            $reservations = $this->ReservationInterface->getReservation();
             return view('search')->with('reservations',$reservations);
->>>>>>> origin/develop
         } else{
             return redirect()->route('login');
         }
