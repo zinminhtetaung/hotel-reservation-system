@@ -10,7 +10,6 @@
     <div class="content">
       <!-- Display Validation Errors -->
       @include('common.errors')
-      
       <!-- New User Form -->
       @if (Auth::user()->role=='admin' || Auth::user()->role=='0')
       <form action="{{route('user.create')}}" method="POST" onSubmit="return confirm('Do you want to Add this User?')" class="add-form">
