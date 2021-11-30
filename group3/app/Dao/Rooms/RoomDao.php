@@ -5,6 +5,7 @@ namespace App\Dao\Rooms;
 use App\Models\Room;
 use App\Contracts\Dao\Room\RoomDaoInterface;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 /**
@@ -64,7 +65,7 @@ class RoomDao implements RoomDaoInterface
         $room->price = $request->price;
         $room->status = $request->status;
         $room->image = $request->image->getClientOriginalName();
-        $room->user_id = 1;
+        $room->user_id = Auth::user()->id;
         $room->save();
         return $room;
     }

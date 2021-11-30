@@ -4,6 +4,7 @@ namespace App\Dao\Reservations;
 
 use App\Models\Reservation;
 use App\Contracts\Dao\Reservation\ReservationDaoInterface;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 /**
@@ -46,7 +47,7 @@ class ReservationDao implements ReservationDaoInterface
         $reservations->number_of_guest = $request->number_of_guest;
         $reservations->check_in = $request->check_in;
         $reservations->check_out = $request->check_out;
-        $reservations->user_id = 1;
+        $reservations->user_id = Auth::user()->id;
         $reservations->save();
         return $reservations;
     }
@@ -64,7 +65,6 @@ class ReservationDao implements ReservationDaoInterface
         $reservations->number_of_guest = $request->number_of_guest;
         $reservations->check_in = $request->check_in;
         $reservations->check_out = $request->check_out;
-        $reservations->user_id = 1;
         $reservations->save();
     }
 
