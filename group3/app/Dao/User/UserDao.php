@@ -55,7 +55,7 @@ class UserDao implements UserDaoInterface
             $user = User::FindorFail($id);        
             $user->user_name = $request->user_name;
             $user->email = $request->email;
-            $user->password = $request->password;
+            $user->password = Hash::make($request->password);
             $user->role = $request->role;
             $user->save();    
         });

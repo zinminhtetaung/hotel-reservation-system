@@ -7,7 +7,6 @@ use App\Http\Requests\Auth\LoginRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-use Symfony\Component\HttpFoundation\Session\Session as HttpFoundationSessionSession;
 
 class LoginController extends Controller
 {
@@ -31,7 +30,8 @@ class LoginController extends Controller
     {
         $request->authenticate();
         $request->session()->regenerate();
-        return redirect('/reservationlist');
+
+        return redirect()->route('reservationList');
     }
 
     /**
@@ -46,7 +46,8 @@ class LoginController extends Controller
         Auth::guard('web')->logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
-        return redirect('/user/home');
+
+        return redirect()->route('home');
     }
 
 }

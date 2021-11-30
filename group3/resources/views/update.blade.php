@@ -9,7 +9,7 @@
         <div class="card-header">Update Reservation</div>
         <div class="card-body">
 
-        <form action="/updateReservation/{{ $reservation->id }}" method="POST" onSubmit="return confirm('Do you want to update this reservation?')" class="add-form">
+        <form method="POST" onSubmit="return confirm('Do you want to update this reservation?')" class="add-form">
           {{ csrf_field() }}
 
           <div class="form-group">

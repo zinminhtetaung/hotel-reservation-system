@@ -39,7 +39,6 @@ class UserController extends Controller
     {
         if(Auth::user()){
             $userList = $this->userInterface->getUser();
-
             return view('user')->with('User', $userList);
         } else{
             return redirect()->route('login');
@@ -52,12 +51,11 @@ class UserController extends Controller
      * @return View User list
      */
     public function addUser(Request $request) {
-
-         $this->UserInterface->addUser($request);
-        return redirect('/users');
+        $this->userInterface->addUser($request);
+        return redirect()->route('userlist');
     }
 
-        /**
+    /**
      * To update User
      * @param UserRequest $request
      * @return View User 
@@ -73,8 +71,8 @@ class UserController extends Controller
      * @return View User list
      */
     public function updateUser(Request $request,$id) {
-        $this->UserInterface->updateUser($request,$id);
-        return redirect('/users');
+        $this->userInterface->updateUser($request,$id);
+        return redirect()->route('userlist');
     }
 
     /**
@@ -84,7 +82,7 @@ class UserController extends Controller
      */
     public function deleteUser($id) {
         $this->userInterface->deleteUser($id);
-        return redirect('/users');
+        return redirect()->route('userlist');
     }
 
 }

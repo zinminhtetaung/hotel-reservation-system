@@ -88,6 +88,6 @@ class OnlineBookingController extends Controller
     {
         $this->onlineBookingInterface->storeBooking($request);
         $this->roomInterface->setStatus($request);
-        return redirect('user/roomuserview');
+        return redirect()->route('roomuserview');
     }
 }

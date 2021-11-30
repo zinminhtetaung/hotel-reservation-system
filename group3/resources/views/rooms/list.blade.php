@@ -13,7 +13,7 @@
       <!-- New reservation Form -->
       
       @if (Auth::user()->role=='manager')
-      <form action="/rooms/create" method="POST" class="add-form" enctype="multipart/form-data">
+      <form action="{{ route('create.room') }}" method="POST" class="add-form" enctype="multipart/form-data">
         {{ csrf_field() }}
 
         <!-- reservation Name -->
@@ -55,7 +55,7 @@
         <div class="form-group">
           <label for="status" class="input-ttl required">Status</label>
           <div class="input-box">
-            <select name="hotel_name" class="select-box">
+            <select name="status" class="select-box">
               <option class="select" value="Available">&nbsp; Available &nbsp;</option>
               <option class="select" value="Not Available">&nbsp; Not Available &nbsp;</option>
             </select>
@@ -113,7 +113,7 @@
                 <td><img height="50px" width="75px" src="{{asset('/storage/images/'.$room->image)}}" /></td>
                 @if (Auth::user()->role=='manager')
                 <td>
-                  <form method="POST" action="/rooms/delete/{{ $room->id }}" onSubmit="return confirm('Are you sure you want to delete?')">
+                  <form method="POST" action="/rooms/{{ $room->id }}/delete" onSubmit="return confirm('Are you sure you want to delete?')">
                     {{ csrf_field() }}
                     {{ method_field('DELETE') }}
                     <button type="submit" class="btn del-btn">Delete</button>
@@ -122,12 +122,7 @@
                 
                 <!-- Update Button -->
                 <td>
-                  <form action="/rooms/update/{{ $room->id }}" method="POST">
-                    {{ csrf_field() }}
-                    <button type="submit" class="btn upd-btn">
-                      <i class="fa fa-btn fa-pencil-alt"></i>Update
-                    </button>
-                  </form>
+                  <a type="button" class="btn btn-primary" href="/rooms/{{ $room->id }}/update">Update</a>
                 </td>
                 @endif
               </tr>
