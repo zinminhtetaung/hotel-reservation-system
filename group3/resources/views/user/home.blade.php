@@ -39,18 +39,21 @@
 </div>
 <div class="home-content2">
   <div class="container clearfix">
-    <h2>ROOM INFORMATION</h2>
-    @if(count($roomList)>0)
-    @for($i=0; $i < count($roomList); $i++) @if($i< 8) <div class="cnt2-img">
-      <div class="cnt2-card">
-        <img src="{{asset('/storage/images/'.$roomList[$i]->image)}}" alt="room">
-        <p>{{$roomList[$i]->room_number}}</p>
+    <h2>Popular Rooms</h2>
+    @if(count($topRoomList)>0)
+      @foreach ($topRoomList as $topRoom)    
+        <div class="cnt2-card">
+          <img src="{{asset('/storage/images/'.$topRoom->image)}}" alt="room">
+          <p>{{$topRoom->room_number}}</p><br>
+          <p>{{$topRoom->price}}</p><br>
+          <p>{{$topRoom->room_type}}</p><br>
+          <p>{{$topRoom->service}}</p><br>
+        </div>
+
+      @endforeach
       </div>
+    @endif
   </div>
-  @endif
-  @endfor
-  @endif
-</div>
 </div>
 <div class="home-content3">
   <div class="container clearfix">

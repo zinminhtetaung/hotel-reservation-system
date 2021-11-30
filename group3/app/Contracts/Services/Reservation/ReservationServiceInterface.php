@@ -13,7 +13,12 @@ interface ReservationServiceInterface
      * @return reservationList
      */
     public function getReservation();
-
+    
+    /**
+     * To get topRoom
+     * @return topRooms
+     */
+    public function getTopRoomList();
     /**
      * To get reservation by id
      * @param string $id reservation id
