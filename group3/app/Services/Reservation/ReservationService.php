@@ -33,6 +33,14 @@ class ReservationService implements ReservationServiceInterface
     }
     
     /**
+     * To get Reservation list
+     * @return ReservationList
+     */
+    public function getTopRoomList() {
+        return $this->ReservationDao->getTopRoomList();
+    }
+
+    /**
      * To get reservation by id
      * @param string $id reservation id
      * @return reservation
