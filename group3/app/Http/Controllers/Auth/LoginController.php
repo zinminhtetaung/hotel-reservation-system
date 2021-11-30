@@ -30,9 +30,7 @@ class LoginController extends Controller
     public function store(LoginRequest $request)
     {
         $request->authenticate();
-
         $request->session()->regenerate();
-
         return redirect('/reservationlist');
     }
 
