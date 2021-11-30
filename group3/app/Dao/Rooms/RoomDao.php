@@ -139,6 +139,7 @@ class RoomDao implements RoomDaoInterface
         return DB::table('rooms')
             ->join('hotels', 'hotels.id', '=', 'rooms.hotel_id')
             ->select('rooms.*', 'hotels.hotel_name')
+            ->whereNull('rooms.deleted_at')
             ->paginate(5);
     }
 }

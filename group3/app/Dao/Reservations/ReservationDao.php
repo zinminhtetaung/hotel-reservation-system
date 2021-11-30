@@ -203,4 +203,19 @@ class ReservationDao implements ReservationDaoInterface
             'created_at' => $end->created_at,
         ));
     }
+
+    /**
+     * To get top 10 room list
+     * @return array $roomList list of rooms
+     */
+    public function getTopRoomList()
+    {
+        return DB::select(DB::raw("SELECT rooms.*
+        FROM reservations,rooms
+        WHERE rooms.deleted_at IS NULL AND reservations.room_id=rooms.id
+        Group By reservations.room_id
+        Order By COUNT(reservations.id) DESC
+        LIMIT 8 "
+        ));  
+    }
 }

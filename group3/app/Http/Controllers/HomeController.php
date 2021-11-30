@@ -2,31 +2,31 @@
 
 namespace App\Http\Controllers;
 
-use App\Contracts\Services\Room\RoomServiceInterface;
+use App\Contracts\Services\Reservation\ReservationServiceInterface;
 
 class HomeController extends Controller
 {
     /**
      * room interface
      */
-    private $roomServiceInterface;
+    private $reservationInterface;
     /**
      * Create a new controller instance.
-     * @param RoomServiceInterface $roomServiceInterface
-     * @param HotelServiceInterface $hotelServiceInterface
+     * @param ReservationServiceInterface $reservationServiceInterface
      * @return void
      */
-    public function __construct(RoomServiceInterface $roomServiceInterface)
+    public function __construct(ReservationServiceInterface $reservationServiceInterface)
     {
         // $this->middleware('auth');
-        $this->roomServiceInterface = $roomServiceInterface;
+
+        $this->reservationInterface = $reservationServiceInterface;
     }
     /*
      *get room list 
      */
     public function index()
     {
-        $roomList = $this->roomServiceInterface->getRoomList();
-        return view('user.home')->with('roomList', $roomList);
+        $topRoomList = $this->reservationInterface->getTopRoomList();
+        return view('user.home')->with('topRoomList', $topRoomList);
     }
 }

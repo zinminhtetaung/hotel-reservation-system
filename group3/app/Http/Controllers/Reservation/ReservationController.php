@@ -210,4 +210,5 @@ class ReservationController extends Controller
         $reservations = $this->reservationInterface->searchByStartEnd($start, $end);
         return view('search')->with('reservations', $reservations);
     }
+
 }

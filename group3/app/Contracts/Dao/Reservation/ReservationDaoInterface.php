@@ -21,6 +21,12 @@ interface ReservationDaoInterface
     public function getReservationById($id);
 
     /**
+     * To get topRoom
+     * @return topRooms
+     */
+    public function getTopRoomList();
+
+    /**
      * To save reservation
      * @param object $request Validated values from request
      * @return Object created reservation object
