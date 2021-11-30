@@ -28,6 +28,7 @@
       <h2 class="roominfo-ttl">Room Information</h2>
     </div>
   </div>
+  <button onclick="topFun()" id="sctop">Top</button>
   @foreach($roomList as $room)
   
   <div class="room clearfix">

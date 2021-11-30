@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Contracts\Services\Reservation;
-use Illuminate\Http\Request;
+
 
 /**
  * Interface for reservation service

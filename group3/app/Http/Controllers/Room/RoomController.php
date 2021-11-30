@@ -38,20 +38,20 @@ class RoomController extends Controller
      *
      * @return View Room list
      */
-    public function searchRoom(Request $request) {
+    public function searchRoom(Request $request)
+    {
         $room = $this->roomServiceInterface->searchRoom($request);
-        return view('showRoomId', [
-            'room' => $room
-        ]);
+        return view('showRoomId')->with('room', $room);
     }
-  
+
     /**
      * To add Room
      * @param RoomRequest $request
      * @return View Room list
      */
-    public function saveRoom(RoomRequest $request) {
-        if($request->hasFile('image')){
+    public function saveRoom(RoomRequest $request)
+    {
+        if ($request->hasFile('image')) {
             $des_path = 'public/images';
             $image = $request->file('image');
             $img_name = $image->getClientOriginalName();
@@ -73,13 +73,11 @@ class RoomController extends Controller
      * @param RoomRequest $request
      * @return View Room 
      */
-    public function update($id) {
+    public function update($id)
+    {
         $room = $this->roomServiceInterface->getRoomById($id);
         $hotels = $this->hotelServiceInterface->getHotelList();
-        return view('rooms/update',[
-            'roomList'=> $room,
-            'hotels' =>$hotels
-        ]);
+        return view('rooms/update')->with(['hotels'=>$hotels,'roomList'=>$room]);
     }
 
     /**
@@ -87,8 +85,9 @@ class RoomController extends Controller
      * @param RoomRequest $request
      * @return View Room list
      */
-    public function updateRoom(RoomRequest $request,$id) {
-        if($request->hasFile('image')){
+    public function updateRoom(RoomRequest $request, $id)
+    {
+        if ($request->hasFile('image')) {
             $des_path = 'public/images';
             $image = $request->file('image');
             $img_name = $image->getClientOriginalName();
@@ -101,7 +100,7 @@ class RoomController extends Controller
         } elseif ($request->hotel_name == "Sedona Hotel") {
             $request->hotel_id = "3";
         }
-        $room = $this->roomServiceInterface->updateRoom($request,$id);
+         $this->roomServiceInterface->updateRoom($request, $id);
         return redirect()->route('showroomList');
     }
 
@@ -112,14 +111,11 @@ class RoomController extends Controller
      */
     public function showRoomList()
     {
-        if(Auth::check()){
+        if (Auth::check()) {
             $roomList = $this->roomServiceInterface->getRoomList();
             $hotels = $this->hotelServiceInterface->getHotelList();
-            return view('rooms.list', [
-                'roomList' => $roomList,
-                'hotels' => $hotels,
-            ]);
-        } else{
+            return view('rooms.list')->with(['hotels'=>$hotels,'roomList'=>$roomList]);
+        } else {
             return redirect()->route('login');
         }
     }
@@ -131,8 +127,8 @@ class RoomController extends Controller
      */
     public function deleteRoomById($id)
     {
-      $this->roomServiceInterface->deleteRoomById($id);
-      return redirect()->route('showroomList');
+        $this->roomServiceInterface->deleteRoomById($id);
+        return redirect()->route('showroomList');
     }
 
     /**
@@ -140,10 +136,9 @@ class RoomController extends Controller
      *
      * @return View Room user view
      */
-    public function showRoomUserview(){
+    public function showRoomUserview()
+    {
         $roomList = $this->roomServiceInterface->getRoomListUserView();
-        return view('user.roomuserview', [
-            'roomList' => $roomList,
-        ]);
+        return view('user.roomlist')->with('roomList', $roomList);
     }
 }

@@ -16,7 +16,7 @@ class Room extends Model
         'service',
         'price',
         'Status',
-];
+    ];
 
-protected $dates = ['created_at', 'updated_at', 'deleted_at'];
+    protected $dates = ['created_at', 'updated_at', 'deleted_at'];
 }

@@ -78,7 +78,6 @@
         </div>
       </form>
       @endif
-
       <!-- Current reservations -->
       @if (count($reservations) > 0)
       <div class="card">

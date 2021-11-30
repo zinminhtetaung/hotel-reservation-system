@@ -57,9 +57,8 @@ class ReservationController extends Controller
     {
         if(Auth::check()){
             $ReservationList = $this->ReservationInterface->getReservation();
-            return view('reservations', [
-                'reservations' => $ReservationList
-            ]);
+            return view('reservations')->with('reservations' ,$ReservationList);
+
         } else{
             return redirect()->route('login');
         }
@@ -72,9 +71,8 @@ class ReservationController extends Controller
      * @return View Reservation list
      */
     public function addReservation(ReservationRequest $request) {
-        $validated = $request->validated();
-        $Reservation = $this->ReservationInterface->addReservation($request);
-        $Room = $this->RoomInterface->setStatus($request);
+        $this->ReservationInterface->addReservation($request);
+        $this->RoomInterface->setStatus($request);
         return redirect()->route('reservationList');
     }
 
@@ -85,9 +83,9 @@ class ReservationController extends Controller
      */
     public function addBooking(Request $request) {
         $this->MailInterface->sendMail($request);
-        $Reservation = $this->ReservationInterface->addBooking($request);
-        $OnlineBooking = $this->OnlineBookingInterface->removeOnlineBooking($request);
-        $OnlineBookingList = $this->OnlineBookingInterface->getOnlineBooking();
+        $this->ReservationInterface->addBooking($request);
+        $this->OnlineBookingInterface->removeOnlineBooking($request);
+        $this->OnlineBookingInterface->getOnlineBooking();
         return redirect()->route('onlineBookingList')->with('success','Email sent successfully!');
     }
 
@@ -98,9 +96,7 @@ class ReservationController extends Controller
      */
     public function update($id) {
         $reservation = $this->ReservationInterface->getReservationById($id);
-        return view('update',[
-            'reservation'=> $reservation
-        ]);
+        return view('update')->with('reservation',$reservation);
     }
 
     /**
@@ -109,7 +105,7 @@ class ReservationController extends Controller
      * @return View Reservation list
      */
     public function updateReservation(Request $request,$id) {
-        $Reservation = $this->ReservationInterface->updateReservation($request,$id);
+        $this->ReservationInterface->updateReservation($request,$id);
         return redirect()->route('reservationList');
     }
 
@@ -120,7 +116,7 @@ class ReservationController extends Controller
      */
     public function deleteReservation($id,$room_id) {
         $this->ReservationInterface->deleteReservation($id);
-        $Room = $this->RoomInterface->unsetStatus($room_id);
+        $this->RoomInterface->unsetStatus($room_id);
         return redirect()->route('reservationList');
     }
 
@@ -131,7 +127,7 @@ class ReservationController extends Controller
      */
     public function deleteReservationSearch($id,$room_id) {
         $this->ReservationInterface->deleteReservation($id);
-        $Room = $this->RoomInterface->unsetStatus($room_id);
+        $this->RoomInterface->unsetStatus($room_id);
         return redirect('/search');
     }
 
@@ -142,7 +138,7 @@ class ReservationController extends Controller
     public function searchForm() {
         if(Auth::check()){
             $reservations = $this->ReservationInterface->getReservation();
-            return view('search', ['reservations' => $reservations]);
+            return view('search')->with('reservations',$reservations);
         } else{
             return redirect()->route('login');
         }
@@ -155,7 +151,7 @@ class ReservationController extends Controller
      */
     public function searchReservationbyRID(Request $request) {
         $reservations = $this->ReservationInterface->searchReservationbyRID($request);
-        return view('search', ['reservations' => $reservations]);
+        return view('search')->with('reservations',$reservations);
     }
 
     /**
@@ -164,7 +160,7 @@ class ReservationController extends Controller
      */
     public function searchByCustomer(Request $request) {
         $reservations = $this->ReservationInterface->searchByCustomer($request);
-        return view('search', ['reservations' => $reservations]);
+        return view('search')->with('reservations',$reservations);
     }
 
    /**
@@ -173,7 +169,7 @@ class ReservationController extends Controller
      */
     public function searchByPhNo(Request $request) {
         $reservations = $this->ReservationInterface->searchByPhNo($request);
-        return view('search', ['reservations' => $reservations]);
+        return view('search')->with('reservations', $reservations) ;
     }
 
     /**
@@ -182,7 +178,7 @@ class ReservationController extends Controller
      */
     public function searchByGuestNo(Request $request) {
         $reservations = $this->ReservationInterface->searchByGuestNo($request);
-        return view('search', ['reservations' => $reservations]);
+        return view('search')->with('reservations', $reservations); 
     }
 
     /**
@@ -191,7 +187,7 @@ class ReservationController extends Controller
      */
     public function searchByCheckIn(Request $request) {
         $reservations = $this->ReservationInterface->searchByCheckIn($request);
-        return view('search', ['reservations' => $reservations]);
+        return view('search')->with('reservations', $reservations);
     }
 
     /**
@@ -200,7 +196,7 @@ class ReservationController extends Controller
      */
     public function searchByCheckOut(Request $request) {
         $reservations = $this->ReservationInterface->searchByCheckOut($request);
-        return view('search', ['reservations' => $reservations]);
+        return view('search')->with('reservations', $reservations);
     }
 
     /**
@@ -211,6 +207,6 @@ class ReservationController extends Controller
      */
     public function searchByStartEnd(Request $start, Request $end) {
         $reservations = $this->ReservationInterface->searchByStartEnd($start, $end);
-        return view('search', ['reservations' => $reservations]);
+        return view('search')->with('reservations', $reservations);
     }
 }

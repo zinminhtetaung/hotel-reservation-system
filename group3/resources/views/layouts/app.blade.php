@@ -22,10 +22,11 @@
   <link rel="stylesheet" href="{{ asset('css/style.css') }}">
   <link rel="stylesheet" href="{{ asset('css/hotel.css')}}">
   <link rel="stylesheet" href="{{ asset('css/login.css')}}">
+  
   <!-- Script -->
   <script src="{{ asset('js/app.js') }}"></script>
 </head>
-@include('sidebar.sidebar')
+@include('sidebar.index')
 
 <body>
   <div id="app">
@@ -51,7 +52,7 @@
   <!-- JavaScripts -->
   <script src="{{asset ('js/lib/jquery.min.js')}}"></script>
   <script src="{{asset ('js/lib/bootstrap.min.js')}}"></script>
-  <script src="{{asset('js/script.js')}}"></script>
+  <script src="{{asset('js/common.js')}}"></script>
   <script src="{{asset ('js/lib/Chart.min.js')}}"></script>
   <script src="{{ asset('js/lib/jquery.dataTables.min.js') }}"></script>
 </body>

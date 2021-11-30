@@ -33,11 +33,6 @@
          */
         public function getHotelList()
         {
-            // $hotelList = DB::table('hotels as hotel')
-            // ->join('students', 'students.id', '=', 'hotel.student_id')
-            // ->whereNull('hotel.deleted_at')
-            // ->get();
-            // return $hotelList;
             $hotelList = Hotels::all();
             return $hotelList;
         }

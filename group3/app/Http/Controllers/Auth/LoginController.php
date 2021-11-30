@@ -42,8 +42,7 @@ class LoginController extends Controller
      */
     public function destroy(Request $request)
     {
-        // Session::flush();
-        // Auth::logout();
+        
         Auth::guard('web')->logout();
 
         $request->session()->invalidate();
