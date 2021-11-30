@@ -107,7 +107,7 @@ class RoomDao implements RoomDaoInterface
         $room->price = $request->price;
         $room->status = $request->status;
         $room->image = $request->image;
-        $room->user_id = 1;
+        $room->user_id = Auth::user()->id;
         $room->save();
         return $room;
     }
