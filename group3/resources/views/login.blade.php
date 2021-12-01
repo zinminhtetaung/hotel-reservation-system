@@ -1,7 +1,7 @@
 @extends('userlayouts.app')
 
 @section('content')
-<link href="{{ asset('css/app.css') }}" rel="stylesheet">
+<!-- <link href="{{ asset('css/app.css') }}" rel="stylesheet"> -->
 <div class="header">
 
   <div class="header-in clearfix">
