@@ -1,6 +1,6 @@
 @extends('userlayouts.app')
 @section ('content')
-<div class="header">
+<!-- <div class="header">
   <div class="header-in clearfix">
     <h1 class="logo"> 
       <a href=""><img src="{{ asset('image/logo.jpeg') }}" alt="logo"></a>
@@ -17,6 +17,30 @@
         <li><a href="{{route('login')}}">Login</a></li>
       @endif 
     </ul>
+  </div>
+</div> -->
+<div class="header">
+  <div class="container clearfix">
+    <h1 class="logo"> 
+      <a href=""><img src="{{ asset('image/logo.jpeg') }}" alt="logo"></a>
+    </h1>
+    @if (Auth::user())
+      <a class="back" href="{{route('reservationList')}}">
+        <img src="{{ asset('image/l_arrow.png') }}"> Back to Dashboard</a>
+    @endif
+    <nav>
+    <div class="menu-btn">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <ul class="nav-inner">
+      <li><a href="{{route('home')}}" class="active">Home</a></li>
+      <li><a href="{{route('hotelview')}}">Hotel</a></li>
+      <li> <a href="{{route('roomuserview')}}">Room</a></li>
+      <li><a href="{{url('/loginuser')}}">Login</a></li>
+    </ul>
+    </nav>
   </div>
 </div>
 <div class="home-content1 clearfix">

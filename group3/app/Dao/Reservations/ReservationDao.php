@@ -6,7 +6,7 @@ use App\Models\Reservation;
 use App\Contracts\Dao\Reservation\ReservationDaoInterface;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Auth;
+
 
 /**
  * Data accessing object for reservation

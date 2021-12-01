@@ -1,0 +1,64 @@
+/*for tablets*/
+
+@media screen and (min-width:640px) and (max-width:768px){
+
+    .homecnt1-img {
+        width: 100%;
+        height: 400px;
+      }
+    .home-img {
+        position: relative;
+        bottom: 120px;
+      }
+      .homehotel-img {
+        width: 100%;
+        height: 180px;
+      }
+      .card1, .card2, .card3 {
+        margin-left: 12px;
+      }
+      .home-img p {
+        font-size: 1.6vw;
+      }
+      .map,.reasons{
+        width: 100%;
+        }
+        .map img{
+            width: 100%;
+        }
+        .reasons h2{
+            padding: 10px;
+        }
+}
+
+/*for sp*/
+@media screen and (max-width:640px){
+    .nav-inner{
+        padding-right: 0px;
+    }
+    .nav-inner li{
+        padding: 40px 0px;
+    }
+    .card1, .card2, .card3{
+        width: 100%;
+        margin-left: 0px;
+    }
+    .map,.reasons{
+        width: 100%;
+    }
+    .map img{
+        width: 100%;
+        padding-top: 15px;
+    }
+    .reasons h2{
+        padding: 10px;
+    }
+    .office,.partner,.contact{
+        width: 100%;
+        margin: 20px 0 0 70px;
+        float:unset;
+    }
+    .cnt3-text1,.cnt3-text2{
+        margin: 10px;
+    }
+}

@@ -3,7 +3,7 @@
 /*home*/
 .home-content1 {
   background-color: #98ccd3;
-  position: relative;
+  /* position: relative; */
 }
 
 .homecnt1-img {
@@ -357,3 +357,4 @@ td {
   background-color: #364e68;
   color: #ebf0f6;
 }
+
