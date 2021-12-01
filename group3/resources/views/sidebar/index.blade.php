@@ -51,6 +51,7 @@
                   <a href="{{ route('roomList') }}" class="nav__dropdown-item">Room</a>
                   <a href="{{ route('reservationList') }}" class="nav__dropdown-item">Reservation</a>
                   <a href="{{ route('search') }}" class="nav__dropdown-item">Search</a>
+                  <a href="{{ route('custInfo') }}" class="nav__dropdown-item">Customer Info</a>
                   <a href="{{ route('onlineBookingList') }}" class="nav__dropdown-item">Online Booking</a>
                 </div>
               </div>

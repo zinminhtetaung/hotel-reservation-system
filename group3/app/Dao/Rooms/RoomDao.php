@@ -7,6 +7,7 @@ use App\Contracts\Dao\Room\RoomDaoInterface;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 /**
  * Data accessing object for room

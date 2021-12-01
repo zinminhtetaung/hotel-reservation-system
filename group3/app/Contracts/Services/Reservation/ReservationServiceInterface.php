@@ -13,6 +13,11 @@ interface ReservationServiceInterface
      * @return reservationList
      */
     public function getReservation();
+    /**
+     * To get reservation
+     * @return reservations
+     */
+    public function getCustomerInfo();
     
     /**
      * To get topRoom
@@ -96,4 +101,30 @@ interface ReservationServiceInterface
      * @return reservation
      */
     public function searchByStartEnd($start, $end);
+
+    /**
+     * To search from CustomerName
+     * @param string $data Input from user
+     * @return array $custInfo Customer info from reservation
+     */
+    public function customerName($data);
+
+    /**
+     * To To search reservation by phone number
+     * @return array $reservation reservation list
+     */
+    public function PhoneNo($phone);
+    
+    /**
+     * To To search reservation by check_in time
+     * @return array $reservation reservation list
+     */
+    public function CheckIn($checkin);
+    
+    /**
+     * To To search reservation by check_out time
+     * @return array $reservation reservation list
+     */
+    public function CheckOut($checkout);
+    
 }

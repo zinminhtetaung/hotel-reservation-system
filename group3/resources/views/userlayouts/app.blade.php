@@ -45,5 +45,4 @@
   </div>
 </body>
 <script src="{{asset ('js/lib/jquery.min.js')}}"></script>
-<script src="{{asset('js/common.js')}}"></script>
 </html>
