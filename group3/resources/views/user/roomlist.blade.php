@@ -80,4 +80,5 @@
   @endforeach
   {{$roomList->links()}}
 </div>
+<script src="{{asset('js/top.js')}}"></script>
 @endsection
