@@ -2,25 +2,31 @@
 @section ('content')
 
 <div class="header">
-
-  <div class="header-in clearfix">
+  <div class="container clearfix">
     <h1 class="logo">
-      <a href=""><img src="{{ asset('image/logo.jpeg') }}" alt="logo"></a>
+      <a href="#"><img class="logoimg pc" src="{{ asset('image/logo.jpeg') }}" alt="logo"></a>
+      <a href="#"><img class="logoimg sp" src="{{ asset('image/splogo.png') }}" alt="logo"></a>
     </h1>
     @if (Auth::user())
-      <a class="back" href="{{route('reservationList')}}">
-        <img src="{{ asset('image/l_arrow.png') }}"> Back to Dashboard</a>
+    <a class="back" href="{{route('reservationList')}}">
+      <img src="{{ asset('image/l_arrow.png') }}"> Back to Dashboard</a>
     @endif
-    <ul class="nav">
-      <li><a href="{{route('home')}}">Home</a></li>
-      <li><a href="{{route('hotelview')}}" class="active">Hotel</a></li>
-      <li> <a href="{{route('roomuserview')}}">Room</a></li>
-      @if (!Auth::user())
-        <li><a href="{{route('login')}}">Login</a></li>
-      @endif 
-    </ul>
+    <nav>
+      <div class="menu-btn">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <div class="nav-bar">
+        <ul class="nav-inner clearfix">
+          <li><a href="{{route('home')}}">Home</a></li>
+          <li><a href="{{route('hotelview')}}" class="active">Hotel</a></li>
+          <li> <a href="{{route('roomuserview')}}">Room</a></li>
+          <li><a href="{{url('/loginuser')}}">Login</a></li>
+        </ul>
+      </div>
+    </nav>
   </div>
-
 </div>
 <div class="viewcontent">
   <img class="view-img" src="{{ asset('image/view-image.jpg') }}" alt="hotel-img">
