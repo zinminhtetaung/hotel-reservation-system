@@ -260,7 +260,7 @@ a:hover {
   position: absolute;
   z-index: 3;
   right: 6%;
-  top: 10%;
+  top: 5%;
   transform: translateY(-50%);
   width: 7.938vw;
   height: 6.063vw;
@@ -363,7 +363,7 @@ a:hover {
   background-color: #ebf0f6;
   padding: 1vw 2vw;
   border: none;
-  font-size: .7rem;
+  font-size: .6rem;
 }
 .office,.partner,.contact{
   background-color:#98ccd3 ;

@@ -211,4 +211,50 @@ class ReservationController extends Controller
         return view('search')->with('reservations', $reservations);
     }
 
+    /**
+     * To display search form
+     * @return View Reservation
+     */
+    public function searchCustomerInfo() {
+        if(Auth::check()){
+            $custInfo = $this->reservationInterface->getCustomerInfo();
+            return view('customers.list')->with('custInfo',$custInfo);
+        } else{
+            return redirect()->route('login');
+        }
+    }
+    
+    /**
+     * To search from CustomerName
+     * @param string $data Input from user
+     * @return array $custInfo Customer info from reservation
+     */
+    public function customerName(Request $data) {
+        $custInfo = $this->reservationInterface->customerName($data);
+        return view('customers.list')->with('custInfo', $custInfo); 
+    }
+    /**
+     * To To search reservation by phone number
+     * @return array $reservation reservation list
+     */
+    public function PhoneNo($phone) {
+        $custInfo = $this->reservationInterface->PhoneNo($phone);
+        return view('customers.list')->with('custInfo', $custInfo); 
+    }
+    /**
+     * To To search reservation by check_in time
+     * @return array $reservation reservation list
+     */
+    public function CheckIn($checkin) {
+        $custInfo = $this->reservationInterface->CheckIn($checkin);
+        return view('customers.list')->with('custInfo', $custInfo); 
+    }
+    /**
+     * To To search reservation by check_out time
+     * @return array $reservation reservation list
+     */
+    public function CheckOut($checkout) {
+        $custInfo = $this->reservationInterface->CheckOut($checkout);
+        return view('customers.list')->with('custInfo', $custInfo); 
+    }
 }

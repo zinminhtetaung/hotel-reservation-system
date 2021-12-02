@@ -17,11 +17,13 @@
         <span></span>
       </div>
       <div class="nav-bar">
-        <ul class="nav-inner clearfix">
+        <ul class="nav-inner">
           <li><a href="{{route('home')}}" class="active">Home</a></li>
           <li><a href="{{route('hotelview')}}">Hotel</a></li>
           <li> <a href="{{route('roomuserview')}}">Room</a></li>
-          <li><a href="{{url('/loginuser')}}">Login</a></li>
+          @if (!Auth::user())
+          <li><a href="{{route('login')}}">Login</a></li>
+          @endif
         </ul>
       </div>
     </nav>
@@ -54,10 +56,9 @@
     @foreach ($topRoomList as $topRoom)
     <div class="cnt2-card">
       <img src="{{asset('/storage/images/'.$topRoom->image)}}" alt="room">
-      <p>{{$topRoom->room_number}}</p><br>
-      <p>{{$topRoom->price}}</p><br>
-      <p>{{$topRoom->room_type}}</p><br>
-      <p>{{$topRoom->service}}</p><br>
+      <p>Room Number : {{$topRoom->room_number}}</p><br>
+      <p>Price : {{$topRoom->price}}</p><br>
+      <p>Type : {{$topRoom->room_type}}</p><br>
     </div>
 
     @endforeach

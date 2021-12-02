@@ -22,7 +22,9 @@
           <li><a href="{{route('home')}}">Home</a></li>
           <li><a href="{{route('hotelview')}}" class="active">Hotel</a></li>
           <li> <a href="{{route('roomuserview')}}">Room</a></li>
-          <li><a href="{{url('/loginuser')}}">Login</a></li>
+          @if (!Auth::user())
+          <li><a href="{{route('login')}}">Login</a></li>
+          @endif
         </ul>
       </div>
     </nav>

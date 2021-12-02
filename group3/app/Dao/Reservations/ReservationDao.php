@@ -5,6 +5,7 @@ namespace App\Dao\Reservations;
 use App\Models\Reservation;
 use App\Contracts\Dao\Reservation\ReservationDaoInterface;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 /**
  * Data accessing object for reservation
@@ -18,6 +19,14 @@ class ReservationDao implements ReservationDaoInterface
     public function getReservation()
     {
         return Reservation::orderBy('created_at', 'asc')->get();
+    }
+    /**
+     * To get reservation
+     * @return reservations
+     */
+    public function getCustomerInfo()
+    {
+        return Reservation::orderBy('created_at', 'asc')->withTrashed()->get();
     }
 
     /**
@@ -45,7 +54,7 @@ class ReservationDao implements ReservationDaoInterface
             $reservations->number_of_guest = $request->number_of_guest;
             $reservations->check_in = $request->check_in;
             $reservations->check_out = $request->check_out;
-            $reservations->user_id = 1;
+            $reservations->user_id = Auth::user()->id;
             $reservations->save();
         });
     }
@@ -64,7 +73,7 @@ class ReservationDao implements ReservationDaoInterface
             $reservations->number_of_guest = $request->number_of_guest;
             $reservations->check_in = $request->check_in;
             $reservations->check_out = $request->check_out;
-            $reservations->user_id = 1;
+            $reservations->user_id = Auth::user()->id;
             $reservations->save();
         });
     }
@@ -83,7 +92,7 @@ class ReservationDao implements ReservationDaoInterface
             $reservations->number_of_guest = $request->number_of_guest;
             $reservations->check_in = $request->check_in;
             $reservations->check_out = $request->check_out;
-            $reservations->user_id = 1;
+            $reservations->user_id = Auth::user()->id;
             $reservations->save();
         });
     }
@@ -220,5 +229,53 @@ class ReservationDao implements ReservationDaoInterface
         Order By COUNT(reservations.id) DESC
         LIMIT 8 "
         ));  
+    }
+    
+    /**
+     * To search from CustomerName
+     * @param data $data Input from user
+     * @return array $custInfo Customer info from reservation
+     */
+    public function customerName($data)
+    {
+        return DB::select(DB::raw("SELECT * FROM reservations WHERE                         
+            customer_name = :customer_name"), array(
+            'customer_name' => $data->customer_name,
+        ));
+    }
+
+    /**
+     * To To search reservation by phone number
+     * @return array $reservation reservation list
+     */
+    public function PhoneNo($phone)
+    {
+        return DB::select(DB::raw("SELECT * FROM reservations WHERE                                  
+            phone = :phone"), array(
+            'phone' => $phone->phone,
+        ));
+    }
+    /**
+     * To To search reservation by check_in time
+     * @return array $reservation reservation list
+     */
+    public function CheckIn($checkin)
+    {
+        return DB::select(DB::raw("SELECT * FROM reservations WHERE                               
+            check_in = :check_in"), array(
+            'check_in' => $checkin->check_in,
+        ));
+    }
+
+    /**
+     * To To search reservation by check_out time
+     * @return array $reservation reservation list
+     */
+    public function CheckOut($checkout)
+    {
+        return DB::select(DB::raw("SELECT * FROM reservations WHERE                     
+            check_out = :check_out"), array(
+            'check_out' => $checkout->check_out,
+        ));
     }
 }

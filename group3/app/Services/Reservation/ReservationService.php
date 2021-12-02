@@ -13,7 +13,7 @@ class ReservationService implements ReservationServiceInterface
     /**
      * reservation dao
      */
-    private $ReservationDao;
+    private $reservationDao;
     /**
      * Class Constructor
      * @param ReservationDaoInterface
@@ -21,7 +21,7 @@ class ReservationService implements ReservationServiceInterface
      */
     public function __construct(ReservationDaoInterface $ReservationDao)
     {
-        $this->ReservationDao = $ReservationDao;
+        $this->reservationDao = $ReservationDao;
     }
 
     /**
@@ -29,7 +29,14 @@ class ReservationService implements ReservationServiceInterface
      * @return ReservationList
      */
     public function getReservation() {
-        return $this->ReservationDao->getReservation();
+        return $this->reservationDao->getReservation();
+    }
+    /**
+     * To get reservation
+     * @return reservations
+     */
+    public function getCustomerInfo() {
+        return $this->reservationDao->getCustomerInfo();
     }
     
     /**
@@ -37,7 +44,7 @@ class ReservationService implements ReservationServiceInterface
      * @return ReservationList
      */
     public function getTopRoomList() {
-        return $this->ReservationDao->getTopRoomList();
+        return $this->reservationDao->getTopRoomList();
     }
 
     /**
@@ -46,7 +53,7 @@ class ReservationService implements ReservationServiceInterface
      * @return reservation
      */
     public function getReservationById($id) {
-        return $this->ReservationDao->getReservationById($id);
+        return $this->reservationDao->getReservationById($id);
     }
     
     /**
@@ -55,7 +62,7 @@ class ReservationService implements ReservationServiceInterface
      * @return Object created Reservation object
      */
     public function addReservation($request) {
-        return $this->ReservationDao->addReservation($request);
+        return $this->reservationDao->addReservation($request);
     }
     
     /**
@@ -64,7 +71,7 @@ class ReservationService implements ReservationServiceInterface
      * @return Object created Reservation object
      */
     public function addBooking($request) {
-        return $this->ReservationDao->addBooking($request);
+        return $this->reservationDao->addBooking($request);
     }
     
        /**
@@ -73,7 +80,7 @@ class ReservationService implements ReservationServiceInterface
      * @return Object created Reservation object
      */
     public function updateReservation($request,$id) {
-        return $this->ReservationDao->updateReservation($request,$id);
+        return $this->reservationDao->updateReservation($request,$id);
     }
 
     /**
@@ -82,7 +89,7 @@ class ReservationService implements ReservationServiceInterface
      * @return 
      */
     public function deleteReservation($id) {
-        $this->ReservationDao->deleteReservation($id);
+        $this->reservationDao->deleteReservation($id);
     }
 
     /**
@@ -90,7 +97,7 @@ class ReservationService implements ReservationServiceInterface
      * @return reservationList
      */
     public function searchReservationbyRID($request){
-        return $this->ReservationDao->searchReservationbyRID($request);
+        return $this->reservationDao->searchReservationbyRID($request);
     }
 
     /**
@@ -98,7 +105,7 @@ class ReservationService implements ReservationServiceInterface
      * @return reservation
      */
     public function searchByCustomer($request) {
-        return $this->ReservationDao->searchByCustomer($request);
+        return $this->reservationDao->searchByCustomer($request);
     }
 
     /**
@@ -106,7 +113,7 @@ class ReservationService implements ReservationServiceInterface
      * @return reservation
      */
     public function searchByPhNo($request) {
-        return $this->ReservationDao->searchByPhNo($request);
+        return $this->reservationDao->searchByPhNo($request);
     }
 
     /**
@@ -114,7 +121,7 @@ class ReservationService implements ReservationServiceInterface
      * @return reservation
      */
     public function searchByGuestNo($request) {
-        return $this->ReservationDao->searchByGuestNo($request);
+        return $this->reservationDao->searchByGuestNo($request);
     }
 
     /**
@@ -122,7 +129,7 @@ class ReservationService implements ReservationServiceInterface
      * @return reservation
      */
     public function searchByCheckIn($request) {
-        return $this->ReservationDao->searchByCheckIn($request);
+        return $this->reservationDao->searchByCheckIn($request);
     }
 
     /**
@@ -130,7 +137,7 @@ class ReservationService implements ReservationServiceInterface
      * @return reservation
      */
     public function searchByCheckOut($request) {
-        return $this->ReservationDao->searchByCheckOut($request);
+        return $this->reservationDao->searchByCheckOut($request);
     }
 
     /**
@@ -140,6 +147,40 @@ class ReservationService implements ReservationServiceInterface
      * @return reservation
      */
     public function searchByStartEnd($start, $end) {
-        return $this->ReservationDao->searchByStartEnd($start, $end);
+        return $this->reservationDao->searchByStartEnd($start, $end);
+    }
+    
+    /**
+     * To search from CustomerName
+     * @param string $data Input from user
+     * @return array $custInfo Customer info from reservation
+     */
+    public function customerName($data) {
+        return $this->reservationDao->customerName($data);
+    }
+
+    /**
+     * To To search reservation by phone number
+     * @return array $reservation reservation list
+     */
+    public function PhoneNo($phone) {
+        
+        return $this->reservationDao->PhoneNo($phone);
+    }
+    /**
+     * To To search reservation by check_in time
+     * @return array $reservation reservation list
+     */
+    public function CheckIn($checkin) {
+        
+        return $this->reservationDao->CheckIn($checkin);
+    }
+    /**
+     * To To search reservation by check_out time
+     * @return array $reservation reservation list
+     */
+    public function CheckOut($checkout) {
+        
+        return $this->reservationDao->CheckOut($checkout);
     }
 }

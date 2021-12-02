@@ -21,7 +21,9 @@
           <li><a href="{{route('home')}}">Home</a></li>
           <li><a href="{{route('hotelview')}}">Hotel</a></li>
           <li> <a href="{{route('roomuserview')}}" class="active">Room</a></li>
-          <li><a href="{{url('/loginuser')}}">Login</a></li>
+          @if (!Auth::user())
+          <li><a href="{{route('login')}}">Login</a></li>
+          @endif
         </ul>
       </div>
     </nav>
@@ -84,4 +86,5 @@
   @endforeach
   {{$roomList->links()}}
 </div>
+<script src="{{asset('js/top.js')}}"></script>
 @endsection

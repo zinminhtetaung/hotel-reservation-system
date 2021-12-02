@@ -59,51 +59,53 @@
         <div class="card-header">User Info</div>
 
         <div class="card-body">
-          <table class="table" id="room-list">
-            <thead>
-              <tr>
-                <th>ID</th>
-                <th>Name</th>
-                <th>Email</th>
-                <th>Password</th>
-                <th>Role</th>
-                <th>Created_at</th>
-                <th>Updated_at</th>
-                @if (Auth::user()->role=='admin' || Auth::user()->role=='0')
-                <th>Action 1</th>
-                <th>Action 2</th>
-                @endif
-              </tr>
-            </thead>
-            <tbody class="tbody">
-              @foreach ($User as $User)
-              <tr>
-                <td>{{ $User->id }}</td>
-                <td>{{ $User->user_name }}</td>
-                <td>{{ $User->email }}</td>
-                <td>{{"password"}}</td>
-                <td>{{ $User->role }}</td>
-                <td>{{ date('d/m/Y', strtotime($User->created_at)) }}</td>
-                <td>{{ date('d/m/Y', strtotime($User->updated_at)) }}</td>
-                @if (Auth::user()->role=='admin' || Auth::user()->role=='0')
-                <td>
-                  <a type="button" class="btn btn-primary" href="/users/{{ $User->id }}/update">Update</a>
-                </td>
-                <td>
-                  <form action="/user/{{ $User->id }}/delete" method="POST" onSubmit="return confirm('Are you sure you want to delete?')">
-                    {{ csrf_field() }}
-                    {{ method_field('DELETE') }}
+          <div style="overflow-x:auto;">
+            <table class="table" id="room-list">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Name</th>
+                  <th>Email</th>
+                  <th>Password</th>
+                  <th>Role</th>
+                  <th>Created_at</th>
+                  <th>Updated_at</th>
+                  @if (Auth::user()->role=='admin' || Auth::user()->role=='0')
+                  <th>Action 1</th>
+                  <th>Action 2</th>
+                  @endif
+                </tr>
+              </thead>
+              <tbody class="tbody">
+                @foreach ($User as $User)
+                <tr>
+                  <td>{{ $User->id }}</td>
+                  <td>{{ $User->user_name }}</td>
+                  <td>{{ $User->email }}</td>
+                  <td>{{"password"}}</td>
+                  <td>{{ $User->role }}</td>
+                  <td>{{ date('d/m/Y', strtotime($User->created_at)) }}</td>
+                  <td>{{ date('d/m/Y', strtotime($User->updated_at)) }}</td>
+                  @if (Auth::user()->role=='admin' || Auth::user()->role=='0')
+                  <td>
+                    <a type="button" class="btn btn-primary" href="/users/{{ $User->id }}/update">Update</a>
+                  </td>
+                  <td>
+                    <form action="/user/{{ $User->id }}/delete" method="POST" onSubmit="return confirm('Are you sure you want to delete?')">
+                      {{ csrf_field() }}
+                      {{ method_field('DELETE') }}
 
-                    <button type="submit" class="btn del-btn">
-                      <i class="fa fa-btn fa-trash"></i>Delete
-                    </button>
-                  </form>
-                </td>
-                @endif
-              </tr>
-              @endforeach
-            </tbody>
-          </table>
+                      <button type="submit" class="btn del-btn">
+                        <i class="fa fa-btn fa-trash"></i>Delete
+                      </button>
+                    </form>
+                  </td>
+                  @endif
+                </tr>
+                @endforeach
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
       @endif

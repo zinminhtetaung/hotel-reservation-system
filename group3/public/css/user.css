@@ -475,15 +475,14 @@ td {
     padding-top: 6%;
   }
   .room-title{
-    width: 30%;
+    width: 40%;
     font-size: .8rem;
   }
   .roominfo-ttl{
     padding:5% .5%;
   }
   .roominfo-ttl::before,.roominfo-ttl::after{
-    width: 36%;
-    top: 30px;
+    display: none;
   }
   .room{
     margin-bottom: 5%;

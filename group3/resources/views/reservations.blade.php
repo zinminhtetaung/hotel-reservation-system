@@ -27,7 +27,7 @@
         </div>
       </form>
 
-      
+
       <!-- New reservation Form -->
       <form action="{{ route('reservation.add') }}" method="POST" onSubmit="return confirm('Do you want to add this reservation?')" class="add-form">
         {{ csrf_field() }}
@@ -72,9 +72,9 @@
 
         <!-- Add reservation Button -->
         <div class="form-group">
-            <button type="submit" class="btn add-btn">
-              <i class="fa fa-plus"></i> Add reservation
-            </button>
+          <button type="submit" class="btn add-btn">
+            <i class="fa fa-plus"></i> Add reservation
+          </button>
         </div>
       </form>
       @endif
@@ -83,57 +83,59 @@
       <div class="card">
         <div class="card-header">Current reservations</div>
         <div class="card-body">
-          <table class="table" id="room-list">
-            <thead>
-              <tr>
-                <th>ID</th>
-                <th>Customer Name</th>
-                <th>Phone Number</th>
-                <th>Room Id</th>
-                <th>Number of Guest</th>
-                <th>Check In</th>
-                <th>Check Out</th>
-                <th>Created at</th>
-                <th>Updated at</th>
-                @if (Auth::user()->role=='receptionist')
-                <th>Delete Action</th>
-                <th>Update Action</th>
-                @endif
-              </tr>
-            </thead>
-            <tbody class="tbody">
-            @foreach ($reservations as $reservation)
-            <tr>
-              <td>{{ $reservation->id }}</td>
-              <td>{{ $reservation->customer_name }}</td>
-              <td>{{ $reservation->phone }}</td>
-              <td>{{ $reservation->room_id }}</td>
-              <td>{{ $reservation->number_of_guest}}</td>
-              <td>{{date('d/m/Y', strtotime($reservation->check_in))}}</td>
-              <td>{{date('d/m/Y', strtotime($reservation->check_out))}}</td>
-              <td>{{date('d/m/Y', strtotime($reservation->created_at))}}</td>
-              <td>{{date('d/m/Y', strtotime($reservation->updated_at))}}</td>
+          <div style="overflow-x:auto;">
+            <table class="table" id="room-list">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Customer Name</th>
+                  <th>Phone Number</th>
+                  <th>Room Id</th>
+                  <th>Number of Guest</th>
+                  <th>Check In</th>
+                  <th>Check Out</th>
+                  <th>Created at</th>
+                  <th>Updated at</th>
+                  @if (Auth::user()->role=='receptionist')
+                  <th>Delete Action</th>
+                  <th>Update Action</th>
+                  @endif
+                </tr>
+              </thead>
+              <tbody class="tbody">
+                @foreach ($reservations as $reservation)
+                <tr>
+                  <td>{{ $reservation->id }}</td>
+                  <td>{{ $reservation->customer_name }}</td>
+                  <td>{{ $reservation->phone }}</td>
+                  <td>{{ $reservation->room_id }}</td>
+                  <td>{{ $reservation->number_of_guest}}</td>
+                  <td>{{date('d/m/Y', strtotime($reservation->check_in))}}</td>
+                  <td>{{date('d/m/Y', strtotime($reservation->check_out))}}</td>
+                  <td>{{date('d/m/Y', strtotime($reservation->created_at))}}</td>
+                  <td>{{date('d/m/Y', strtotime($reservation->updated_at))}}</td>
 
-              @if (Auth::user()->role=='receptionist')
-              <!-- Delete Button -->
-              <td>
-                <form action="/reservation/{{ $reservation->id }}/{{ $reservation->room_id }}" method="POST" onSubmit="return confirm('Are you sure you want to delete?')">
-                  {{ csrf_field() }}
-                  {{ method_field('DELETE') }}
-                  <button type="submit" class="btn del-btn">
-                    <i class="fa fa-btn fa-trash"></i>Delete
-                  </button>
-                </form>
-              </td>
-              <!-- Update Button -->
-              <td>
-                <a type="button" class="btn btn-primary" href="/reservation/{{ $reservation->id }}/edit">Update</a>
-              </td>
-              @endif
-            </tr>
-            @endforeach
-            </tbody>
-          </table>
+                  @if (Auth::user()->role=='receptionist')
+                  <!-- Delete Button -->
+                  <td>
+                    <form action="/reservation/{{ $reservation->id }}/{{ $reservation->room_id }}" method="POST" onSubmit="return confirm('Are you sure you want to delete?')">
+                      {{ csrf_field() }}
+                      {{ method_field('DELETE') }}
+                      <button type="submit" class="btn del-btn">
+                        <i class="fa fa-btn fa-trash"></i>Delete
+                      </button>
+                    </form>
+                  </td>
+                  <!-- Update Button -->
+                  <td>
+                    <a type="button" class="btn btn-primary" href="/reservation/{{ $reservation->id }}/edit">Update</a>
+                  </td>
+                  @endif
+                </tr>
+                @endforeach
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
       @endif
