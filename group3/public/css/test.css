@@ -32,12 +32,22 @@
         .cnt2-card {
             width: 22%;
         }
+        .home-content2 h2 {
+            padding-top: 10px;
+        }
         .home-content2 img {
             height: 160px;
         }
         .home-content2 p {
             font-size: 1rem;
         }
+        .cnt3-text1 {
+            padding-left: 50px;
+        }
+        .cnt3-text2 {
+            padding-right: 30px;
+        }
+        
 }
 
 /*for sp*/
