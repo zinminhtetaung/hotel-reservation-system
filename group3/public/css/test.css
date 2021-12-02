@@ -1,6 +1,6 @@
 /*for tablets*/
 
-@media screen and (min-width:640px) and (max-width:768px){
+@media screen and (min-width:640px) and (max-width:1040px){
 
     .homecnt1-img {
         width: 100%;
@@ -18,7 +18,7 @@
         margin-left: 12px;
       }
       .home-img p {
-        font-size: 1.6vw;
+        font-size: 1.2rem;
       }
       .map,.reasons{
         width: 100%;
