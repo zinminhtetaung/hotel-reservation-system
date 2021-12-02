@@ -3,8 +3,7 @@
 }
 
 .nav li a {
-  text-decoration: none;
-  color: #132238;
+    text-decoration: none;
 }
 
 .nav li a:hover {
@@ -18,8 +17,8 @@
 
 .login-box {
   background-color: #fff;
-  margin-left: 36%;
-  width: 400px;
+  margin: 0 auto;
+  width: 30%;
   padding: 40px 50px 20px 50px;
   border: 1px solid black;
 }
@@ -114,4 +113,16 @@
   background-color: #ebf068;
   color: #132238;
   border: 1px solid #ebf068;
+}
+
+@media screen and (min-width: 640px) and (max-width:768px){
+  .login-box{
+    width: 50%;
+  }
+}
+
+@media screen and (max-width: 640px){
+  .login-box{
+    width: 70%
+  }
 }

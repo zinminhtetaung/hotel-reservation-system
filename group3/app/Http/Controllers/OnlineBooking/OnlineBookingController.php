@@ -42,8 +42,8 @@ class OnlineBookingController extends Controller
     public function showOnlineBookingList()
     {
         if (Auth::check()) {
-            $OnlineBookingList = $this->onlineBookingInterface->getOnlineBooking();
-            return view('onlineBooking')->with('bookings', $OnlineBookingList);
+            $onlineBookingList = $this->onlineBookingInterface->getOnlineBooking();
+            return view('onlineBooking')->with('bookings', $onlineBookingList);
 
         } else {
             return redirect()->route('login');

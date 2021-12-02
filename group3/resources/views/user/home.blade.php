@@ -1,5 +1,6 @@
 @extends('userlayouts.app')
 @section ('content')
+
 <div class="header">
   <div class="container clearfix">
     <h1 class="logo">

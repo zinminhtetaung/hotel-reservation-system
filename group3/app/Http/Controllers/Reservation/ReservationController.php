@@ -59,8 +59,8 @@ class ReservationController extends Controller
     public function showReservationList()
     {
         if(Auth::check()){
-            $ReservationList = $this->reservationInterface->getReservation();
-            return view('reservations')->with('reservations' ,$ReservationList);
+            $reservationList = $this->reservationInterface->getReservation();
+            return view('reservations')->with('reservations' ,$reservationList);
 
         } else{
             return redirect()->route('login');

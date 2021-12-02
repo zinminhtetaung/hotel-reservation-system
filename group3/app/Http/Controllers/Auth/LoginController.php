@@ -7,7 +7,6 @@ use App\Http\Requests\Auth\LoginRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-use Symfony\Component\HttpFoundation\Session\Session as HttpFoundationSessionSession;
 
 class LoginController extends Controller
 {
@@ -30,7 +29,6 @@ class LoginController extends Controller
     public function store(LoginRequest $request)
     {
         $request->authenticate();
-
         $request->session()->regenerate();
 
         return redirect()->route('reservationList');

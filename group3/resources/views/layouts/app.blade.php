@@ -22,6 +22,7 @@
   <link rel="stylesheet" href="{{ asset('css/style.css') }}">
   <link rel="stylesheet" href="{{ asset('css/hotel.css')}}">
   <link rel="stylesheet" href="{{ asset('css/login.css')}}">
+  <link rel="stylesheet" href="{{ asset('css/test.css')}}">
   <!-- Script -->
   <script src="{{ asset('js/app.js') }}"></script>
 </head>
