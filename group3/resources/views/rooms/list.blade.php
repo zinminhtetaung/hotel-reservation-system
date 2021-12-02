@@ -11,7 +11,7 @@
       @include('common.errors')
 
       <!-- New reservation Form -->
-      
+
       @if (Auth::user()->role=='manager')
       <form action="{{ route('create.room') }}" method="POST" class="add-form" enctype="multipart/form-data">
         {{ csrf_field() }}
@@ -64,71 +64,73 @@
         <div class="form-group">
           <label class="input-ttl required">{{ __('Image') }}</label>
           <div class="input-box">
-            <label class="img-lable"for="upload">Upload an image</label>
-            <input type="file" class="image input-img" name="image" id="upload"/>
+            <label class="img-lable" for="upload">Upload an image</label>
+            <input type="file" class="image input-img" name="image" id="upload" />
           </div>
         </div>
 
         <!-- Add reservation Button -->
         <div class="form-group">
-            <button type="submit" onSubmit="return confirm('Do you want to add this reservation?')" class="btn add-btn">
-              <i class="fa fa-plus"></i> Add Room
-            </button>
+          <button type="submit" onSubmit="return confirm('Do you want to add this reservation?')" class="btn add-btn">
+            <i class="fa fa-plus"></i> Add Room
+          </button>
         </div>
         @endif
       </form>
       <div class="card">
         <div class="card-header">{{ __('Room Information') }}</div>
         <div class="card-body">
-          <table class="table" id="room-list">
-            <thead>
-              <tr>
-                <th>ID</th>
-                <th>Hotel ID</th>
-                <th>Room Number</th>
-                <th>Room Type</th>
-                <th>Service</th>
-                <th>Price</th>
-                <th>Status</th>
-                <th>Image</th>
-                @if (Auth::user()->role=='manager')
-                <th>Operation1</th>
-                <th>Operation2</th>
-                @endif
-              </tr>
-            </thead>
-            <tbody class="tbody">
-              @foreach ($roomList as $room)
-              <tr>
-                <td>{{$room->id}}</td>
-                <td>{{$room->hotel_id}}</td>
-                <td>
-                  <a class="room_number" onclick="showRoomDetail({{json_encode($room)}})" data-toggle="modal" data-target="#room-detail-popup">{{$room->room_number}}</a>
-                </td>
-                <td>{{$room->room_type}}</td>
-                <td>{{$room->service}}</td>
-                <td>{{$room->price}}</td>
-                <td>{{$room->status}}</td>
+          <div style="overflow-x:auto;">
+            <table class="table" id="room-list">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Hotel ID</th>
+                  <th>Room Number</th>
+                  <th>Room Type</th>
+                  <th>Service</th>
+                  <th>Price</th>
+                  <th>Status</th>
+                  <th>Image</th>
+                  @if (Auth::user()->role=='manager')
+                  <th>Operation1</th>
+                  <th>Operation2</th>
+                  @endif
+                </tr>
+              </thead>
+              <tbody class="tbody">
+                @foreach ($roomList as $room)
+                <tr>
+                  <td>{{$room->id}}</td>
+                  <td>{{$room->hotel_id}}</td>
+                  <td>
+                    <a class="room_number" onclick="showRoomDetail({{json_encode($room)}})" data-toggle="modal" data-target="#room-detail-popup">{{$room->room_number}}</a>
+                  </td>
+                  <td>{{$room->room_type}}</td>
+                  <td>{{$room->service}}</td>
+                  <td>{{$room->price}}</td>
+                  <td>{{$room->status}}</td>
 
-                <td><img height="50px" width="75px" src="{{asset('/storage/images/'.$room->image)}}" /></td>
-                @if (Auth::user()->role=='manager')
-                <td>
-                  <form method="POST" action="/rooms/{{ $room->id }}/delete" onSubmit="return confirm('Are you sure you want to delete?')">
-                    {{ csrf_field() }}
-                    {{ method_field('DELETE') }}
-                    <button type="submit" class="btn del-btn">Delete</button>
-                  </form>
-                </td>
-                
-                <!-- Update Button -->
-                <td>
-                  <a type="button" class="btn btn-primary" href="/rooms/{{ $room->id }}/update">Update</a>
-                </td>
-                @endif
-              </tr>
-              @endforeach
-            </tbody>
-          </table>
+                  <td><img height="50px" width="75px" src="{{asset('/storage/images/'.$room->image)}}" /></td>
+                  @if (Auth::user()->role=='manager')
+                  <td>
+                    <form method="POST" action="/rooms/{{ $room->id }}/delete" onSubmit="return confirm('Are you sure you want to delete?')">
+                      {{ csrf_field() }}
+                      {{ method_field('DELETE') }}
+                      <button type="submit" class="btn del-btn">Delete</button>
+                    </form>
+                  </td>
+
+                  <!-- Update Button -->
+                  <td>
+                    <a type="button" class="btn btn-primary" href="/rooms/{{ $room->id }}/update">Update</a>
+                  </td>
+                  @endif
+                </tr>
+                @endforeach
+              </tbody>
+            </table>
+          </div>
           <div class="modal fade" id="room-detail-popup" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
               <div class="modal-content">

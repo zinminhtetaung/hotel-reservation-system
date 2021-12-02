@@ -70,7 +70,7 @@ body {
 .header,
 .body {
   background-color: #98ccd3;
-  width: 1280px;
+  max-width: 1280px;
   margin: auto;
 }
 
@@ -396,4 +396,81 @@ body {
 .alert-success {
   padding: 15px;
   background-color: #53b6c4;
+}
+
+@media screen and (max-width: 1040px) and (min-width: 641px){
+  .head {
+    font-size: 1.45rem;
+  }
+  .wrap {
+    width: 98%;
+    margin: 0 auto;
+  }
+  .card-header {
+    font-size: 1.3rem;
+  }
+  .card-body {
+    padding-top: 1vw;
+  }
+  .table thead th {
+    font-size: 1.05rem;
+  }
+  .table td {
+    font-size: 0.9rem;
+    padding: 0.75rem;
+  }
+  .form-search {
+    width: 95%;
+  }
+  .search-txt {
+    font-size: 0.9rem;
+  }
+  .copy-btn,
+  .search-btn {
+    padding: 0.15rem 1rem;
+  }
+}
+@media screen and (max-width: 640px){
+  .wrap {
+    width: 98%;
+    margin: 0 auto;
+  }
+  .logo {
+    display: none;  
+  }
+  .head {
+    display: none;
+  }
+  .card-header {
+    font-size: 1.3rem;
+  }
+  .card-body {
+    padding-top: 1vw;
+  }
+  .table thead th {
+    font-size: 1rem;
+  }
+  .table td {
+    font-size: 0.9rem;
+    padding: 0.75rem;
+  }
+  .logout {
+    padding-top: 1.5vw;
+    float: left;
+  }
+  .form-search {
+    width: 95%;
+  }
+  .input-txt, .input-img {
+    width: 95% !important;
+    font-size: 0.9rem;
+  }
+  .search-txt {
+    margin-top: 1.5vw;
+    font-size: 0.9rem;
+  }
+  .copy-btn,
+  .search-btn {
+    padding: 0.15rem 1rem;
+  }
 }
