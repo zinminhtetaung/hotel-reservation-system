@@ -45,6 +45,9 @@
               </div>
 
         </nav>
+        <div class="header__toggle">
+          <i class='bx bx-menu' id="header-toggle"></i>
+        </div>
     </header>
   </div>
   <main>
@@ -56,6 +59,7 @@
   <script src="{{asset ('js/lib/jquery.min.js')}}"></script>
   <script src="{{asset ('js/lib/bootstrap.min.js')}}"></script>
   <script src="{{asset('js/common.js')}}"></script>
+  <script src="{{asset('js/sidebar.js')}}"></script>
   <script src="{{asset ('js/lib/Chart.min.js')}}"></script>
   <script src="{{ asset('js/lib/jquery.dataTables.min.js') }}"></script>
 </body>

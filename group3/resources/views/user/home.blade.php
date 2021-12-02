@@ -70,10 +70,9 @@
       @foreach ($topRoomList as $topRoom)    
         <div class="cnt2-card">
           <img src="{{asset('/storage/images/'.$topRoom->image)}}" alt="room">
-          <p>{{$topRoom->room_number}}</p><br>
-          <p>{{$topRoom->price}}</p><br>
-          <p>{{$topRoom->room_type}}</p><br>
-          <p>{{$topRoom->service}}</p><br>
+          <p>Room Number : {{$topRoom->room_number}}</p><br>
+          <p>Price : {{$topRoom->price}}</p><br>
+          <p>Type : {{$topRoom->room_type}}</p><br>
         </div>
 
       @endforeach
