@@ -29,6 +29,15 @@
         .reasons h2{
             padding: 10px;
         }
+        .cnt2-card {
+            width: 22%;
+        }
+        .home-content2 img {
+            height: 160px;
+        }
+        .home-content2 p {
+            font-size: 1rem;
+        }
 }
 
 /*for sp*/
