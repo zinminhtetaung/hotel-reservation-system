@@ -12,31 +12,33 @@
         <div class="card-header">{{ __('Hotel Information') }}</div>
         <div class="card-body">
           <a class="btn btn-primary header-btn" href="/hotel/download">{{ __('Download') }}</a>
-          <table class="table" id="hotel-list">
-            <thead>
-              <tr>
-                <th class="header-cell" scope="col">ID</th>
-                <th class="header-cell" scope="col">Hotel Name</th>
-                <th class="header-cell" scope="col">Description</th>
-                <th class="header-cell" scope="col">Phone Number</th>
-                <th class="header-cell" scope="col">Location</th>
-                <!-- <th class="header-cell" scope="col">Action</th> -->
-              </tr>
-            </thead>
-            <tbody class="tbody">
-              @foreach ($hotelList as $hotel)
-              <tr>
-                <td>{{$hotel->id}}</td>
-                <td>
-                  <a class="hotel-name" onclick="showHotelDetail({{json_encode($hotel)}})" data-toggle="modal" data-target="#hotel-detail-popup">{{$hotel->hotel_name}}</a>
-                </td>
-                <td>{{$hotel->description}}</td>
-                <td>{{$hotel->phone}}</td>
-                <td>{{$hotel->location}}</td>
-              </tr>
-              @endforeach
-            </tbody>
-          </table>
+          <div style="overflow-x:auto;">
+            <table class="table" id="hotel-list">
+              <thead>
+                <tr>
+                  <th class="header-cell" scope="col">ID</th>
+                  <th class="header-cell" scope="col">Hotel Name</th>
+                  <th class="header-cell" scope="col">Description</th>
+                  <th class="header-cell" scope="col">Phone Number</th>
+                  <th class="header-cell" scope="col">Location</th>
+                  <!-- <th class="header-cell" scope="col">Action</th> -->
+                </tr>
+              </thead>
+              <tbody class="tbody">
+                @foreach ($hotelList as $hotel)
+                <tr>
+                  <td>{{$hotel->id}}</td>
+                  <td>
+                    <a class="hotel-name" onclick="showHotelDetail({{json_encode($hotel)}})" data-toggle="modal" data-target="#hotel-detail-popup">{{$hotel->hotel_name}}</a>
+                  </td>
+                  <td>{{$hotel->description}}</td>
+                  <td>{{$hotel->phone}}</td>
+                  <td>{{$hotel->location}}</td>
+                </tr>
+                @endforeach
+              </tbody>
+            </table>
+          </div>
           <div class="modal fade" id="hotel-detail-popup" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
               <div class="modal-content">
