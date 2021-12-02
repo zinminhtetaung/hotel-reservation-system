@@ -39,7 +39,7 @@
             height: 160px;
         }
         .home-content2 p {
-            font-size: 1rem;
+            font-size: 1.2rem;
         }
         .cnt3-text1 {
             padding-left: 50px;
@@ -60,7 +60,13 @@
     }
     .card1, .card2, .card3{
         width: 100%;
-        margin-left: 0px;
+        margin: 0 auto;
+    }
+    .homehotel-img {
+        height: auto;
+    }
+    .home-img p {
+        font-size: 1.2rem;
     }
     .map,.reasons{
         width: 100%;
@@ -72,12 +78,30 @@
     .reasons h2{
         padding: 10px;
     }
-    .office,.partner,.contact{
-        width: 100%;
-        margin: 20px 0 0 70px;
-        float:unset;
-    }
     .cnt3-text1,.cnt3-text2{
         margin: 10px;
     }
+    .homecnt1-img {
+        height: 380px;
+    }
+    .home-content2 h2 {
+        padding-top: 10px;
+        font-size: 1.6rem;
+    }
+    .cnt2-card {
+        width: 19%;
+    }
+    .home-content2 img {
+        height: auto;
+    }
+    .home-content2 p {
+        font-size: 2.2vw;
+    }
+    .map h2, .reasons h2 {
+        font-size: 1.2rem;
+    }
+    .reasons h3 {
+        font-size: 1rem;
+    }
+    
 }

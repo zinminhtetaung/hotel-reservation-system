@@ -1,27 +1,12 @@
 @extends('userlayouts.app')
 
 @section('content')
-<!-- <link href="{{ asset('css/app.css') }}" rel="stylesheet"> -->
 
-<!-- <div class="header">
-
-  <div class="header-in clearfix">
-    <h1 class="logo">
-      <a href=""><img src="{{ asset('image/logo.jpeg') }}" alt="logo"></a>
-    </h1>
-     <ul class="nav">
-      <li><a href="{{route('home')}}">Home</a></li>
-      <li><a href="{{route('hotelview')}}">Hotel</a></li>
-      <li> <a href="{{route('roomuserview')}}">Room</a></li>
-      <li><a href="{{route('login')}}" class="active">Login</a></li>
-    </ul>
-  </div>
-
-</div> -->
 <div class="header">
   <div class="container clearfix">
     <h1 class="logo"> 
-      <a href=""><img src="{{ asset('image/logo.jpeg') }}" alt="logo"></a>
+      <a href="#" ><img  class="logoimg pc" src="{{ asset('image/logo.jpeg') }}" alt="logo"></a>
+      <a href="#"><img  class="logoimg sp" src="{{ asset('image/splogo.png') }}" alt="logo"></a>
     </h1>
     @if (Auth::user())
       <a class="back" href="{{route('reservationList')}}">
@@ -33,12 +18,14 @@
       <span></span>
       <span></span>
     </div>
-    <ul class="nav-inner">
-      <li><a href="{{route('home')}}" class="active">Home</a></li>
+    <div class="nav-bar">
+    <ul class="nav-inner clearfix">
+      <li><a href="{{route('home')}}">Home</a></li>
       <li><a href="{{route('hotelview')}}">Hotel</a></li>
-      <li> <a href="{{route('roomuserview')}}">Room</a></li>
-      <li><a href="{{url('/loginuser')}}">Login</a></li>
+      <li> <a href="{{route('roomuserview')}}" >Room</a></li>
+      <li><a href="{{url('/loginuser')}}"class="active">Login</a></li>
     </ul>
+    </div>
     </nav>
   </div>
 </div>

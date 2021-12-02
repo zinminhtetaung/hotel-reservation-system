@@ -1,45 +1,32 @@
 @extends('userlayouts.app')
 @section ('content')
-<!-- <div class="header">
-  <div class="header-in clearfix">
-    <h1 class="logo"> 
-      <a href=""><img src="{{ asset('image/logo.jpeg') }}" alt="logo"></a>
-    </h1>
-    @if (Auth::user())
-      <a class="back" href="{{route('reservationList')}}">
-        <img src="{{ asset('image/l_arrow.png') }}"> Back to Dashboard</a>
-    @endif
-    <ul class="nav">
-      <li><a href="{{route('home')}}" class="active">Home</a></li>
-      <li><a href="{{route('hotelview')}}">Hotel</a></li>
-      <li> <a href="{{route('roomuserview')}}">Room</a></li>
-      @if (!Auth::user())
-        <li><a href="{{route('login')}}">Login</a></li>
-      @endif 
-    </ul>
-  </div>
-</div> -->
+
 <div class="header">
   <div class="container clearfix">
-    <h1 class="logo"> 
-      <a href=""><img src="{{ asset('image/logo.jpeg') }}" alt="logo"></a>
+    <h1 class="logo">
+      <a href="#"><img class="logoimg pc" src="{{ asset('image/logo.jpeg') }}" alt="logo"></a>
+      <a href="#"><img class="logoimg sp" src="{{ asset('image/splogo.png') }}" alt="logo"></a>
     </h1>
     @if (Auth::user())
-      <a class="back" href="{{route('reservationList')}}">
-        <img src="{{ asset('image/l_arrow.png') }}"> Back to Dashboard</a>
+    <a class="back" href="{{route('reservationList')}}">
+      <img src="{{ asset('image/l_arrow.png') }}"> Back to Dashboard</a>
     @endif
     <nav>
-    <div class="menu-btn">
-      <span></span>
-      <span></span>
-      <span></span>
-    </div>
-    <ul class="nav-inner">
-      <li><a href="{{route('home')}}" class="active">Home</a></li>
-      <li><a href="{{route('hotelview')}}">Hotel</a></li>
-      <li> <a href="{{route('roomuserview')}}">Room</a></li>
-      <li><a href="{{url('/loginuser')}}">Login</a></li>
-    </ul>
+      <div class="menu-btn">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <div class="nav-bar">
+        <ul class="nav-inner">
+          <li><a href="{{route('home')}}" class="active">Home</a></li>
+          <li><a href="{{route('hotelview')}}">Hotel</a></li>
+          <li> <a href="{{route('roomuserview')}}">Room</a></li>
+          @if (!Auth::user())
+          <li><a href="{{route('login')}}">Login</a></li>
+          @endif
+        </ul>
+      </div>
     </nav>
   </div>
 </div>
@@ -60,25 +47,25 @@
         <p>Sedona</p>
       </div>
     </div>
-    <a  onclick="topFun()" id="sctop"><img class="arrow-img" src="{{asset('image/uparrow.png')}}" alt="arrow"></a>
+    <a onclick="topFun()" id="sctop"><img class="arrow-img" src="{{asset('image/uparrow.png')}}" alt="arrow"></a>
   </div>
 </div>
 <div class="home-content2">
   <div class="container clearfix">
     <h2>Popular Rooms</h2>
     @if(count($topRoomList)>0)
-      @foreach ($topRoomList as $topRoom)    
-        <div class="cnt2-card">
-          <img src="{{asset('/storage/images/'.$topRoom->image)}}" alt="room">
-          <p>Room Number : {{$topRoom->room_number}}</p><br>
-          <p>Price : {{$topRoom->price}}</p><br>
-          <p>Type : {{$topRoom->room_type}}</p><br>
-        </div>
+    @foreach ($topRoomList as $topRoom)
+    <div class="cnt2-card">
+      <img src="{{asset('/storage/images/'.$topRoom->image)}}" alt="room">
+      <p>Room Number : {{$topRoom->room_number}}</p><br>
+      <p>Price : {{$topRoom->price}}</p><br>
+      <p>Type : {{$topRoom->room_type}}</p><br>
+    </div>
 
-      @endforeach
-      </div>
-    @endif
+    @endforeach
   </div>
+  @endif
+</div>
 </div>
 <div class="home-content3">
   <div class="container clearfix">
@@ -104,14 +91,14 @@
       </div>
       <div class="cnt3-text1">
         <h3>Monitoring</h3>
-        <p>See your potential guest booking online in real-time,even before they finish. 
+        <p>See your potential guest booking online in real-time,even before they finish.
           Say hello to unique guest management; say goodbye to double bookings.
         </p>
 
       </div>
       <div class="cnt3-text2">
         <h3>Automated Emails</h3>
-        <p>Its works day and night from anywhere,on any device. 
+        <p>Its works day and night from anywhere,on any device.
           It automatically sends immediate e-mail confirmations to you and your guest.
           So you can be productive and care-free right from the start.
         </p>
@@ -119,5 +106,4 @@
     </div>
   </div>
 </div>
-<script src="{{asset('js/top.js')}}"></script>
 @endsection
