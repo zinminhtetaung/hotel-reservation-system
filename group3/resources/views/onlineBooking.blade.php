@@ -13,10 +13,8 @@
   <div class="wrap">
     <div class="content">
       <!-- Current reservations -->
-      @if (count($bookings) > 0)
       <div class="card">
         <div class="card-header">Current bookings</div>
-
         <div class="card-body">
           <div style="overflow-x:auto;">
             <table class="table dataTable no-footer" id="room-list">
@@ -37,6 +35,7 @@
                 </tr>
               </thead>
               <tbody class="tbody">
+              @if (count($bookings) > 0)
                 @foreach ($bookings as $booking)
                 <tr>
                   <td>{{ $booking->id }}</td>

@@ -122,31 +122,35 @@
   .login-button {
     margin-left: 32%;
     width: 40%;
-
   }
   
 }
 
 @media screen and (max-width: 640px){
+  .warp {
+    padding: 44% 0;
+  }
   .login-box{
-    max-width: 70%
+    width: 80%;
+    padding: 7%;
   }
   .login-title {
-    font-size: 3vw;
+    font-size: 5vw;
   }
   .email-box input, .password-box input {
-    font-size: 2.1vw;
+    font-size: 4.1vw;
     margin-left: -6px;
+    border: none;
   }
   .login-button {
     margin-left: 28%;
-    margin-top: 4px;
+    margin-top: 5%;
     width: 50%;
-    padding-top: 0px;
-    font-size: 2.1vw;
+    padding: 5px;
+    font-size: 4.1vw;
   }
   .login-comment p {
-    font-size: 2.1vw;
+    font-size: 3.5vw;
     padding-top: 4%;
   }
 }
