@@ -51,9 +51,9 @@
 }
 
 .login-button {
-  width: 80px;
+  width: 100px;
   padding-top: 2px;
-  margin-left: 38%;
+  margin-left: 40%;
   margin-top: 20px;
   background-color: #364e68;
   color: #ebf0f6;
@@ -117,12 +117,36 @@
 
 @media screen and (min-width: 640px) and (max-width:768px){
   .login-box{
-    width: 50%;
+    width: 35%;
   }
+  .login-button {
+    margin-left: 32%;
+    width: 40%;
+
+  }
+  
 }
 
 @media screen and (max-width: 640px){
   .login-box{
-    width: 70%
+    max-width: 70%
+  }
+  .login-title {
+    font-size: 3vw;
+  }
+  .email-box input, .password-box input {
+    font-size: 2.1vw;
+    margin-left: -6px;
+  }
+  .login-button {
+    margin-left: 28%;
+    margin-top: 4px;
+    width: 50%;
+    padding-top: 0px;
+    font-size: 2.1vw;
+  }
+  .login-comment p {
+    font-size: 2.1vw;
+    padding-top: 4%;
   }
 }

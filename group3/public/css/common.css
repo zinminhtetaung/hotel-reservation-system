@@ -243,7 +243,6 @@ a:hover {
   }
   .logo{
     width: 40%;
-    margin-left: 25%;
   }
   .logoimg{
     border-radius: unset;
@@ -380,6 +379,12 @@ a:hover {
   background-color: #132238;
   border: 1px solid ;
   color: #ebf0f6;
+}
+#ttl1 {
+  display: block;
+}
+#ttl2, #ttl3 {
+  display: none;
 }
 .copyright{
   padding-bottom: 2vw;
