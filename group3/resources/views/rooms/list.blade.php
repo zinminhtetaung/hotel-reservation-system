@@ -31,7 +31,7 @@
         <div class="form-group">
           <label for="room_number" class="input-ttl required">Room number</label>
           <div class="input-box">
-            <input type="text" min=0 name="room_number" class="input-txt">
+            <input type="text" min=0 name="room_number" class="input-txt" placeholder="eg. l1,n1,s1">
           </div>
         </div>
         <div class="form-group">

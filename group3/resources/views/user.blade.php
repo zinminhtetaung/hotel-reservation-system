@@ -82,7 +82,7 @@
                   <td>{{ $User->id }}</td>
                   <td>{{ $User->user_name }}</td>
                   <td>{{ $User->email }}</td>
-                  <td>{{"password"}}</td>
+                  <td>{{"########"}}</td>
                   <td>{{ $User->role }}</td>
                   <td>{{ date('d/m/Y', strtotime($User->created_at)) }}</td>
                   <td>{{ date('d/m/Y', strtotime($User->updated_at)) }}</td>
