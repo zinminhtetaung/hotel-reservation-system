@@ -428,12 +428,12 @@ td {
     margin-top: 5%;
   }
   .txt-box{
-    padding: 2% 0 1%;
+    padding: 1.5% 0 1.5% .5%;
     font-size: .9rem;
     margin-top: 2%;
   } 
   .text-box1{
-    padding:0 0 1%;
+    padding: 0;
   }
   
 }
@@ -544,7 +544,7 @@ td {
     margin-top: 5%;
   }
   .txt-box{
-    padding: 2% 0 0 .6%;
+    padding: 1% 0 1% .6%;
     font-size: .9rem;
     margin-top: 2%;
   }

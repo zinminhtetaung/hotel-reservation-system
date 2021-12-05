@@ -77,14 +77,14 @@
       <div class="cnt3-text1">
         <h3>Easy To Use</h3>
         <p>It's easy to learn and use the Hotel Reservation System Software.
-          You're just click away from everything you need to run your business .
+          You're just click away from everything you need to run your business.
         </p>
 
       </div>
       <div class="cnt3-text2">
         <h3>Real-Time Booking</h3>
         <p>Upgrade from a request from to real-time online bookings from your website.
-          No more back and forth emails.No double bookings .Work from anywhere.
+          No more back and forth emails. No double bookings. Work from anywhere.
         </p>
 
       </div>
@@ -97,7 +97,7 @@
       </div>
       <div class="cnt3-text2">
         <h3>Automated Emails</h3>
-        <p>Its works day and night from anywhere,on any device.
+        <p>Its works day and night from anywhere, on any device.
           It automatically sends immediate e-mail confirmations to you and your guest.
           So you can be productive and care-free right from the start.
         </p>
