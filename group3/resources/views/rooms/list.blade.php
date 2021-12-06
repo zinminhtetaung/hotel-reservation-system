@@ -31,7 +31,7 @@
         <div class="form-group">
           <label for="room_number" class="input-ttl required">Room number</label>
           <div class="input-box">
-            <input type="text" min=0 name="room_number" class="input-txt" placeholder="eg. l1,n1,s1">
+            <input type="text" min=0 name="room_number" class="input-txt" placeholder="L1,N1,S1">
           </div>
         </div>
         <div class="form-group">
@@ -57,7 +57,11 @@
         <div class="form-group">
           <label for="service" class="input-ttl required">Service</label>
           <div class="input-box">
-            <input type="text" name="service" class="input-txt">
+            <select name="service" class="select-box">
+              <option class="select" value="Breakfast free">&nbsp; Breakfast free &nbsp;</option>
+              <option class="select" value="Breakfast free & pool usage">&nbsp; Breakfast free & pool usage &nbsp;</option>
+              <option class="select" value="Breakfast free, gym & pool usage">&nbsp; Breakfast free, gym & pool usage &nbsp;</option>
+            </select>
           </div>
         </div>
         <div class="form-group">

@@ -23,7 +23,7 @@
       <li><a href="{{route('home')}}">Home</a></li>
       <li><a href="{{route('hotelview')}}">Hotel</a></li>
       <li> <a href="{{route('roomuserview')}}" >Room</a></li>
-      <li><a href="{{url('/loginuser')}}"class="active">Login</a></li>
+      <li><a href="{{route('login')}}"class="active">Login</a></li>
     </ul>
     </div>
     </nav>
