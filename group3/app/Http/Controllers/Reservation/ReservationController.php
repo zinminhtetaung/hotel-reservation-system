@@ -237,7 +237,7 @@ class ReservationController extends Controller
      * To To search reservation by phone number
      * @return array $reservation reservation list
      */
-    public function PhoneNo($phone) {
+    public function PhoneNo(Request $phone) {
         $custInfo = $this->reservationInterface->PhoneNo($phone);
         return view('customers.list')->with('custInfo', $custInfo); 
     }
@@ -245,7 +245,7 @@ class ReservationController extends Controller
      * To To search reservation by check_in time
      * @return array $reservation reservation list
      */
-    public function CheckIn($checkin) {
+    public function CheckIn(Request $checkin) {
         $custInfo = $this->reservationInterface->CheckIn($checkin);
         return view('customers.list')->with('custInfo', $custInfo); 
     }
@@ -253,7 +253,7 @@ class ReservationController extends Controller
      * To To search reservation by check_out time
      * @return array $reservation reservation list
      */
-    public function CheckOut($checkout) {
+    public function CheckOut(Request $checkout) {
         $custInfo = $this->reservationInterface->CheckOut($checkout);
         return view('customers.list')->with('custInfo', $custInfo); 
     }
