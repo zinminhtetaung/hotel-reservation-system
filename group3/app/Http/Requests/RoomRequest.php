@@ -30,7 +30,6 @@
                 'service' => ['required'],
                 'price' => ['required'],
                 'status' => ['required'],
-                'image' => ['required'],
             ];
         }
     }

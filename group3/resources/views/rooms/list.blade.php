@@ -21,11 +21,11 @@
           <label for="hotel_name" class="input-ttl required">Hotel name</label>
           <div class="input-box">
             <select name="hotel_name" class="select-box">
+              <option class="select" value="">No hotel chosen</option>
               @foreach ($hotels as $hotel)
               <option class="select" value="{{$hotel->hotel_name}}"> {{$hotel->hotel_name}} </option>
               @endforeach
             </select>
-
           </div>
         </div>
         <div class="form-group">
@@ -38,6 +38,7 @@
           <label for="room_type" class="input-ttl required">Room Type</label>
           <div class="input-box">
             <select name="room_type" class="select-box">
+              <option class="select" value="">No room chosen</option>
               <option class="select" value="Single">&nbsp; Single &nbsp;</option>
               <option class="select" value="Double">&nbsp; Double &nbsp;</option>
               <option class="select" value="Family">&nbsp; Family &nbsp;</option>
@@ -58,6 +59,7 @@
           <label for="service" class="input-ttl required">Service</label>
           <div class="input-box">
             <select name="service" class="select-box">
+              <option class="select" value="">No service chosen</option>
               <option class="select" value="Breakfast free">&nbsp; Breakfast free &nbsp;</option>
               <option class="select" value="Breakfast free & pool usage">&nbsp; Breakfast free & pool usage &nbsp;</option>
               <option class="select" value="Breakfast free, gym & pool usage">&nbsp; Breakfast free, gym & pool usage &nbsp;</option>
@@ -74,6 +76,7 @@
           <label for="status" class="input-ttl required">Status</label>
           <div class="input-box">
             <select name="status" class="select-box">
+              <option class="select" value="">No status chosen</option>
               <option class="select" value="Available">&nbsp; Available &nbsp;</option>
               <option class="select" value="Not Available">&nbsp; Not Available &nbsp;</option>
             </select>
