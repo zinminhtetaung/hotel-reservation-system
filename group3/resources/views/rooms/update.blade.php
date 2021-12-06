@@ -42,7 +42,21 @@
             <div class="form-group">
               <label for="room_type" class="input-ttl">Room Type</label>
               <div class="input-box">
-                <input type="text" name="room_type" class="input-txt" value="{{ $roomList->room_type }}">
+                <select name="room_type" class="select-box">
+                  <option class="select" value="Single">&nbsp; Single &nbsp;</option>
+                  <option class="select" value="Double">&nbsp; Double &nbsp;</option>
+                  <option class="select" value="Family">&nbsp; Family &nbsp;</option>
+                  <option class="select" value="Twins">&nbsp; Twins &nbsp;</option>
+                  <option class="select" value="Suite">&nbsp; Suite &nbsp;</option>
+                  <option class="select" value="Premiere">&nbsp; Premiere &nbsp;</option>
+                  <option class="select" value="King Suite">&nbsp; King Suite &nbsp;</option>
+                  <option class="select" value="Presidential suite">&nbsp; Presidential suite &nbsp;</option>
+                  <option class="select" value="Queen Suite">&nbsp; Queen Suite &nbsp;</option>
+                  <option class="select" value="Deluxe suite">&nbsp; Deluxe suite &nbsp;</option>
+                  <option class="select" value="Juinior suite">&nbsp; Juinior suite &nbsp;</option>
+                  <option class="select" value="Executive double">&nbsp; Executive double &nbsp;</option>
+                  <option class="select" value="Premier">&nbsp; Premier &nbsp;</option>
+                </select>
               </div>
             </div>
             <div class="form-group">
@@ -75,7 +89,7 @@
             <div class="form-group">
               <label class="input-ttl">{{ __('New Image') }}</label>
               <div class="input-box">
-                <label class="img-lable"for="upload">Upload an image</label>
+                <label class="img-lable" for="upload">Upload an image</label>
                 <input type="file" class="image input-img" name="image" id="upload" required />
               </div>
             </div>
