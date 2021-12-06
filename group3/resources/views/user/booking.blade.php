@@ -36,7 +36,7 @@
       <div class="bookingform-gp">
         <label>Email</label>
         <div class="text-box">
-          <input class="txt-box" type="text" name="email"><br>
+          <input class="txt-box" type="email" name="email"><br>
         </div>
       </div>
       <div class="bookingform-gp">
@@ -48,7 +48,7 @@
       <div class="bookingform-gp">
         <label>Number of guest</label>
         <div class="text-box">
-          <input class="txt-box" type="text" name="guestno" required><br>
+          <input class="txt-box" type="number" name="guestno" required><br>
         </div>
       </div>
       <div class="bookingform-gp">

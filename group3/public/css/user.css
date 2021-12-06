@@ -56,7 +56,7 @@
 .cnt2-card {
   float: left;
   width: 23%;
-  margin: 10px;
+  margin: 1%;
   background-color: #364e68;
 }
 
@@ -72,7 +72,7 @@
 }
 
 .home-content3 {
-  padding-top: 20px;
+  padding-top: 30px;
   background-color: #6495ed;
   padding-bottom: 40px;
 }
@@ -85,6 +85,7 @@
 .map img {
   width: 80%;
   padding-top: 30px;
+  margin-left: 50px;
 }
 
 .map h2,
@@ -110,7 +111,7 @@
 
 .cnt3-text2 {
   float: right;
-  width: 40%;
+  width: 45%;
   padding-top: 30px;
 }
 
@@ -427,12 +428,12 @@ td {
     margin-top: 5%;
   }
   .txt-box{
-    padding: 2% 0 1%;
+    padding: 1.5% 0 1.5% .5%;
     font-size: .9rem;
     margin-top: 2%;
   } 
   .text-box1{
-    padding:0 0 1%;
+    padding: 0;
   }
   
 }
@@ -543,7 +544,7 @@ td {
     margin-top: 5%;
   }
   .txt-box{
-    padding: 2% 0 0 .6%;
+    padding: 1% 0 1% .6%;
     font-size: .9rem;
     margin-top: 2%;
   }

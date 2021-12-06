@@ -15,7 +15,7 @@
         height: 180px;
       }
       .card1, .card2, .card3 {
-        margin-left: 12px;
+          margin: 0 1.16%;
       }
       .home-img p {
         font-size: 1.2rem;
@@ -24,13 +24,14 @@
         width: 100%;
         }
         .map img{
-            width: 100%;
+            display: flex;
+            margin: auto;
         }
         .reasons h2{
-            padding: 10px;
+            padding: 30px;
         }
         .cnt2-card {
-            width: 30%;
+            width: 31.33%;
         }
         .home-content2 h2 {
             padding-top: 10px;
@@ -42,10 +43,14 @@
             font-size: 1.2rem;
         }
         .cnt3-text1 {
-            padding-left: 50px;
+            width: 40%;
+            padding-left: 5%;
+            padding-top: 15px;
         }
         .cnt3-text2 {
-            padding-right: 30px;
+            width: 40%;
+            padding-right: 5%;
+            padding-top: 15px;
         }
         
 }
@@ -72,14 +77,14 @@
         width: 100%;
     }
     .map img{
-        width: 100%;
         padding-top: 15px;
     }
     .reasons h2{
-        padding: 10px;
+        padding-top: 30px;
     }
     .cnt3-text1,.cnt3-text2{
         margin: 10px;
+        padding-top: 15px;
     }
     .homecnt1-img {
         height: 380px;
@@ -89,10 +94,7 @@
         font-size: 1.6rem;
     }
     .cnt2-card {
-        width: 44%;
-    }
-    .home-content2 img {
-        height: auto;
+        width: 48%;
     }
     .home-content2 p {
         font-size: 4.2vw;
@@ -102,6 +104,7 @@
     }
     .reasons h3 {
         font-size: 1rem;
+        padding-bottom: 10px;
     }
     
 }

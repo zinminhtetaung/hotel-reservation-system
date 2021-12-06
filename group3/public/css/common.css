@@ -45,6 +45,7 @@ body {
 .logo {
   float: left;
   width: 11%;
+  margin-left: 20px;
 }
 
 .logoimg {
@@ -59,7 +60,7 @@ body {
   color: #132238;
   font-size: 20px;
   margin-left: 30px;
-  top: 40px;
+  top: 27px;
 }
 
 .back img {
@@ -72,12 +73,12 @@ body {
 
 .nav-inner {
   float: right;
-  padding-right: 40px;
+  padding-right: 15px;
 }
 
 .nav-inner li {
   display: inline-block;
-  padding: 40px 10px;
+  padding: 25px 10px 47px 0;
 }
 
 .nav-inner a {

@@ -352,6 +352,7 @@ table.dataTable td {
   color: #ebf068 !important;
   border: 1px solid #979797;
   background-color: #1a2b46;
+  border-radius: 0.5rem;
 }
 
 .dataTables_wrapper .dataTables_paginate .paginate_button.disabled,
@@ -368,6 +369,7 @@ table.dataTable td {
   color: #1a2b46 !important;
   border: 1px solid #111;
   background-color: #ebf068;
+  border-radius: 0.5rem;
 }
 
 .dataTables_wrapper .dataTables_paginate .paginate_button:active {
@@ -443,7 +445,8 @@ table.dataTable td {
 .dataTables_wrapper .dataTables_paginate {
   color: #1a2b46;
   font-size: 15px;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
+  margin-left: 10px;
 }
 
 .dataTables_wrapper .dataTables_scroll {

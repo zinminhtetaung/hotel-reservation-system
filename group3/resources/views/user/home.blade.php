@@ -7,10 +7,6 @@
       <a href="#"><img class="logoimg pc" src="{{ asset('image/logo.jpeg') }}" alt="logo"></a>
       <a href="#"><img class="logoimg sp" src="{{ asset('image/splogo.png') }}" alt="logo"></a>
     </h1>
-    @if (Auth::user())
-    <a class="back" href="{{route('reservationList')}}">
-      <img src="{{ asset('image/l_arrow.png') }}"> Back to Dashboard</a>
-    @endif
     <nav>
       <div class="menu-btn">
         <span></span>
@@ -24,6 +20,9 @@
           <li> <a href="{{route('roomuserview')}}">Room</a></li>
           @if (!Auth::user())
           <li><a href="{{route('login')}}">Login</a></li>
+          @endif
+          @if (Auth::user())
+          <li><a href="{{route('reservationList')}}">Dashboard</a></li>
           @endif
         </ul>
       </div>
@@ -78,14 +77,14 @@
       <div class="cnt3-text1">
         <h3>Easy To Use</h3>
         <p>It's easy to learn and use the Hotel Reservation System Software.
-          You're just click away from everything you need to run your business .
+          You're just click away from everything you need to run your business.
         </p>
 
       </div>
       <div class="cnt3-text2">
         <h3>Real-Time Booking</h3>
         <p>Upgrade from a request from to real-time online bookings from your website.
-          No more back and forth emails.No double bookings .Work from anywhere.
+          No more back and forth emails. No double bookings. Work from anywhere.
         </p>
 
       </div>
@@ -98,7 +97,7 @@
       </div>
       <div class="cnt3-text2">
         <h3>Automated Emails</h3>
-        <p>Its works day and night from anywhere,on any device.
+        <p>Its works day and night from anywhere, on any device.
           It automatically sends immediate e-mail confirmations to you and your guest.
           So you can be productive and care-free right from the start.
         </p>
@@ -106,4 +105,5 @@
     </div>
   </div>
 </div>
+<script src="{{asset('js/top.js')}}"></script>
 @endsection
