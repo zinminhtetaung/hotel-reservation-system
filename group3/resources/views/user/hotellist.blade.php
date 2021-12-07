@@ -7,10 +7,6 @@
       <a href="#"><img class="logoimg pc" src="{{ asset('image/logo.jpeg') }}" alt="logo"></a>
       <a href="#"><img class="logoimg sp" src="{{ asset('image/splogo.png') }}" alt="logo"></a>
     </h1>
-    @if (Auth::user())
-    <a class="back" href="{{route('reservationList')}}">
-      <img src="{{ asset('image/l_arrow.png') }}"> Back to Dashboard</a>
-    @endif
     <nav>
       <div class="menu-btn">
         <span></span>
@@ -24,6 +20,9 @@
           <li> <a href="{{route('roomuserview')}}">Room</a></li>
           @if (!Auth::user())
           <li><a href="{{route('login')}}">Login</a></li>
+          @endif
+          @if (Auth::user())
+          <li><a href="{{route('reservationList')}}">Dashboard</a></li>
           @endif
         </ul>
       </div>

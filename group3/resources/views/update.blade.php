@@ -50,8 +50,9 @@
           </div>
           <div class="form-group">
               <button type="submit" class="btn upd-btn">
-                <i class="fa fa-btn fa-pencil-alt"></i> Edit reservation
+                <i class="fa fa-btn fa-pencil-alt"></i> Edit
               </button>
+              <a href="{{route('reservationList')}}" onclick="return confirm('Are you sure to exit')" class="btn check-btn">Cancel</a>
           </div>
         </form>
       </div>

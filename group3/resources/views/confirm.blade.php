@@ -55,8 +55,8 @@
             </div>
             <div class="form-group">
               <div class="col-sm-offset-3 input-box">
-                <button type="submit" class="btn add-btn"> Confirm</button>
-                <a href="/onlineBooking" class="btn check-btn">Cancel</a>
+                <button type="submit" class="btn upd-btn"> Confirm</button>
+              <a href="{{route('onlineBookingList')}}" class="btn check-btn" onclick="return confirm('Are you sure to exit')">Cancel</a>
               </div>
             </div>
           </form>

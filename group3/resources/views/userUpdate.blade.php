@@ -51,7 +51,7 @@
             </div>
 
             <button type="submit" class="btn upd-btn">Update</button>
-            <button type="submit" class="btn del-btn" onclick="return confirm('Are you sure to exit')">Cancel</button>
+            <a href="{{route('userlist')}}" class="btn check-btn" onclick="return confirm('Are you sure to exit')">Cancel</a>
         </div>
       </div>
     </div>

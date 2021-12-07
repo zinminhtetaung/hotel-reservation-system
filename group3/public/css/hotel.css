@@ -282,6 +282,7 @@ body {
 .upd-btn {
   background-color: rgb(39, 114, 55);
   color: #ffff;
+  margin-top: 5px;
 }
 
 .add-form {
@@ -356,9 +357,15 @@ body {
   margin-top: 5px;
 }
 
-.check-btn {
+.check-btn1 {
   background-color: #ebf068;
   color: #1a2b46;
+  margin-top: 5px;
+}
+
+.check-btn {
+  background-color: #b63137;
+  color: #ffffff;
   margin-top: 5px;
 }
 

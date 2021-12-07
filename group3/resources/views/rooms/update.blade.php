@@ -100,6 +100,7 @@
             </div> 
             <div class="col-sm-12  text-center"> 
               <button type="submit" class="btn upd-btn">Update</button> 
+              <a href="{{route('roomList')}}" class="btn check-btn" onclick="return confirm('Are you sure to exit')">Cancel</a>
             </div> 
           </form> 
         </div> 

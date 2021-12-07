@@ -22,7 +22,7 @@
         </div>
         <div class="form-group">
           <div class="input-box">
-            <button type="submit" class="btn check-btn">Check Room</button>
+            <button type="submit" class="btn check-btn1">Check Room</button>
           </div>
         </div>
       </form>
