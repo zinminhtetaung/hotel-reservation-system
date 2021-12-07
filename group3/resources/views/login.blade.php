@@ -51,7 +51,7 @@
             <div>
               <div class="password-box">
                 <input id="password" type="password" class="@error('password') is-invalid @enderror" name="password" placeholder="Enter Your Password" required autocomplete="current-password">
-
+                <input class="show-pwd" type="checkbox" onclick="myFunction()">Show Password
                 @error('password')
                 <span class="invalid-feedback" role="alert">
                   <strong>{{ $message }}</strong>
